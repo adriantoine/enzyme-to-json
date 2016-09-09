@@ -1,0 +1,33 @@
+exports[`test converts basic class render 1`] = `
+<div
+  class="class">
+  <div
+    class="group"
+    id="group-id">
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      class="empty" />
+  </div>
+</div>
+`;
+
+exports[`test converts basic pure render 1`] = `
+<div
+  class="pure">
+  <div
+    class="group"
+    id="group-id">
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      class="empty" />
+  </div>
+</div>
+`;

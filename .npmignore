@@ -1,0 +1,5 @@
+src
+coverage
+test
+.babelrc
+.eslintrc
