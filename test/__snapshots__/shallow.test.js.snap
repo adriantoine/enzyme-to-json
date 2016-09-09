@@ -1,0 +1,35 @@
+exports[`test converts basic class shallow 1`] = `
+<div
+  className="class"
+  onClick={[Function handleOnClick]}>
+  <div
+    className="group"
+    id="group-id">
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty" />
+  </div>
+</div>
+`;
+
+exports[`test converts basic pure shallow 1`] = `
+<div
+  className="pure"
+  onClick={[Function handleOnClick]}>
+  <div
+    className="group"
+    id="group-id">
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty" />
+  </div>
+</div>
+`;

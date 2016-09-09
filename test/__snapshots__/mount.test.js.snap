@@ -1,0 +1,29 @@
+exports[`test converts basic class mount 1`] = `
+<BasicClass
+  className="class">
+  <div
+    className="group"
+    id="group-id">
+    <span>
+      <strong />
+    </span>
+    <span
+      className="empty" />
+  </div>
+</BasicClass>
+`;
+
+exports[`test converts basic pure mount 1`] = `
+<BasicPure
+  className="pure">
+  <div
+    className="group"
+    id="group-id">
+    <span>
+      <strong />
+    </span>
+    <span
+      className="empty" />
+  </div>
+</BasicPure>
+`;
