@@ -1,7 +1,11 @@
 # enzyme-to-json
 [![npm Version](https://img.shields.io/npm/v/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
-[![Build Status](https://travis-ci.org/trayio/enzyme-to-json.svg?branch=master)](https://travis-ci.org/trayio/enzyme-to-json)
 [![License](https://img.shields.io/npm/l/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
+
+[![Build Status](https://travis-ci.org/trayio/enzyme-to-json.svg?branch=master)](https://travis-ci.org/trayio/enzyme-to-json)
+[![codecov](https://codecov.io/gh/trayio/enzyme-to-json/branch/master/graph/badge.svg)](https://codecov.io/gh/trayio/enzyme-to-json)
+[![Dependency Status](https://gemnasium.com/badges/github.com/trayio/enzyme-to-json.svg)](https://gemnasium.com/github.com/trayio/enzyme-to-json)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with [Jest snapshot testing](https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing).
 
