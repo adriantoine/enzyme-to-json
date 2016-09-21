@@ -16,6 +16,9 @@ before_script:
 script:
 - npm test
 
+after_success:
+- ./node_modules/.bin/codecov
+
 branches:
   only:
   - master
