@@ -1,6 +1,6 @@
 exports[`test converts basic class render 1`] = `
 <div
-  class="class">
+  class="basic-class class">
   <div
     class="group"
     id="group-id">
@@ -17,7 +17,7 @@ exports[`test converts basic class render 1`] = `
 
 exports[`test converts basic pure render 1`] = `
 <div
-  class="pure">
+  class="basic-pure pure">
   <div
     class="group"
     id="group-id">

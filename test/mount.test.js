@@ -4,7 +4,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { mountToJson } from '../src';
 import { BasicPure } from './fixtures/pure-function';
-import { BasicClass } from './fixtures/class';
+import { BasicClass, ClassWithPure } from './fixtures/class';
 
 it('converts basic pure mount', () => {
     const mounted = mount(
@@ -17,6 +17,14 @@ it('converts basic pure mount', () => {
 it('converts basic class mount', () => {
     const mounted = mount(
         <BasicClass className="class"><strong>Hello!</strong></BasicClass>
+    );
+
+    expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('converts a class mount with a pure function in it', () => {
+    const mounted = mount(
+        <ClassWithPure className="class"><strong>Hello!</strong></ClassWithPure>
     );
 
     expect(mountToJson(mounted)).toMatchSnapshot();
