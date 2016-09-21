@@ -1,21 +1,41 @@
 import omit from 'lodash.omit';
 import pickBy from 'lodash.pickby';
 import compact from 'lodash.compact';
+import get from 'lodash.get';
 
 export function shallowToJson(wrapper) {
-    if (!wrapper.type()) {
+    const type = wrapper.type();
+    if (!type) {
         return wrapper.node;
     }
 
     const children = compact(wrapper.children().map(c => shallowToJson(c)));
     const props = pickBy(wrapper.props(), val => val !== undefined);
 
-    return {
+    const json = {
         type: wrapper.name(),
         props: omit(props, 'children'),
         children: (children.length) ? children : null,
         $$typeof: Symbol.for('react.test.json'),
     };
+
+    // If the type of element is not a function, it means that is a DOM element
+    if (typeof type !== 'function') {
+        return json;
+    }
+
+    // If it's not a DOM element, we need to get the rendered component in Enzyme internals
+    // because it won't be returned by `.children()`
+    const element = get(wrapper, 'node._reactInternalInstance._renderedComponent._currentElement');
+    const jsonChildren = json.children;
+    json.children = [{
+        type: element.type,
+        props: omit(element.props, 'children'),
+        children: jsonChildren,
+        $$typeof: Symbol.for('react.test.json'),
+    }];
+
+    return json;
 }
 
 export {shallowToJson as mountToJson};

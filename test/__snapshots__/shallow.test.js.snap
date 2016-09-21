@@ -1,6 +1,6 @@
 exports[`test converts basic class shallow 1`] = `
 <div
-  className="class"
+  className="basic-class class"
   onClick={[Function handleOnClick]}>
   <div
     className="group"
@@ -18,7 +18,7 @@ exports[`test converts basic class shallow 1`] = `
 
 exports[`test converts basic pure shallow 1`] = `
 <div
-  className="pure"
+  className="basic-pure pure"
   onClick={[Function handleOnClick]}>
   <div
     className="group"

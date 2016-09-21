@@ -1,14 +1,48 @@
+exports[`test converts a class mount with a pure function in it 1`] = `
+<ClassWithPure
+  className="class">
+  <div
+    className="class-with-pure class"
+    onClick={[Function handleOnClick]}>
+    <BasicPure
+      className="nested-pure">
+      <div
+        className="basic-pure nested-pure"
+        onClick={[Function handleOnClick]}>
+        <div
+          className="group"
+          id="group-id">
+          <span>
+            <span>
+              <strong />
+            </span>
+            <span
+              className="empty" />
+          </span>
+          <span
+            className="empty" />
+        </div>
+      </div>
+    </BasicPure>
+  </div>
+</ClassWithPure>
+`;
+
 exports[`test converts basic class mount 1`] = `
 <BasicClass
   className="class">
   <div
-    className="group"
-    id="group-id">
-    <span>
-      <strong />
-    </span>
-    <span
-      className="empty" />
+    className="basic-class class"
+    onClick={[Function handleOnClick]}>
+    <div
+      className="group"
+      id="group-id">
+      <span>
+        <strong />
+      </span>
+      <span
+        className="empty" />
+    </div>
   </div>
 </BasicClass>
 `;
@@ -17,13 +51,17 @@ exports[`test converts basic pure mount 1`] = `
 <BasicPure
   className="pure">
   <div
-    className="group"
-    id="group-id">
-    <span>
-      <strong />
-    </span>
-    <span
-      className="empty" />
+    className="basic-pure pure"
+    onClick={[Function handleOnClick]}>
+    <div
+      className="group"
+      id="group-id">
+      <span>
+        <strong />
+      </span>
+      <span
+        className="empty" />
+    </div>
   </div>
 </BasicPure>
 `;
