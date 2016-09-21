@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import { shallowToJson } from '../src';
 
 const MyComponent = props => (
     <div className={`my-component ${props.className}`}>

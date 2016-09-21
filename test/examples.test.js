@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import { shallowToJson } from '../src';
 
 class MyComponent extends Component {
     constructor() {
