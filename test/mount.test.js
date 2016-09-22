@@ -29,3 +29,14 @@ it('converts a class mount with a pure function in it', () => {
 
     expect(mountToJson(mounted)).toMatchSnapshot();
 });
+
+it('converts a bunch of dom nodes', () => {
+    const mounted = mount(
+	<div>
+            <div></div>
+            <div>B<span></span></div>
+	</div>
+    );
+
+    expect(mountToJson(mounted)).toMatchSnapshot();
+});
