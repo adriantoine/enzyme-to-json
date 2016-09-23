@@ -3,3 +3,5 @@ coverage
 test
 .babelrc
 .eslintrc
+jsconfig.json
+.vscode
