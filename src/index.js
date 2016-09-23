@@ -24,9 +24,13 @@ export function shallowToJson(wrapper) {
         return json;
     }
 
-    // If it's not a DOM element, we need to get the rendered component in Enzyme internals
+    // We need to get the rendered component in Enzyme internals
     // because it won't be returned by `.children()`
     const element = get(wrapper, 'node._reactInternalInstance._renderedComponent._currentElement');
+    if(!element) {
+        return json;
+    }
+
     const jsonChildren = json.children;
     json.children = [{
         type: element.type,
