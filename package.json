@@ -1,12 +1,12 @@
 {
   "name": "enzyme-to-json",
-  "version": "1.1.1",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src -d build",
     "prepublish": "npm run build",
-    "test": "eslint src test && NODE_ENV=test jest --coverage"
+    "test": "eslint src test && NODE_ENV=test jest --coverage",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
     "enzyme",
@@ -58,7 +58,8 @@
     "jest": "^15.1.1",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "commitizen": {
