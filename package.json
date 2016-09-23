@@ -1,6 +1,6 @@
 {
   "name": "enzyme-to-json",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
   "main": "build/index.js",
   "scripts": {
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
-    "babel-jest" : "^15.0.0",
+    "babel-jest": "^15.0.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.14.0",
     "babel-preset-react": "^6.11.1",
