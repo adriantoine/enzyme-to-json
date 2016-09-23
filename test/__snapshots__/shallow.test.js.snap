@@ -1,3 +1,20 @@
+exports[`test converts a class mount with a pure function in it 1`] = `
+<div
+  className="class-with-pure class"
+  onClick={[Function handleOnClick]}>
+  <BasicPure
+    className="nested-pure">
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty" />
+  </BasicPure>
+</div>
+`;
+
 exports[`test converts basic class shallow 1`] = `
 <div
   className="basic-class class"
