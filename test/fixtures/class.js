@@ -26,3 +26,25 @@ export class ClassWithPure extends Component {
         );
     }
 }
+
+export class ClassWithDirectPure extends Component {
+    render() {
+        return (
+            <BasicPure className="nested-pure">
+                <span>{this.props.children}</span>
+                <span className="empty"></span>
+            </BasicPure>
+        );
+    }
+}
+
+export class ClassWithDirectComponent extends Component {
+    render() {
+        return (
+            <ClassWithPure className="nested-pure">
+                <span>{this.props.children}</span>
+                <span className="empty"></span>
+            </ClassWithPure>
+        );
+    }
+}
