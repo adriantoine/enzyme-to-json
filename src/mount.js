@@ -1,5 +1,6 @@
 import compact from 'lodash.compact';
 import omit from 'lodash.omit';
+import values from 'object-values';
 import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
 import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
 import {typeName} from 'enzyme/build/Debug';
@@ -27,7 +28,7 @@ function instToJson(inst) {
         if (!renderedChildren) {
             children.push(...childrenOfNode(currentElement));
         } else {
-            children.push(...Object.values(renderedChildren));
+            children.push(...values(renderedChildren));
         }
     } else if (
         isElement(currentElement) &&
