@@ -3,30 +3,36 @@ exports[`test converts a class mount with a class component in it as a direct ch
   className="class">
   <ClassWithPure
     className="nested-pure">
-    <BasicPure
-      className="nested-pure">
-      <div
-        className="basic-pure nested-pure"
-        onClick={[Function]}>
+    <div
+      className="class-with-pure nested-pure"
+      onClick={[Function]}>
+      <BasicPure
+        className="nested-pure">
         <div
-          className="group"
-          id="group-id">
-          <span>
+          className="basic-pure nested-pure"
+          onClick={[Function]}>
+          <div
+            className="group"
+            id="group-id">
             <span>
               <span>
-                <strong />
+                <span>
+                  <strong>
+                    Hello!
+                  </strong>
+                </span>
+                <span
+                  className="empty" />
               </span>
               <span
                 className="empty" />
             </span>
             <span
               className="empty" />
-          </span>
-          <span
-            className="empty" />
+          </div>
         </div>
-      </div>
-    </BasicPure>
+      </BasicPure>
+    </div>
   </ClassWithPure>
 </ClassWithDirectComponent>
 `;
@@ -47,7 +53,9 @@ exports[`test converts a class mount with a pure function in it 1`] = `
           id="group-id">
           <span>
             <span>
-              <strong />
+              <strong>
+                Hello!
+              </strong>
             </span>
             <span
               className="empty" />
@@ -67,17 +75,23 @@ exports[`test converts a class mount with a pure function in it as a direct chil
   <BasicPure
     className="nested-pure">
     <div
-      className="group"
-      id="group-id">
-      <span>
+      className="basic-pure nested-pure"
+      onClick={[Function]}>
+      <div
+        className="group"
+        id="group-id">
         <span>
-          <strong />
+          <span>
+            <strong>
+              Hello!
+            </strong>
+          </span>
+          <span
+            className="empty" />
         </span>
         <span
           className="empty" />
-      </span>
-      <span
-        className="empty" />
+      </div>
     </div>
   </BasicPure>
 </ClassWithDirectPure>
@@ -93,7 +107,9 @@ exports[`test converts basic class mount 1`] = `
       className="group"
       id="group-id">
       <span>
-        <strong />
+        <strong>
+          Hello!
+        </strong>
       </span>
       <span
         className="empty" />
@@ -112,7 +128,9 @@ exports[`test converts basic pure mount 1`] = `
       className="group"
       id="group-id">
       <span>
-        <strong />
+        <strong>
+          Hello!
+        </strong>
       </span>
       <span
         className="empty" />
