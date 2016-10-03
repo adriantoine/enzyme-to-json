@@ -14,7 +14,6 @@ parserOptions:
         jsx: true
 
 rules:
-    # ERRORS
     brace-style: [2, 1tbs, allowSingleLine: true]
     camelcase: [2, properties: never]
     comma-style: [2, last]
