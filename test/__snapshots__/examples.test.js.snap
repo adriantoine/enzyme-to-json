@@ -1,7 +1,7 @@
 exports[`test renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function bound handleClick]}>
+  onClick={[Function]}>
   <span
     className="count">
     1
