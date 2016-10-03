@@ -1,11 +1,9 @@
 {
-  "plugins": [
-    "transform-es2015-modules-commonjs",
-    "transform-es2015-arrow-functions",
-  ],
+  "presets": ["es2015"],
+  "plugins": ["syntax-export-extensions"],
   "env": {
     "test": {
-        "presets": ["react"]
+        "presets": ["es2015", "react"]
     }
   }
 }
