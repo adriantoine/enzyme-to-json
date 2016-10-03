@@ -38,7 +38,8 @@
     "lodash.compact": "^3.0.1",
     "lodash.get": "^4.4.2",
     "lodash.omit": "^4.5.0",
-    "lodash.pickby": "^4.6.0"
+    "lodash.pickby": "^4.6.0",
+    "react-display-name": "^0.2.0"
   },
   "peerDependencies": {
     "enzyme": "^2.4.1"
