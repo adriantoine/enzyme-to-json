@@ -3,12 +3,12 @@ exports[`test converts a class mount with a pure function in it 1`] = `
   className="class">
   <div
     className="class-with-pure class"
-    onClick={[Function handleOnClick]}>
+    onClick={[Function]}>
     <BasicPure
       className="nested-pure">
       <div
         className="basic-pure nested-pure"
-        onClick={[Function handleOnClick]}>
+        onClick={[Function]}>
         <div
           className="group"
           id="group-id">
@@ -33,7 +33,7 @@ exports[`test converts basic class mount 1`] = `
   className="class">
   <div
     className="basic-class class"
-    onClick={[Function handleOnClick]}>
+    onClick={[Function]}>
     <div
       className="group"
       id="group-id">
@@ -52,7 +52,7 @@ exports[`test converts basic pure mount 1`] = `
   className="pure">
   <div
     className="basic-pure pure"
-    onClick={[Function handleOnClick]}>
+    onClick={[Function]}>
     <div
       className="group"
       id="group-id">
