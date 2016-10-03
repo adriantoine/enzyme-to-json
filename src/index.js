@@ -2,6 +2,7 @@ import omit from 'lodash.omit';
 import pickBy from 'lodash.pickby';
 import compact from 'lodash.compact';
 import get from 'lodash.get';
+import getDisplayName from 'react-display-name';
 
 export function shallowToJson(wrapper) {
     const type = wrapper.type();
@@ -33,7 +34,7 @@ export function shallowToJson(wrapper) {
 
     const jsonChildren = json.children;
     json.children = [{
-        type: element.type,
+        type: getDisplayName(element.type),
         props: omit(element.props, 'children'),
         children: jsonChildren,
         $$typeof: Symbol.for('react.test.json'),

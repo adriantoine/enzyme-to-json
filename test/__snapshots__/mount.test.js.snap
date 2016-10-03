@@ -1,3 +1,36 @@
+exports[`test converts a class mount with a class component in it as a direct child 1`] = `
+<ClassWithDirectComponent
+  className="class">
+  <ClassWithPure
+    className="nested-pure">
+    <BasicPure
+      className="nested-pure">
+      <div
+        className="basic-pure nested-pure"
+        onClick={[Function]}>
+        <div
+          className="group"
+          id="group-id">
+          <span>
+            <span>
+              <span>
+                <strong />
+              </span>
+              <span
+                className="empty" />
+            </span>
+            <span
+              className="empty" />
+          </span>
+          <span
+            className="empty" />
+        </div>
+      </div>
+    </BasicPure>
+  </ClassWithPure>
+</ClassWithDirectComponent>
+`;
+
 exports[`test converts a class mount with a pure function in it 1`] = `
 <ClassWithPure
   className="class">
@@ -26,6 +59,28 @@ exports[`test converts a class mount with a pure function in it 1`] = `
     </BasicPure>
   </div>
 </ClassWithPure>
+`;
+
+exports[`test converts a class mount with a pure function in it as a direct child 1`] = `
+<ClassWithDirectPure
+  className="class">
+  <BasicPure
+    className="nested-pure">
+    <div
+      className="group"
+      id="group-id">
+      <span>
+        <span>
+          <strong />
+        </span>
+        <span
+          className="empty" />
+      </span>
+      <span
+        className="empty" />
+    </div>
+  </BasicPure>
+</ClassWithDirectPure>
 `;
 
 exports[`test converts basic class mount 1`] = `
