@@ -20,15 +20,15 @@
     "unit",
     "test"
   ],
-  "author": "Adrien Antoine <adrien@tray.io> (http://tray.io)",
-  "homepage": "https://github.com/trayio/enzyme-to-json#readme",
+  "author": "Adrien Antoine <adriantoine@gmail.com> (http://adriantoine.com)",
+  "homepage": "https://github.com/adriantoine/enzyme-to-json#readme",
   "bugs": {
-    "url": "https://github.com/trayio/enzyme-to-json/issues",
+    "url": "https://github.com/adriantoine/enzyme-to-json/issues",
     "email": "adrien@tray.io"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/trayio/enzyme-to-json.git"
+    "url": "https://github.com/adriantoine/enzyme-to-json.git"
   },
   "engines": {
     "node": ">=6.0.0"
