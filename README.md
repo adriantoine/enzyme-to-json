@@ -1,7 +1,7 @@
 # enzyme-to-json
-[![Build Status](https://travis-ci.org/trayio/enzyme-to-json.svg?branch=master)](https://travis-ci.org/trayio/enzyme-to-json)
-[![codecov](https://codecov.io/gh/trayio/enzyme-to-json/branch/master/graph/badge.svg)](https://codecov.io/gh/trayio/enzyme-to-json)
-[![Dependency Status](https://gemnasium.com/badges/github.com/trayio/enzyme-to-json.svg)](https://gemnasium.com/github.com/trayio/enzyme-to-json)
+[![Build Status](https://travis-ci.org/adriantoine/enzyme-to-json.svg?branch=master)](https://travis-ci.org/adriantoine/enzyme-to-json)
+[![codecov](https://codecov.io/gh/adriantoine/enzyme-to-json/branch/master/graph/badge.svg)](https://codecov.io/gh/adriantoine/enzyme-to-json)
+[![Dependency Status](https://gemnasium.com/badges/github.com/adriantoine/enzyme-to-json.svg)](https://gemnasium.com/github.com/adriantoine/enzyme-to-json)
 
 [![npm Version](https://img.shields.io/npm/v/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
 [![License](https://img.shields.io/npm/l/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
