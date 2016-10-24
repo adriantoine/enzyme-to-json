@@ -1,13 +1,15 @@
 # enzyme-to-json
-[![Build Status](https://travis-ci.org/adriantoine/enzyme-to-json.svg?branch=master)](https://travis-ci.org/adriantoine/enzyme-to-json)
-[![codecov](https://codecov.io/gh/adriantoine/enzyme-to-json/branch/master/graph/badge.svg)](https://codecov.io/gh/adriantoine/enzyme-to-json)
-[![Dependency Status](https://gemnasium.com/badges/github.com/adriantoine/enzyme-to-json.svg)](https://gemnasium.com/github.com/adriantoine/enzyme-to-json)
+[![Build Status](https://img.shields.io/travis/adriantoine/enzyme-to-json.svg?branch=master&style=flat-square)](https://travis-ci.org/adriantoine/enzyme-to-json)
+[![codecov](https://img.shields.io/codecov/c/github/adriantoine/enzyme-to-json.svg?style=flat-square)](https://codecov.io/gh/adriantoine/enzyme-to-json)
+[![Dependency Status](https://img.shields.io/gemnasium/adriantoine/enzyme-to-json.svg?style=flat-square)](https://gemnasium.com/github.com/adriantoine/enzyme-to-json)
 
-[![npm Version](https://img.shields.io/npm/v/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
-[![License](https://img.shields.io/npm/l/enzyme-to-json.svg)](https://www.npmjs.com/package/enzyme-to-json)
-[![Downloads](https://img.shields.io/npm/dm/enzyme-to-json.svg?style=flat)](https://npm-stat.com/charts.html?package=enzyme-to-json)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![npm Version](https://img.shields.io/npm/v/enzyme-to-json.svg?style=flat-square)](https://www.npmjs.com/package/enzyme-to-json)
+[![License](https://img.shields.io/npm/l/enzyme-to-json.svg?style=flat-square)](https://www.npmjs.com/package/enzyme-to-json)
+[![Downloads](https://img.shields.io/npm/dm/enzyme-to-json.svg?style=flat-square)](https://npm-stat.com/charts.html?package=enzyme-to-json)
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with [Jest snapshot testing](https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing).
 
@@ -262,3 +264,7 @@ Received value does not match the stored snapshot 1.
   at Object.<anonymous> (test/focused.test.js:19:93)
   at process._tickCallback (internal/process/next_tick.js:103:7)
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](/CONTRIBUTING.md).
