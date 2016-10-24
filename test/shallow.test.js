@@ -4,7 +4,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from '../src';
 import { BasicPure } from './fixtures/pure-function';
-import { BasicClass, ClassWithPure } from './fixtures/class';
+import { BasicClass, ClassWithPure, ClassWithNull } from './fixtures/class';
 
 it('converts basic pure shallow', () => {
     const shallowed = shallow(
@@ -25,6 +25,13 @@ it('converts basic class shallow', () => {
 it('converts a class mount with a pure function in it', () => {
     const shallowed = shallow(
         <ClassWithPure className="class"><strong>Hello!</strong></ClassWithPure>
+    );
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('handles a component which returns null', () => {
+    const shallowed = shallow(
+        <ClassWithNull />
     );
     expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
