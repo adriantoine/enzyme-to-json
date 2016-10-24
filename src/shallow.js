@@ -5,6 +5,8 @@ import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
 
 function nodeToJson(node) {
+    if(!node) return node;
+
     if (typeof node === 'string' || typeof node === 'number') {
         return node;
     }

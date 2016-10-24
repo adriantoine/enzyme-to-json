@@ -50,3 +50,5 @@ exports[`test converts basic pure shallow 1`] = `
   </div>
 </div>
 `;
+
+exports[`test handles a component which returns null 1`] = `null`;

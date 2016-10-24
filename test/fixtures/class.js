@@ -48,3 +48,9 @@ export class ClassWithDirectComponent extends Component {
         );
     }
 }
+
+export class ClassWithNull extends Component {
+    render() {
+        return null;
+    }
+}
