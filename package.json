@@ -37,7 +37,8 @@
   "dependencies": {
     "lodash.compact": "^3.0.1",
     "lodash.omit": "^4.5.0",
-    "object-values": "^1.0.0"
+    "object-values": "^1.0.0",
+    "object.entries": "^1.0.3"
   },
   "peerDependencies": {
     "enzyme": "^2.4.1"
