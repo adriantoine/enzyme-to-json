@@ -1,4 +1,5 @@
 import compact from 'lodash.compact';
+import isPlainObject from 'lodash.isplainobject';
 import omit from 'lodash.omit';
 import entries from 'object.entries';
 import {propsOfNode} from 'enzyme/build/Utils';
@@ -18,7 +19,7 @@ function nodeToJson(node) {
             return node.map(nodeToJson);
         }
 
-        if (typeof node === 'object') {
+        if (isPlainObject(node)) {
             return entries(node).reduce((obj, [key, val]) => {
                 obj[key] = nodeToJson(val);
                 return obj;

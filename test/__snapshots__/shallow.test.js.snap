@@ -96,3 +96,12 @@ exports[`test handles elements in props 1`] = `
     </BasicPure>
   } />
 `;
+
+exports[`test ignores non-plain objects 1`] = `
+<BasicPure
+  instance={
+    TestConstructor {
+      "_test": true,
+    }
+  } />
+`;
