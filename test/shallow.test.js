@@ -6,6 +6,10 @@ import { shallowToJson } from '../src';
 import { BasicPure } from './fixtures/pure-function';
 import { BasicClass, ClassWithPure, ClassWithNull } from './fixtures/class';
 
+function WrapperComponent(props) {
+    return <BasicPure {...props} />;
+}
+
 it('converts basic pure shallow', () => {
     const shallowed = shallow(
         <BasicPure className="pure"><strong>Hello!</strong></BasicPure>
@@ -33,5 +37,34 @@ it('handles a component which returns null', () => {
     const shallowed = shallow(
         <ClassWithNull />
     );
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('handles elements in props', () => {
+    const shallowed = shallow(
+        <WrapperComponent element={<BasicPure><strong>Hello!</strong></BasicPure>} />
+    );
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('handles elements in prop arrays', () => {
+    const shallowed = shallow(
+        <WrapperComponent elements={[
+            <BasicPure><strong>Hello!</strong></BasicPure>,
+        ]} />
+    );
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('handles elements in prop objects', () => {
+    const shallowed = shallow(
+        <WrapperComponent element={{
+            element: <BasicPure><strong>Hello!</strong></BasicPure>,
+            nestedElements: [
+                <BasicPure><strong>Hello again!</strong></BasicPure>,
+            ],
+        }} />
+    );
+
     expect(shallowToJson(shallowed)).toMatchSnapshot();
 });

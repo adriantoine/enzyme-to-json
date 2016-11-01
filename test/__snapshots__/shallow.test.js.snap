@@ -52,3 +52,47 @@ exports[`test converts basic pure shallow 1`] = `
 `;
 
 exports[`test handles a component which returns null 1`] = `null`;
+
+exports[`test handles elements in prop arrays 1`] = `
+<BasicPure
+  elements={
+    Array [
+      <BasicPure>
+        <strong>
+            Hello!
+        </strong>
+    </BasicPure>,
+    ]
+  } />
+`;
+
+exports[`test handles elements in prop objects 1`] = `
+<BasicPure
+  element={
+    Object {
+      "element": <BasicPure>
+        <strong>
+            Hello!
+        </strong>
+    </BasicPure>,
+      "nestedElements": Array [
+        <BasicPure>
+          <strong>
+                Hello again!
+          </strong>
+    </BasicPure>,
+      ],
+    }
+  } />
+`;
+
+exports[`test handles elements in props 1`] = `
+<BasicPure
+  element={
+    <BasicPure>
+      <strong>
+        Hello!
+      </strong>
+    </BasicPure>
+  } />
+`;
