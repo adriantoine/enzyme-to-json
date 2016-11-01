@@ -68,3 +68,15 @@ it('handles elements in prop objects', () => {
 
     expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
+
+it('ignores non-plain objects', () => {
+    function TestConstructor() {
+        this._test = true;
+    }
+
+    const shallowed = shallow(
+        <WrapperComponent instance={new TestConstructor()} />
+    );
+
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
