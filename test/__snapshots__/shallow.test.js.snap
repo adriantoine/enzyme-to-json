@@ -105,3 +105,9 @@ exports[`test ignores non-plain objects 1`] = `
     }
   } />
 `;
+
+exports[`test skips undefined props 1`] = `
+<button>
+  Hello
+</button>
+`;
