@@ -3,7 +3,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { mountToJson } from '../src';
-import { BasicPure, BasicWithUndefined } from './fixtures/pure-function';
+import { BasicPure } from './fixtures/pure-function';
 import { BasicClass, ClassWithPure, ClassWithDirectPure, ClassWithDirectComponent } from './fixtures/class';
 
 it('converts basic pure mount', () => {
@@ -41,14 +41,6 @@ it('converts a class mount with a pure function in it as a direct child', () => 
 it('converts a class mount with a class component in it as a direct child', () => {
     const mounted = mount(
         <ClassWithDirectComponent className="class"><strong>Hello!</strong></ClassWithDirectComponent>
-    );
-
-    expect(mountToJson(mounted)).toMatchSnapshot();
-});
-
-it('skips undefined props', () => {
-    const mounted = mount(
-        <BasicWithUndefined>Hello!</BasicWithUndefined>
     );
 
     expect(mountToJson(mounted)).toMatchSnapshot();

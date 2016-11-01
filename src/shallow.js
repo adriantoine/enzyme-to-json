@@ -1,6 +1,6 @@
 import compact from 'lodash.compact';
 import isPlainObject from 'lodash.isplainobject';
-import omitBy from 'lodash.omitby';
+import omit from 'lodash.omit';
 import entries from 'object.entries';
 import {propsOfNode} from 'enzyme/build/Utils';
 import {typeName} from 'enzyme/build/Debug';
@@ -31,7 +31,7 @@ function nodeToJson(node) {
 
     const children = compact(childrenOfNode(node).map(n => nodeToJson(n)));
     const type = typeName(node);
-    const props = omitBy(propsOfNode(node), (val, key) => key === 'children' || val === undefined);
+    const props = omit(propsOfNode(node), 'children');
 
     return {
         type,

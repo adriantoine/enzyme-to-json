@@ -1,5 +1,5 @@
 import compact from 'lodash.compact';
-import omitBy from 'lodash.omitby';
+import omit from 'lodash.omit';
 import values from 'object-values';
 import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
 import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
@@ -21,7 +21,7 @@ function instToJson(inst) {
 
     const currentElement = inst._currentElement;
     const type = typeName(currentElement);
-    const props = omitBy(propsOfNode(currentElement), (val, key) => key === 'children' || val === undefined);
+    const props = omit(propsOfNode(currentElement), 'children');
     const children = [];
     if (isDOMComponent(publicInst)) {
         const renderedChildren = inst._renderedChildren;

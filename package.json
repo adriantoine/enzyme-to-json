@@ -37,7 +37,7 @@
   "dependencies": {
     "lodash.compact": "^3.0.1",
     "lodash.isplainobject": "^4.0.6",
-    "lodash.omitby": "^4.5.0",
+    "lodash.omit": "^4.5.0",
     "object-values": "^1.0.0",
     "object.entries": "^1.0.3"
   },
