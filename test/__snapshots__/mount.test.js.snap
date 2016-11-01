@@ -138,3 +138,11 @@ exports[`test converts basic pure mount 1`] = `
   </div>
 </BasicPure>
 `;
+
+exports[`test skips undefined props 1`] = `
+<BasicWithUndefined>
+  <button>
+    Hello
+  </button>
+</BasicWithUndefined>
+`;

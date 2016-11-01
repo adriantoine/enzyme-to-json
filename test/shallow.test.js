@@ -3,7 +3,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { shallowToJson } from '../src';
-import { BasicPure } from './fixtures/pure-function';
+import { BasicPure, BasicWithUndefined } from './fixtures/pure-function';
 import { BasicClass, ClassWithPure, ClassWithNull } from './fixtures/class';
 
 function WrapperComponent(props) {
@@ -76,6 +76,14 @@ it('ignores non-plain objects', () => {
 
     const shallowed = shallow(
         <WrapperComponent instance={new TestConstructor()} />
+    );
+
+    expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('skips undefined props', () => {
+    const shallowed = shallow(
+        <BasicWithUndefined>Hello!</BasicWithUndefined>
     );
 
     expect(shallowToJson(shallowed)).toMatchSnapshot();

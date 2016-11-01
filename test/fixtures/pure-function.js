@@ -10,3 +10,9 @@ export function BasicPure(props) {
         </div>
     );
 }
+
+export function BasicWithUndefined(props) {
+    return (
+        <button disabled={props.disabled}>Hello</button>
+    );
+}
