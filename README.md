@@ -71,7 +71,28 @@ exports[`test renders correctly 1`] = `
 </div>
 `;
 ```
-It becomes especially handy as you can use all [Enzyme](http://airbnb.io/enzyme/) features like `find` or `setState`:
+It becomes especially handy as you can use all [Enzyme](http://airbnb.io/enzyme/) features like `find`, `simulate`, or `setState`:
+```js
+it('renders span after click', () => {
+  const wrapper = shallow(
+    <MyComponent className="my-component">
+      <strong>Hello World!</strong>
+    </MyComponent>
+  );
+
+  wrapper.find('div').simulate('click');
+  expect(shallowToJson(wrapper.find('span'))).toMatchSnapshot();
+});
+
+// generates:
+
+exports[`test renders span after click 1`] = `
+<span
+  className="count">
+  2
+</span>
+`;
+```
 ```js
 it('renders span after setState', () => {
   const wrapper = shallow(
