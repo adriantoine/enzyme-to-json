@@ -13,6 +13,8 @@
 
 Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with [Jest snapshot testing](https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing).
 
+**Note:** Although `enzyme-to-json` is great and will remain supported, if you're using [Jest v17.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1700), I recommend this Enzyme Snapshot serializer: [jest-serializer-enzyme](https://www.npmjs.com/package/jest-serializer-enzyme).
+
 # Install
 ```console
 $ npm install --save-dev enzyme-to-json
