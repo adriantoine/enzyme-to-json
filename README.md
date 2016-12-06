@@ -18,7 +18,7 @@ Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with 
 $ npm install --save-dev enzyme-to-json
 ```
 
-# Example
+# Usage
 
 ## Helper
 
