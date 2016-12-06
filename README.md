@@ -121,6 +121,11 @@ it('renders my component', () => {
 });
 ```
 
+You can still use the `shallowToJson`, `mountToJson` and `renderToJson` wrappers from the earlier versions, importing them like this:
+```
+import {shallowToJson, mountToJson, renderToJson} from 'enzyme-to-json';
+```
+
 ## Serializer
 
 If you are using [Jest v17.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1700), you can also use a Jest serializer.
