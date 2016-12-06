@@ -32,7 +32,7 @@ class MyComponent extends Component {
   }
 
   handleClick() {
-    this.setState({ count: this.state.count + 1 });
+    this.setState(({ count }) => ({ count: count + 1 }));
   }
 
   render() {
