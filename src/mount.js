@@ -47,6 +47,4 @@ function instToJson(inst) {
     };
 }
 
-export function mountToJson(wrapper) {
-    return instToJson(wrapper.node);
-}
+export default wrapper => instToJson(wrapper.node);
