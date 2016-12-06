@@ -13,18 +13,19 @@
 
 Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with [Jest snapshot testing](https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing).
 
-**Note:** Although `enzyme-to-json` is great and will remain supported, if you're using [Jest v17.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1700), I recommend this Enzyme Snapshot serializer: [jest-serializer-enzyme](https://www.npmjs.com/package/jest-serializer-enzyme).
-
 # Install
 ```console
 $ npm install --save-dev enzyme-to-json
 ```
 
 # Example
+
+## Helper
+
 ```js
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import toJson from 'enzyme-to-json';
 
 class MyComponent extends Component {
   constructor() {
@@ -54,7 +55,7 @@ it('renders correctly', () => {
     </MyComponent>
   );
 
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 // generates:
@@ -83,7 +84,7 @@ it('renders span after setState', () => {
   );
 
   wrapper.setState({ count: 42 });
-  expect(shallowToJson(wrapper.find('span'))).toMatchSnapshot();
+  expect(toJson(wrapper.find('span'))).toMatchSnapshot();
 });
 
 // generates:
@@ -99,8 +100,6 @@ It could be useful if you want more focused tests.
 
 This library also supports [`mount`](https://github.com/airbnb/enzyme/blob/master/docs/api/mount.md) and [`render`](https://github.com/airbnb/enzyme/blob/master/docs/api/render.md) Enzyme wrappers:
 ```js
-import { mountToJson, renderToJson } from 'enzyme-to-json';
-
 it('mounts my component', () => {
   const wrapper = mount(
     <MyComponent className="my-component">
@@ -108,7 +107,7 @@ it('mounts my component', () => {
     </MyComponent>
   );
 
-  expect(mountToJson(wrapper)).toMatchSnapshot();
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 
 it('renders my component', () => {
@@ -118,9 +117,74 @@ it('renders my component', () => {
     </MyComponent>
   );
 
-  expect(renderToJson(wrapper)).toMatchSnapshot();
+  expect(toJson(wrapper)).toMatchSnapshot();
 });
 ```
+
+## Serializer
+
+If you are using [Jest v17.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1700), you can also use a Jest serializer.
+
+Add this to your Jest configuration:
+
+```js
+"jest": {
+  "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"]
+}
+```
+
+Then you can use all of the above without having to include or use the `toJson` function! For example:
+
+```js
+it('mounts my component', () => {
+  const wrapper = shallow(
+    <MyComponent className="my-component">
+      <strong>Hello World!</strong>
+    </MyComponent>
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+it('mounts my component', () => {
+  const wrapper = mount(
+    <MyComponent className="my-component">
+      <strong>Hello World!</strong>
+    </MyComponent>
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+it('renders my component', () => {
+  const wrapper = render(
+    <MyComponent className="my-component">
+      <strong>Hello World!</strong>
+    </MyComponent>
+  );
+
+  expect(wrapper).toMatchSnapshot();
+});
+```
+
+This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-serializer-enzyme), I first [added a note](https://github.com/adriantoine/enzyme-to-json/commit/4b2ffc388aaaeb639961c29d271d02acbfe5df40) to `jest-serializer-enzyme` but I then realised that the output is different, so it is not retro compatible with `enzyme-to-json` because it's using Enzyme `debug` helper which doesn't put each prop on a separate line.
+
+For example the output of the first example would be:
+```js
+exports[`test renders correctly 1`] = `
+<div className="my-component" onClick={[Function]}>
+<span className="count">
+1
+</span>
+<strong>
+Hello World!
+</strong>
+</div>
+`;
+```
+which is different from mine. So, if you want to move from `enzyme-to-json` to `jest-serializer-enzyme`, you would have to update all snapshots.
+
+The output is a matter of preference, also `jest-serializer-enzyme` only supports the `shallow` wrapper for now, so if you're already using `enzyme-to-json`, it's a bit easier to use our serializer for now. Thanks to @rogeliog for bringing up the idea.
 
 # Focused tests
 
@@ -212,7 +276,7 @@ When using Enzyme `find` helper, you can write your tests focusing on a specific
 ```js
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from 'enzyme-to-json';
+import toJson from 'enzyme-to-json';
 
 const MyComponent = props => (
     <div className={`my-component ${props.className}`}>
@@ -226,7 +290,7 @@ it('renders the right title', () => {
         <MyComponent className="strong-class"/>
     );
 
-    expect(shallowToJson(wrapper.find('h3'))).toMatchSnapshot();
+    expect(toJson(wrapper.find('h3'))).toMatchSnapshot();
 });
 
 it('renders a `strong` correctly', () => {
@@ -236,7 +300,7 @@ it('renders a `strong` correctly', () => {
         </MyComponent>
     );
 
-    expect(shallowToJson(wrapper.find('span').first())).toMatchSnapshot();
+    expect(toJson(wrapper.find('span').first())).toMatchSnapshot();
 });
 
 it('renders a `span` correctly', () => {
@@ -246,7 +310,7 @@ it('renders a `span` correctly', () => {
         </MyComponent>
     );
 
-    expect(shallowToJson(wrapper.find('span').first())).toMatchSnapshot();
+    expect(toJson(wrapper.find('span').first())).toMatchSnapshot();
 });
 ```
 Testing that the component renders a `span` and a `strong` is in a different test from testing that the title is correct and they will only fail if the component doesn't render `span` or `strong` correctly. When the title changes, only the first snapshot test will fail:

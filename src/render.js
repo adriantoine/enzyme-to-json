@@ -15,5 +15,4 @@ const renderChildToJson = child => {
     }
 };
 
-export const renderToJson = wrapper =>
-    renderChildToJson(wrapper.children()[0]);
+export default wrapper => renderChildToJson(wrapper.children()[0]);

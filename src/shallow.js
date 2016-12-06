@@ -41,6 +41,4 @@ function nodeToJson(node) {
     };
 }
 
-export function shallowToJson(wrapper) {
-    return nodeToJson(wrapper.node);
-}
+export default wrapper => nodeToJson(wrapper.node);
