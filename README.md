@@ -63,13 +63,13 @@ it('renders correctly', () => {
 exports[`test renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function bound handleClick]}>
+  onClick={[Function]}>
   <span
-  className="count">
-  1
+    className="count">
+    1
   </span>
   <strong>
-  Hello World!
+    Hello World!
   </strong>
 </div>
 `;
@@ -175,6 +175,7 @@ it('renders my component', () => {
 This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-serializer-enzyme), I first [added a note](https://github.com/adriantoine/enzyme-to-json/commit/4b2ffc388aaaeb639961c29d271d02acbfe5df40) to `jest-serializer-enzyme` but I then realised that the output is different, so it is not retro compatible with `enzyme-to-json` because it's using Enzyme `debug` helper which doesn't put each prop on a separate line.
 
 For example the output of the first example would be:
+
 ```js
 exports[`test renders correctly 1`] = `
 <div className="my-component" onClick={[Function]}>
@@ -187,6 +188,25 @@ Hello World!
 </div>
 `;
 ```
+
+instead of:
+
+```js
+exports[`test renders correctly 1`] = `
+<div
+  className="my-component"
+  onClick={[Function]}>
+  <span
+    className="count">
+    1
+  </span>
+  <strong>
+    Hello World!
+  </strong>
+</div>
+`;
+```
+
 which is different from ours. So, if you want to move from `enzyme-to-json` to `jest-serializer-enzyme`, you would have to update all snapshots.
 
 The output is a matter of preference, also `jest-serializer-enzyme` only supports the `shallow` wrapper for now, so if you're already using `enzyme-to-json`, it's a bit easier to use our serializer for now. Thanks to [@rogeliog](https://github.com/rogeliog) for bringing up the idea.
