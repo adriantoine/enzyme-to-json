@@ -32,7 +32,6 @@ it('renders correctly', () => {
         </MyComponent>
     );
 
-    console.log(wrapper.debug());
     expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
