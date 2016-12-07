@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from '../src';
 
 class MyComponent extends Component {
     constructor() {
@@ -32,7 +31,7 @@ it('renders correctly', () => {
         </MyComponent>
     );
 
-    expect(shallowToJson(wrapper)).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
 });
 
 it('renders span after setState', () => {
@@ -43,5 +42,5 @@ it('renders span after setState', () => {
     );
 
     wrapper.setState({ count: 42 });
-    expect(shallowToJson(wrapper.find('span'))).toMatchSnapshot();
+    expect(wrapper.find('span')).toMatchSnapshot();
 });

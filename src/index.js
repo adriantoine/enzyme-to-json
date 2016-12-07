@@ -1,20 +1,18 @@
-import ShallowWrapper from 'enzyme/build/ShallowWrapper';
-import ReactWrapper from 'enzyme/build/ReactWrapper';
-
+import {isShallowWrapper, isReactWrapper, isCheerioWrapper} from './utils';
 import shallowToJson from './shallow';
 import mountToJson from './mount';
 import renderToJson from './render';
 
 export default function (wrapper) {
-    if (wrapper instanceof ShallowWrapper) {
+    if (isShallowWrapper(wrapper)) {
         return shallowToJson(wrapper);
     }
 
-    if (wrapper instanceof ReactWrapper) {
+    if (isReactWrapper(wrapper)) {
         return mountToJson(wrapper);
     }
 
-    if(wrapper.cheerio) {
+    if(isCheerioWrapper(wrapper)) {
         return renderToJson(wrapper);
     }
 }

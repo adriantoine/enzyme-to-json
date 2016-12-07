@@ -1,6 +1,4 @@
 node_modules
 coverage
 build
-jsconfig.json
 /serializer.js
-.vscode

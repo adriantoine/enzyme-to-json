@@ -1,17 +1,17 @@
 /* eslint-env jest */
 
-jest.mock('../src/shallow');
-jest.mock('../src/mount');
-jest.mock('../src/render');
+jest.mock('../../src/shallow');
+jest.mock('../../src/mount');
+jest.mock('../../src/render');
 
 import React from 'react';
 import { shallow, mount, render } from 'enzyme';
 
-import shallowToJson from '../src/shallow';
-import mountToJson from '../src/mount';
-import renderToJson from '../src/render';
+import shallowToJson from '../../src/shallow';
+import mountToJson from '../../src/mount';
+import renderToJson from '../../src/render';
 
-import toJson from '../src/index';
+import toJson from '../../src';
 
 it('runs shallowToJson when a shallow wrapper is passed', () => {
     const shallowed = shallow(<div>test</div>);

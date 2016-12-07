@@ -5,7 +5,9 @@
   "scripts": {
     "build": "babel src -d build && babel src/serializer.js -o serializer.js",
     "prepublish": "npm run build",
-    "test": "eslint src test && NODE_ENV=test jest --coverage",
+    "test": "eslint src test && npm run test-core && npm run test-serializer",
+    "test-core": "NODE_ENV=test jest --coverage",
+    "test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "keywords": [
@@ -61,6 +63,9 @@
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.1",
     "semantic-release": "^4.3.5"
+  },
+  "jest": {
+    "testPathIgnorePatterns": ["<rootDir>/tests/serializer", "<rootDir>/node_modules/"]
   },
   "config": {
     "commitizen": {
