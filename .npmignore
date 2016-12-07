@@ -1,8 +1,6 @@
 src
 coverage
-test
+tests
 .babelrc
 .eslintrc
-jsconfig.json
-.vscode
 yarn.lock
