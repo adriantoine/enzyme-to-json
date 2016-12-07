@@ -56,16 +56,19 @@
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.4.1",
     "eslint": "^3.4.0",
-    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-babel": "~4.0.0",
     "eslint-plugin-react": "^6.2.0",
     "jest": "^17.0.0",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.1",
-    "semantic-release": "^4.3.5"
+    "semantic-release": "~6.3.2"
   },
   "jest": {
-    "testPathIgnorePatterns": ["<rootDir>/tests/serializer", "<rootDir>/node_modules/"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/tests/serializer",
+      "<rootDir>/node_modules/"
+    ]
   },
   "config": {
     "commitizen": {
