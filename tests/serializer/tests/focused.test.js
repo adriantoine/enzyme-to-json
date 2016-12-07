@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { shallow } from 'enzyme';
-import { shallowToJson } from '../src';
 
 const MyComponent = props => (
     <div className={`my-component ${props.className}`}>
@@ -16,7 +15,7 @@ it('renders the right title', () => {
         <MyComponent className="strong-class"/>
     );
 
-    expect(shallowToJson(wrapper.find('h3'))).toMatchSnapshot();
+    expect(wrapper.find('h3')).toMatchSnapshot();
 });
 
 it('renders a `strong` correctly', () => {
@@ -26,7 +25,7 @@ it('renders a `strong` correctly', () => {
         </MyComponent>
     );
 
-    expect(shallowToJson(wrapper.find('span').first())).toMatchSnapshot();
+    expect(wrapper.find('span').first()).toMatchSnapshot();
 });
 
 it('renders a `span` correctly', () => {
@@ -36,5 +35,5 @@ it('renders a `span` correctly', () => {
         </MyComponent>
     );
 
-    expect(shallowToJson(wrapper.find('span').first())).toMatchSnapshot();
+    expect(wrapper.find('span').first()).toMatchSnapshot();
 });

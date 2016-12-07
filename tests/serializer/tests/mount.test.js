@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import { mountToJson } from '../src';
 import { BasicPure, BasicWithUndefined } from './fixtures/pure-function';
 import { BasicClass, ClassWithPure, ClassWithDirectPure, ClassWithDirectComponent } from './fixtures/class';
 
@@ -11,7 +10,7 @@ it('converts basic pure mount', () => {
         <BasicPure className="pure"><strong>Hello!</strong></BasicPure>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });
 
 it('converts basic class mount', () => {
@@ -19,7 +18,7 @@ it('converts basic class mount', () => {
         <BasicClass className="class"><strong>Hello!</strong></BasicClass>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it', () => {
@@ -27,7 +26,7 @@ it('converts a class mount with a pure function in it', () => {
         <ClassWithPure className="class"><strong>Hello!</strong></ClassWithPure>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it as a direct child', () => {
@@ -35,7 +34,7 @@ it('converts a class mount with a pure function in it as a direct child', () => 
         <ClassWithDirectPure className="class"><strong>Hello!</strong></ClassWithDirectPure>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });
 
 it('converts a class mount with a class component in it as a direct child', () => {
@@ -43,7 +42,7 @@ it('converts a class mount with a class component in it as a direct child', () =
         <ClassWithDirectComponent className="class"><strong>Hello!</strong></ClassWithDirectComponent>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });
 
 it('skips undefined props', () => {
@@ -51,5 +50,5 @@ it('skips undefined props', () => {
         <BasicWithUndefined>Hello!</BasicWithUndefined>
     );
 
-    expect(mountToJson(mounted)).toMatchSnapshot();
+    expect(mounted).toMatchSnapshot();
 });

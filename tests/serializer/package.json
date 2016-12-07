@@ -1,0 +1,22 @@
+{
+  "name": "serializer-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "snapshotSerializers": [
+      "<rootDir>/../../serializer"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "file:../../node_modules/enzyme",
+    "jest": "file:../../node_modules/jest",
+    "react": "file:../../node_modules/react"
+  }
+}

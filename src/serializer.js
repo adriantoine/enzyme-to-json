@@ -1,13 +1,11 @@
-import ShallowWrapper from 'enzyme/build/ShallowWrapper';
-import ReactWrapper from 'enzyme/build/ReactWrapper';
-
+import {isEnzymeWrapper} from './build/utils';
 import toJson from './';
 
 module.exports = {
     test(wrapper) {
-        return wrapper instanceof ShallowWrapper || wrapper instanceof ReactWrapper || wrapper.cheerio;
+        return isEnzymeWrapper(wrapper);
     },
-    print(wrapper) {
-        return toJson(wrapper);
+    print(wrapper, serializer) {
+        return serializer(toJson(wrapper));
     },
 };
