@@ -10,6 +10,10 @@ function instToJson(inst) {
     if (typeof inst === 'string' || typeof inst === 'number') return inst;
     if (!inst) return '';
 
+    if (inst._stringText) {
+        return inst._stringText;
+    }
+
     if (!inst.getPublicInstance) {
         const internal = internalInstance(inst);
         return instToJson(internal);

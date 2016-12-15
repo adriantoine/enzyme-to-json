@@ -139,6 +139,46 @@ exports[`test converts basic pure mount 1`] = `
 </BasicPure>
 `;
 
+exports[`test converts class mount with mixed children 1`] = `
+<BasicClass>
+  <div
+    className="basic-class undefined"
+    onClick={[Function]}>
+    <div
+      className="group"
+      id="group-id">
+      <span>
+        Hello 
+        world
+        !
+      </span>
+      <span
+        className="empty" />
+    </div>
+  </div>
+</BasicClass>
+`;
+
+exports[`test converts pure mount with mixed children 1`] = `
+<BasicPure>
+  <div
+    className="basic-pure undefined"
+    onClick={[Function]}>
+    <div
+      className="group"
+      id="group-id">
+      <span>
+        Hello 
+        world
+        !
+      </span>
+      <span
+        className="empty" />
+    </div>
+  </div>
+</BasicPure>
+`;
+
 exports[`test skips undefined props 1`] = `
 <BasicWithUndefined>
   <button>
