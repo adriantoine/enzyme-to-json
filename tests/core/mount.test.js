@@ -14,11 +14,25 @@ it('converts basic pure mount', () => {
     expect(mountToJson(mounted)).toMatchSnapshot();
 });
 
+it('converts pure mount with mixed children', () => {
+    const mounted = mount(
+      <BasicPure>Hello {'world'}!</BasicPure>
+    );
+    expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
 it('converts basic class mount', () => {
     const mounted = mount(
         <BasicClass className="class"><strong>Hello!</strong></BasicClass>
     );
 
+    expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('converts class mount with mixed children', () => {
+    const mounted = mount(
+      <BasicClass>Hello {'world'}!</BasicClass>
+    );
     expect(mountToJson(mounted)).toMatchSnapshot();
 });
 
