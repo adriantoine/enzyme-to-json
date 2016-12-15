@@ -12,12 +12,11 @@ node_js:
 - '4'
 - '6'
 
-before_script:
-  - npm prune
-
 after_success:
   - ./node_modules/.bin/codecov
-  - npm run semantic-release
+  - yarn run semantic-release
+
+script: yarn test
 
 branches:
   only:

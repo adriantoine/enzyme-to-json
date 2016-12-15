@@ -133,9 +133,13 @@ If you are using [Jest v17.0.0 or higher](https://github.com/facebook/jest/blob/
 Add this to your Jest configuration:
 
 ```js
-"jest": {
-  "snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"]
-}
+"snapshotSerializers": ["<rootDir>/node_modules/enzyme-to-json/serializer"]
+```
+
+If you use [Jest v18.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1800), you can use a shorthand:
+
+```js
+"snapshotSerializers": ["enzyme-to-json/serializer"]
 ```
 
 Then you can use all of the above without having to include or use the `toJson` function! For example:
