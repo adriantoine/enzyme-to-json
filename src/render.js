@@ -1,7 +1,7 @@
 import compact from 'lodash.compact';
 
 const renderChildToJson = child => {
-    if(!child) return;
+    if(!child) return null;
 
     if(child.type === 'tag') {
         return {

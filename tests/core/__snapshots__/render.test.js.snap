@@ -31,3 +31,5 @@ exports[`test converts basic pure render 1`] = `
   </div>
 </div>
 `;
+
+exports[`test handles a component which returns null 1`] = `null`;
