@@ -179,6 +179,8 @@ exports[`test converts pure mount with mixed children 1`] = `
 </BasicPure>
 `;
 
+exports[`test handles a component which returns null 1`] = `<ClassWithNull />`;
+
 exports[`test skips undefined props 1`] = `
 <BasicWithUndefined>
   <button>
