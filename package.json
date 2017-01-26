@@ -44,7 +44,7 @@
     "object.entries": "^1.0.3"
   },
   "peerDependencies": {
-    "enzyme": "^2.4.1"
+    "enzyme": "^2.7.1"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -54,7 +54,7 @@
     "babel-preset-react": "^6.11.1",
     "codecov": "^1.0.1",
     "cz-conventional-changelog": "^1.2.0",
-    "enzyme": "^2.4.1",
+    "enzyme": "^2.7.1",
     "eslint": "^3.4.0",
     "eslint-plugin-babel": "~4.0.0",
     "eslint-plugin-react": "^6.2.0",
