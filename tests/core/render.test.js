@@ -3,7 +3,7 @@
 import React from 'react';
 import { render } from 'enzyme';
 import { renderToJson } from '../../src';
-import { BasicPure } from './fixtures/pure-function';
+import { BasicPure, BasicWithAList } from './fixtures/pure-function';
 import { BasicClass } from './fixtures/class';
 
 it('converts basic pure render', () => {
@@ -21,3 +21,9 @@ it('converts basic class render', () => {
 
     expect(renderToJson(rendered)).toMatchSnapshot();
 });
+
+it('renders the whole list', () => {
+    const wrapper = render(<BasicWithAList />);
+    expect(renderToJson(wrapper.find('ul'))).toMatchSnapshot();
+});
+

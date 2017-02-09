@@ -3,7 +3,9 @@ import compact from 'lodash.compact';
 const renderChildToJson = child => {
     if(!child) return;
 
-    if(child.type === 'tag') {
+    if(child.type === 'root') {
+        return renderChildToJson(child.children[0]);
+    } else if(child.type === 'tag') {
         return {
             type: child.name,
             props: child.attribs,
@@ -15,4 +17,4 @@ const renderChildToJson = child => {
     }
 };
 
-export default wrapper => renderChildToJson(wrapper.children()[0]);
+export default wrapper => renderChildToJson(wrapper[0]);
