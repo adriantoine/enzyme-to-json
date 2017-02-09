@@ -1,4 +1,4 @@
-import compact from 'lodash.compact';
+import {compact} from './utils';
 
 const renderChildToJson = child => {
     if(!child) return null;

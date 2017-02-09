@@ -27,3 +27,7 @@ export function BasicWithAList() {
         </div>
     );
 }
+
+export function ComponentWithAZeroChildren() {
+    return <div>{0}</div>;
+}

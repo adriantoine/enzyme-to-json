@@ -181,6 +181,14 @@ exports[`test converts pure mount with mixed children 1`] = `
 
 exports[`test handles a component which returns null 1`] = `<ClassWithNull />`;
 
+exports[`test renders zero-children 1`] = `
+<ComponentWithAZeroChildren>
+  <div>
+    0
+  </div>
+</ComponentWithAZeroChildren>
+`;
+
 exports[`test skips undefined props 1`] = `
 <BasicWithUndefined>
   <button>

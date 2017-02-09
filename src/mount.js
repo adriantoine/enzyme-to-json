@@ -1,10 +1,10 @@
-import compact from 'lodash.compact';
 import omitBy from 'lodash.omitby';
 import values from 'object-values';
 import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
 import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
+import {compact} from './utils';
 
 function instToJson(inst) {
     if (typeof inst === 'string' || typeof inst === 'number') return inst;

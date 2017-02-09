@@ -1,4 +1,3 @@
-import compact from 'lodash.compact';
 import isPlainObject from 'lodash.isplainobject';
 import omitBy from 'lodash.omitby';
 import entries from 'object.entries';
@@ -6,6 +5,7 @@ import {propsOfNode} from 'enzyme/build/Utils';
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
 import {isElement} from 'enzyme/build/react-compat';
+import {compact} from './utils';
 
 function nodeToJson(node) {
     if(!node) return node;
