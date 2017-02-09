@@ -32,4 +32,15 @@ exports[`test converts basic pure render 1`] = `
 </div>
 `;
 
+exports[`test renders the whole list 1`] = `
+<ul>
+  <li>
+    0
+  </li>
+  <li>
+    1
+  </li>
+</ul>
+`;
+
 exports[`test handles a component which returns null 1`] = `null`;

@@ -108,16 +108,11 @@ rules:
     prefer-spread: 2
     max-len: [2, 260]
     no-template-curly-in-string: 2
+    generator-star-spacing: [2, both]
+    object-shorthand: [2, always]
+    arrow-parens: [2, as-needed]
 
     react/jsx-uses-react: 2
     react/jsx-uses-vars: 2
 
-    # disable builtin rules that are incompatible with Babel plugin ones
-    generator-star-spacing: 0
-    object-shorthand: 0
-    arrow-parens: 0
-
-    babel/generator-star-spacing: [2, both]
-    babel/object-shorthand: [2, always]
-    babel/arrow-parens: [2, as-needed]
     babel/no-await-in-loop: 2
