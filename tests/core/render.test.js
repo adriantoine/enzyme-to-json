@@ -4,7 +4,7 @@ import React from 'react';
 import { render } from 'enzyme';
 import { renderToJson } from '../../src';
 import { BasicPure, BasicWithAList } from './fixtures/pure-function';
-import { BasicClass } from './fixtures/class';
+import { BasicClass, ClassWithNull } from './fixtures/class';
 
 it('converts basic pure render', () => {
     const rendered = render(
@@ -27,3 +27,10 @@ it('renders the whole list', () => {
     expect(renderToJson(wrapper.find('ul'))).toMatchSnapshot();
 });
 
+it('handles a component which returns null', () => {
+    const rendered = render(
+      <ClassWithNull />
+    );
+
+    expect(renderToJson(rendered)).toMatchSnapshot();
+});
