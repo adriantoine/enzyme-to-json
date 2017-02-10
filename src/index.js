@@ -3,7 +3,7 @@ import shallowToJson from './shallow';
 import mountToJson from './mount';
 import renderToJson from './render';
 
-export default function (wrapper) {
+export default function(wrapper) {
   if (isShallowWrapper(wrapper)) {
     return shallowToJson(wrapper);
   }

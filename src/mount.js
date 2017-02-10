@@ -34,7 +34,10 @@ function instToJson(inst) {
 
   const currentElement = inst._currentElement;
   const type = typeName(currentElement);
-  const props = omitBy(propsOfNode(currentElement), (val, key) => key === 'children' || val === undefined);
+  const props = omitBy(
+    propsOfNode(currentElement),
+    (val, key) => key === 'children' || val === undefined,
+  );
   const children = [];
   if (isDOMComponent(publicInst)) {
     const renderedChildren = inst._renderedChildren;
@@ -43,10 +46,7 @@ function instToJson(inst) {
     } else {
       children.push(...values(renderedChildren));
     }
-  } else if (
-        isElement(currentElement) &&
-        typeof currentElement.type === 'function'
-    ) {
+  } else if (isElement(currentElement) && typeof currentElement.type === 'function') {
     children.push(inst._renderedComponent);
   }
 

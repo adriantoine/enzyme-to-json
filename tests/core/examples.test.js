@@ -29,8 +29,8 @@ it('renders correctly', () => {
   const wrapper = shallow(
     <MyComponent className="my-component">
       <strong>Hello World!</strong>
-    </MyComponent>
-    );
+    </MyComponent>,
+  );
 
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
@@ -39,8 +39,8 @@ it('renders span after setState', () => {
   const wrapper = shallow(
     <MyComponent className="my-component">
       <strong>Hello World!</strong>
-    </MyComponent>
-    );
+    </MyComponent>,
+  );
 
   wrapper.setState({count: 42});
   expect(shallowToJson(wrapper.find('span'))).toMatchSnapshot();
