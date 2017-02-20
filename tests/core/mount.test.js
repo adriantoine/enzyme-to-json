@@ -3,7 +3,7 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import {mountToJson} from '../../src';
-import {BasicPure, BasicWithUndefined, ComponentWithAZeroChildren} from './fixtures/pure-function';
+import {BasicPure, BasicWithUndefined, BasicWithAList, ComponentWithAZeroChildren} from './fixtures/pure-function';
 import {
   BasicClass,
   ClassWithPure,
@@ -71,4 +71,9 @@ it('skips undefined props', () => {
 it('renders zero-children', () => {
   const mounted = mount(<ComponentWithAZeroChildren />);
   expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('renders multiple elements as a result of find', () => {
+  const mounted = mount(<BasicWithAList />);
+  expect(mountToJson(mounted.find('li'))).toMatchSnapshot();
 });

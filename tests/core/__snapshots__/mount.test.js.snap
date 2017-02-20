@@ -181,6 +181,17 @@ exports[`test converts pure mount with mixed children 1`] = `
 
 exports[`test handles a component which returns null 1`] = `<ClassWithNull />`;
 
+exports[`test renders multiple elements as a result of find 1`] = `
+Array [
+  <li>
+    0
+</li>,
+  <li>
+    1
+</li>,
+]
+`;
+
 exports[`test renders zero-children 1`] = `
 <ComponentWithAZeroChildren>
   <div>

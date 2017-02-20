@@ -1,3 +1,4 @@
+import range from 'lodash.range';
 import {compact} from './utils';
 
 const renderChildToJson = child => {
@@ -23,4 +24,8 @@ const renderChildToJson = child => {
   }
 };
 
-export default wrapper => renderChildToJson(wrapper[0]);
+export default wrapper => {
+  return wrapper.length > 1
+    ? range(0, wrapper.length).map(node => renderChildToJson(wrapper[node]))
+    : renderChildToJson(wrapper[0])
+}
