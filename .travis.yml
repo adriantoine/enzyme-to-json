@@ -1,6 +1,7 @@
 sudo: false
 language: node_js
 
+
 cache:
   directories:
   - node_modules
@@ -9,14 +10,16 @@ notifications:
   email: false
 
 node_js:
+- '4'
+- '5'
 - '6'
 - '7'
 
 after_success:
   - ./node_modules/.bin/codecov
-  - yarn run semantic-release
+  - npm run semantic-release
 
-script: yarn test
+script: npm test
 
 branches:
   only:
