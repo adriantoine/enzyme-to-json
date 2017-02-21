@@ -4,14 +4,13 @@
 	"main": "build/index.js",
 	"scripts": {
 		"build": "babel src -d build && babel src/serializer.js -o serializer.js",
-		"prepublish": "yarn run build",
+		"prepublish": "npm run build",
 		"lint": "eslint src tests/core",
 		"format": "prettier src/**/*.js tests/core/**/*.js --write --print-width=100 --single-quote --trailing-comma --no-bracket-spacing",
-		"test": "yarn lint && yarn run test-core && yarn run test-serializer",
+		"test": "npm run lint && npm run test-core && npm run test-serializer",
 		"test-core": "NODE_ENV=test jest --coverage",
-		"test-serializer": "cd tests/serializer && rm -rf node_modules && yarn && yarn test",
-		"semantic-release": "semantic-release pre && yarn publish && semantic-release post",
-		"prepush": "yarn test"
+		"test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test",
+		"semantic-release": "semantic-release pre && npm publish && semantic-release post"
 	},
 	"keywords": [
 		"enzyme",
