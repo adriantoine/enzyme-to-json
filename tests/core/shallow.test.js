@@ -3,7 +3,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import {shallowToJson} from '../../src';
-import {BasicPure, BasicWithUndefined} from './fixtures/pure-function';
+import {BasicPure, BasicWithUndefined, BasicWithAList} from './fixtures/pure-function';
 import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
 
 function WrapperComponent(props) {
@@ -75,4 +75,9 @@ it('skips undefined props', () => {
   const shallowed = shallow(<BasicWithUndefined>Hello!</BasicWithUndefined>);
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('renders multiple elements as a result of find', () => {
+  const shallowed = shallow(<BasicWithAList />);
+  expect(shallowToJson(shallowed.find('li'))).toMatchSnapshot();
 });

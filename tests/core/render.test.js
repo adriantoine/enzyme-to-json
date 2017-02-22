@@ -28,3 +28,8 @@ it('handles a component which returns null', () => {
 
   expect(renderToJson(rendered)).toMatchSnapshot();
 });
+
+it('renders multiple elements as a result of find', () => {
+  const rendered = render(<BasicWithAList />);
+  expect(renderToJson(rendered.find('li'))).toMatchSnapshot();
+});

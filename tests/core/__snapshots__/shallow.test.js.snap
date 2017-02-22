@@ -106,6 +106,17 @@ exports[`test ignores non-plain objects 1`] = `
   } />
 `;
 
+exports[`test renders multiple elements as a result of find 1`] = `
+Array [
+  <li>
+    0
+</li>,
+  <li>
+    1
+</li>,
+]
+`;
+
 exports[`test skips undefined props 1`] = `
 <button>
   Hello
