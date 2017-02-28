@@ -106,6 +106,8 @@ exports[`test ignores non-plain objects 1`] = `
   } />
 `;
 
+exports[`test maps output 1`] = `<BasicClass />`;
+
 exports[`test renders multiple elements as a result of find 1`] = `
 Array [
   <li>

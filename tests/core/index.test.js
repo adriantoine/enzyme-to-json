@@ -15,10 +15,11 @@ import toJson from '../../src';
 
 it('runs shallowToJson when a shallow wrapper is passed', () => {
   const shallowed = shallow(<div>test</div>);
-  toJson(shallowed);
+  const options = {};
+  toJson(shallowed, options);
 
   expect(shallowToJson).toHaveBeenCalledTimes(1);
-  expect(shallowToJson).toHaveBeenCalledWith(shallowed);
+  expect(shallowToJson).toHaveBeenCalledWith(shallowed, options);
 });
 
 it('runs mountToJson when a mount wrapper is passed', () => {
