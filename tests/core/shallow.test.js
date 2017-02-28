@@ -4,7 +4,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {shallowToJson} from '../../src';
 import {BasicPure, BasicWithUndefined, BasicWithAList} from './fixtures/pure-function';
-import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+import {BasicClass, ClassWithPure, ClassWithNull, ClassWithHOC} from './fixtures/class';
 
 function WrapperComponent(props) {
   return <BasicPure {...props} />;
@@ -81,3 +81,14 @@ it('renders multiple elements as a result of find', () => {
   const shallowed = shallow(<BasicWithAList />);
   expect(shallowToJson(shallowed.find('li'))).toMatchSnapshot();
 });
+
+it ('maps output', () => {
+  const shallowed = shallow(<ClassWithHOC />);
+  const map = (node, json) => {
+    if (node.type.WrappedClass) {
+      json.type = node.type.WrappedClass.name;
+    }
+    return json;
+  };
+  expect(shallowToJson(shallowed, { map })).toMatchSnapshot();
+})

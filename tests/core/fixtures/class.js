@@ -57,3 +57,26 @@ export class ClassWithNull extends Component {
     return null;
   }
 }
+
+function wrap(WrappedClass) {
+  class WrapperClass extends Component {
+    render() {
+      return <WrappedClass />
+    }
+  }
+
+  const displayName = WrappedClass.name;
+
+  WrapperClass.displayName = `Wrapper(${displayName})`;
+  WrapperClass.WrappedClass = WrappedClass;
+
+  return WrapperClass;
+}
+
+const WrappedClass = wrap(BasicClass);
+
+export class ClassWithHOC extends Component {
+  render() {
+    return <WrappedClass />
+  }
+}
