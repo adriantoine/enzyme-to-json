@@ -9,6 +9,7 @@
     "format": "prettier src/**/*.js tests/core/**/*.js --write --print-width=100 --single-quote --trailing-comma --no-bracket-spacing",
     "test": "npm run lint && npm run test-core && npm run test-serializer",
     "test-core": "NODE_ENV=test jest --coverage",
+    "lint-staged": "lint-staged",
     "test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -91,7 +92,7 @@
       "git add"
     ]
   },
-  "pre-commit": "lint:staged",
+  "pre-commit": "lint-staged",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
