@@ -47,7 +47,5 @@ function nodeToJson(node) {
 }
 
 export default wrapper => {
-  return wrapper.length > 1
-    ? wrapper.nodes.map(nodeToJson)
-    : nodeToJson(wrapper.node);
+  return wrapper.length > 1 ? wrapper.nodes.map(nodeToJson) : nodeToJson(wrapper.node);
 };

@@ -61,7 +61,5 @@ function instToJson(inst) {
 }
 
 export default wrapper => {
-  return wrapper.length > 1
-    ? wrapper.nodes.map(instToJson)
-    : instToJson(wrapper.node);
+  return wrapper.length > 1 ? wrapper.nodes.map(instToJson) : instToJson(wrapper.node);
 };

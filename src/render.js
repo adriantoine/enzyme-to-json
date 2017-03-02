@@ -27,5 +27,5 @@ const renderChildToJson = child => {
 export default wrapper => {
   return wrapper.length > 1
     ? range(0, wrapper.length).map(node => renderChildToJson(wrapper[node]))
-    : renderChildToJson(wrapper[0])
-}
+    : renderChildToJson(wrapper[0]);
+};
