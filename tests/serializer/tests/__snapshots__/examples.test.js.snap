@@ -1,9 +1,13 @@
-exports[`test renders correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <span
-    className="count">
+    className="count"
+  >
     1
   </span>
   <strong>
@@ -12,9 +16,10 @@ exports[`test renders correctly 1`] = `
 </div>
 `;
 
-exports[`test renders span after setState 1`] = `
+exports[`renders span after setState 1`] = `
 <span
-  className="count">
+  className="count"
+>
   42
 </span>
 `;

@@ -1,4 +1,6 @@
-exports[`test renders a \`span\` correctly 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a \`span\` correctly 1`] = `
 <span>
   <span>
     Hello World!
@@ -6,7 +8,7 @@ exports[`test renders a \`span\` correctly 1`] = `
 </span>
 `;
 
-exports[`test renders a \`strong\` correctly 1`] = `
+exports[`renders a \`strong\` correctly 1`] = `
 <span>
   <strong>
     Hello World!
@@ -14,7 +16,7 @@ exports[`test renders a \`strong\` correctly 1`] = `
 </span>
 `;
 
-exports[`test renders the right title 1`] = `
+exports[`renders the right title 1`] = `
 <h3>
   Component Title
 </h3>

@@ -1,33 +1,41 @@
-exports[`test converts basic class render 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts basic class render 1`] = `
 <div
-  class="basic-class class">
+  class="basic-class class"
+>
   <div
     class="group"
-    id="group-id">
+    id="group-id"
+  >
     <span>
       <strong>
         Hello!
       </strong>
     </span>
     <span
-      class="empty" />
+      class="empty"
+    />
   </div>
 </div>
 `;
 
-exports[`test converts basic pure render 1`] = `
+exports[`converts basic pure render 1`] = `
 <div
-  class="basic-pure pure">
+  class="basic-pure pure"
+>
   <div
     class="group"
-    id="group-id">
+    id="group-id"
+  >
     <span>
       <strong>
         Hello!
       </strong>
     </span>
     <span
-      class="empty" />
+      class="empty"
+    />
   </div>
 </div>
 `;

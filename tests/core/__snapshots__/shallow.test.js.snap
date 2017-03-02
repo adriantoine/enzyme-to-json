@@ -1,59 +1,70 @@
-exports[`test converts a class mount with a pure function in it 1`] = `
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts a class mount with a pure function in it 1`] = `
 <div
   className="class-with-pure class"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <BasicPure
-    className="nested-pure">
+    className="nested-pure"
+  >
     <span>
       <strong>
         Hello!
       </strong>
     </span>
     <span
-      className="empty" />
+      className="empty"
+    />
   </BasicPure>
 </div>
 `;
 
-exports[`test converts basic class shallow 1`] = `
+exports[`converts basic class shallow 1`] = `
 <div
   className="basic-class class"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
     className="group"
-    id="group-id">
+    id="group-id"
+  >
     <span>
       <strong>
         Hello!
       </strong>
     </span>
     <span
-      className="empty" />
+      className="empty"
+    />
   </div>
 </div>
 `;
 
-exports[`test converts basic pure shallow 1`] = `
+exports[`converts basic pure shallow 1`] = `
 <div
   className="basic-pure pure"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <div
     className="group"
-    id="group-id">
+    id="group-id"
+  >
     <span>
       <strong>
         Hello!
       </strong>
     </span>
     <span
-      className="empty" />
+      className="empty"
+    />
   </div>
 </div>
 `;
 
-exports[`test handles a component which returns null 1`] = `null`;
+exports[`handles a component which returns null 1`] = `null`;
 
-exports[`test handles elements in prop arrays 1`] = `
+exports[`handles elements in prop arrays 1`] = `
 <BasicPure
   elements={
     Array [
@@ -63,10 +74,11 @@ exports[`test handles elements in prop arrays 1`] = `
         </strong>
     </BasicPure>,
     ]
-  } />
+  }
+/>
 `;
 
-exports[`test handles elements in prop objects 1`] = `
+exports[`handles elements in prop objects 1`] = `
 <BasicPure
   element={
     Object {
@@ -83,10 +95,11 @@ exports[`test handles elements in prop objects 1`] = `
     </BasicPure>,
       ],
     }
-  } />
+  }
+/>
 `;
 
-exports[`test handles elements in props 1`] = `
+exports[`handles elements in props 1`] = `
 <BasicPure
   element={
     <BasicPure>
@@ -94,19 +107,21 @@ exports[`test handles elements in props 1`] = `
         Hello!
       </strong>
     </BasicPure>
-  } />
+  }
+/>
 `;
 
-exports[`test ignores non-plain objects 1`] = `
+exports[`ignores non-plain objects 1`] = `
 <BasicPure
   instance={
     TestConstructor {
       "_test": true,
     }
-  } />
+  }
+/>
 `;
 
-exports[`test renders multiple elements as a result of find 1`] = `
+exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>
     0
@@ -117,7 +132,7 @@ Array [
 ]
 `;
 
-exports[`test skips undefined props 1`] = `
+exports[`skips undefined props 1`] = `
 <button>
   Hello
 </button>
