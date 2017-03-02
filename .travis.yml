@@ -16,9 +16,9 @@ node_js:
 
 after_success:
   - ./node_modules/.bin/codecov
-  - npm run semantic-release
+  - yarn semantic-release
 
-script: npm test
+script: yarn test
 
 branches:
   only:
