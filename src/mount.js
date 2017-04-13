@@ -36,7 +36,7 @@ function instToJson(inst) {
   const type = typeName(currentElement);
   const props = omitBy(
     propsOfNode(currentElement),
-    (val, key) => key === 'children' || val === undefined,
+    (val, key) => key === 'children' || val === undefined
   );
   const children = [];
   if (isDOMComponent(publicInst)) {

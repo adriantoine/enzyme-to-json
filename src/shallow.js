@@ -22,13 +22,10 @@ function nodeToJson(node) {
     }
 
     if (isPlainObject(node)) {
-      return entries(node).reduce(
-        (obj, [key, val]) => {
-          obj[key] = nodeToJson(val);
-          return obj;
-        },
-        {},
-      );
+      return entries(node).reduce((obj, [key, val]) => {
+        obj[key] = nodeToJson(val);
+        return obj;
+      }, {});
     }
 
     return node;
