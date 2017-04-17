@@ -142,6 +142,17 @@ If you use [Jest v18.0.0 or higher](https://github.com/facebook/jest/blob/master
 "snapshotSerializers": ["enzyme-to-json/serializer"]
 ```
 
+If you use [Jest v19.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1900), you can [add a snapshot serializer](http://facebook.github.io/jest/docs/expect.html#expectaddsnapshotserializerserializer) in individual test files instead of modifying Jest configuration:
+
+* to make the dependency explicit instead of implicit
+* to avoid limits to configuration that might cause you to eject from `create-react-app`
+
+```js
+import serializer from 'enzyme-to-json/serializer';
+
+expect.addSnapshotSerializer(serializer);
+```
+
 Then you can use all of the above without having to include or use the `toJson` function! For example:
 
 ```js
