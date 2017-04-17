@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`converts a class mount with a class component in it as a direct child 1`] = `
+<div
+  className="class-with-pure nested-pure"
+  onClick={[Function]}
+>
+  <div
+    className="basic-pure nested-pure"
+    onClick={[Function]}
+  >
+    <div
+      className="group"
+      id="group-id"
+    >
+      <span>
+        <span>
+          <span>
+            <strong>
+              Hello!
+            </strong>
+          </span>
+          <span
+            className="empty"
+          />
+        </span>
+        <span
+          className="empty"
+        />
+      </span>
+      <span
+        className="empty"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`converts a class mount with a pure function in it 1`] = `
+<div
+  className="class-with-pure class"
+  onClick={[Function]}
+>
+  <div
+    className="basic-pure nested-pure"
+    onClick={[Function]}
+  >
+    <div
+      className="group"
+      id="group-id"
+    >
+      <span>
+        <span>
+          <strong>
+            Hello!
+          </strong>
+        </span>
+        <span
+          className="empty"
+        />
+      </span>
+      <span
+        className="empty"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`converts a class mount with a pure function in it as a direct child 1`] = `
+<div
+  className="basic-pure nested-pure"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      <span>
+        <strong>
+          Hello!
+        </strong>
+      </span>
+      <span
+        className="empty"
+      />
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts basic class mount 1`] = `
+<div
+  className="basic-class class"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts basic pure mount 1`] = `
+<div
+  className="basic-pure pure"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts class mount with mixed children 1`] = `
+<div
+  className="basic-class undefined"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      Hello 
+      world
+      !
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts pure mount with mixed children 1`] = `
+<div
+  className="basic-pure undefined"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      Hello 
+      world
+      !
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`handles a component which returns null 1`] = `null`;
+
+exports[`includes undefined props 1`] = `
+<button
+  disabled={undefined}
+>
+  Hello
+</button>
+`;
+
+exports[`renders multiple elements as a result of find 1`] = `
+Array [
+  <li>
+    0
+</li>,
+  <li>
+    1
+</li>,
+]
+`;
+
+exports[`renders zero-children 1`] = `
+<div>
+  0
+</div>
+`;

@@ -5,23 +5,28 @@ import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
 import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
-import {compact} from './utils';
+import {
+  includeInChildrenCompatible,
+  includeInChildrenMinimal,
+  omitFromPropsCompatible,
+  omitFromPropsMinimal,
+} from './utils';
 
-function instToJson(inst) {
+function instToJson(inst, options) {
   if (typeof inst === 'string' || typeof inst === 'number') {
     return inst;
   }
   if (!inst) {
-    return '';
+    return null;
   }
 
-  if (inst._stringText) {
+  if (inst._stringText || (options && typeof inst._stringText === 'string')) {
     return inst._stringText;
   }
 
   if (!inst.getPublicInstance) {
     const internal = internalInstance(inst);
-    return instToJson(internal);
+    return instToJson(internal, options);
   }
   const publicInst = inst.getPublicInstance();
 
@@ -29,14 +34,14 @@ function instToJson(inst) {
     return publicInst;
   }
   if (!publicInst && !inst._renderedComponent) {
-    return '';
+    return null;
   }
 
   const currentElement = inst._currentElement;
   const type = typeName(currentElement);
   const props = omitBy(
     propsOfNode(currentElement),
-    (val, key) => key === 'children' || val === undefined,
+    options ? omitFromPropsCompatible : omitFromPropsMinimal
   );
   const children = [];
   if (isDOMComponent(publicInst)) {
@@ -47,10 +52,18 @@ function instToJson(inst) {
       children.push(...values(renderedChildren));
     }
   } else if (isElement(currentElement) && typeof currentElement.type === 'function') {
-    children.push(inst._renderedComponent);
+    if (!options) {
+      children.push(inst._renderedComponent);
+    } else if (options.toDeep) {
+      // A component returns at most one element in React 15 and earlier.
+      return instToJson(inst._renderedComponent, options);
+    }
+    // else if shallow, children are still an empty array
   }
 
-  const childrenArray = compact(children.map(n => instToJson(n)));
+  const childrenArray = children
+    .map(n => instToJson(n, options))
+    .filter(options ? includeInChildrenCompatible : includeInChildrenMinimal);
 
   return {
     type,
@@ -60,6 +73,19 @@ function instToJson(inst) {
   };
 }
 
-export default wrapper => {
-  return wrapper.length > 1 ? wrapper.nodes.map(instToJson) : instToJson(wrapper.node);
-};
+const wrapperToJson = (wrapper, options) =>
+  wrapper.length > 1
+    ? wrapper.nodes.map(node => instToJson(node, options))
+    : instToJson(wrapper.node, options);
+
+const mountToDeepJson = wrapper => wrapperToJson(wrapper, {
+  toDeep: true,
+});
+
+const mountToShallowJson = wrapper => wrapperToJson(wrapper, {
+  toDeep: false,
+});
+
+export {mountToDeepJson, mountToShallowJson};
+
+export default wrapper => wrapperToJson(wrapper);
