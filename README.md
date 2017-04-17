@@ -60,12 +60,14 @@ it('renders correctly', () => {
 
 // generates:
 
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <span
-    className="count">
+    className="count"
+  >
     1
   </span>
   <strong>
@@ -89,9 +91,10 @@ it('renders span after setState', () => {
 
 // generates:
 
-exports[`test renders span after setState 1`] = `
+exports[`renders span after setState 1`] = `
 <span
-  className="count">
+  className="count"
+>
   42
 </span>
 `;
@@ -181,7 +184,7 @@ This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-se
 For example the output of the first example would be:
 
 ```js
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div className="my-component" onClick={[Function]}>
 <span className="count">
 1
@@ -196,12 +199,14 @@ Hello World!
 instead of:
 
 ```js
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <span
-    className="count">
+    className="count"
+  >
     1
   </span>
   <strong>
@@ -261,7 +266,8 @@ Received value does not match the stored snapshot 1.
 + Received
 
   <div
-    className="my-component strong-class">
+    className="my-component strong-class"
+  >
     <h3>
 -     Component Heading
 +     Component Title
@@ -284,7 +290,8 @@ Received value does not match the stored snapshot 1.
 + Received
 
   <div
-    className="my-component span-class">
+    className="my-component span-class"
+  >
     <h3>
 -     Component Heading
 +     Component Title
