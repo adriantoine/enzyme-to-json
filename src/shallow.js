@@ -22,13 +22,10 @@ function nodeToJson(node) {
     }
 
     if (isPlainObject(node)) {
-      return entries(node).reduce(
-        (obj, [key, val]) => {
-          obj[key] = nodeToJson(val);
-          return obj;
-        },
-        {},
-      );
+      return entries(node).reduce((obj, [key, val]) => {
+        obj[key] = nodeToJson(val);
+        return obj;
+      }, {});
     }
 
     return node;
@@ -36,7 +33,10 @@ function nodeToJson(node) {
 
   const children = compact(childrenOfNode(node).map(n => nodeToJson(n)));
   const type = typeName(node);
-  const props = omitBy(propsOfNode(node), (val, key) => key === 'children' || val === undefined);
+  const props = omitBy(
+    propsOfNode(node),
+    (val, key) => key === 'children' || val === undefined,
+  );
 
   return {
     type,
@@ -47,5 +47,7 @@ function nodeToJson(node) {
 }
 
 export default wrapper => {
-  return wrapper.length > 1 ? wrapper.nodes.map(nodeToJson) : nodeToJson(wrapper.node);
+  return wrapper.length > 1
+    ? wrapper.nodes.map(nodeToJson)
+    : nodeToJson(wrapper.node);
 };

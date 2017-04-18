@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint import/first:0 */
 
 jest.mock('../../src/shallow');
 jest.mock('../../src/mount');

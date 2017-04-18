@@ -10,7 +10,6 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 
 Convert [Enzyme](http://airbnb.io/enzyme/) wrappers to a format compatible with [Jest snapshot testing](https://facebook.github.io/jest/docs/tutorial-react.html#snapshot-testing).
 
@@ -61,12 +60,14 @@ it('renders correctly', () => {
 
 // generates:
 
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <span
-    className="count">
+    className="count"
+  >
     1
   </span>
   <strong>
@@ -90,9 +91,10 @@ it('renders span after setState', () => {
 
 // generates:
 
-exports[`test renders span after setState 1`] = `
+exports[`renders span after setState 1`] = `
 <span
-  className="count">
+  className="count"
+>
   42
 </span>
 `;
@@ -143,6 +145,17 @@ If you use [Jest v18.0.0 or higher](https://github.com/facebook/jest/blob/master
 "snapshotSerializers": ["enzyme-to-json/serializer"]
 ```
 
+If you use [Jest v19.0.0 or higher](https://github.com/facebook/jest/blob/master/CHANGELOG.md#jest-1900), you can [add a snapshot serializer](http://facebook.github.io/jest/docs/expect.html#expectaddsnapshotserializerserializer) in individual test files instead of modifying Jest configuration:
+
+* to make the dependency explicit instead of implicit
+* to avoid limits to configuration that might cause you to eject from `create-react-app`
+
+```js
+import serializer from 'enzyme-to-json/serializer';
+
+expect.addSnapshotSerializer(serializer);
+```
+
 Then you can use all of the above without having to include or use the `toJson` function! For example:
 
 ```js
@@ -182,7 +195,7 @@ This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-se
 For example the output of the first example would be:
 
 ```js
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div className="my-component" onClick={[Function]}>
 <span className="count">
 1
@@ -197,12 +210,14 @@ Hello World!
 instead of:
 
 ```js
-exports[`test renders correctly 1`] = `
+exports[`renders correctly 1`] = `
 <div
   className="my-component"
-  onClick={[Function]}>
+  onClick={[Function]}
+>
   <span
-    className="count">
+    className="count"
+  >
     1
   </span>
   <strong>
@@ -262,7 +277,8 @@ Received value does not match the stored snapshot 1.
 + Received
 
   <div
-    className="my-component strong-class">
+    className="my-component strong-class"
+  >
     <h3>
 -     Component Heading
 +     Component Title
@@ -285,7 +301,8 @@ Received value does not match the stored snapshot 1.
 + Received
 
   <div
-    className="my-component span-class">
+    className="my-component span-class"
+  >
     <h3>
 -     Component Heading
 +     Component Title
