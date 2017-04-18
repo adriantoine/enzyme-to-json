@@ -28,11 +28,18 @@ describe('Table', () => {
 
   describe('matches class components to maximum depth', () => {
     const $it = mount(
-      <Table addRow={addRow} deleteRow={deleteRow} fields={fields} records={records} />
+      <Table
+        addRow={addRow}
+        deleteRow={deleteRow}
+        fields={fields}
+        records={records}
+      />,
     );
 
     test('at thead', () => {
-      expect(mountToDeepJson($it.find('thead'))).toMatchObject(
+      const received = mountToDeepJson($it.find('thead'));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <thead>
             <tr>
@@ -41,32 +48,41 @@ describe('Table', () => {
               <th>{fields[1].label}</th>
               <th>{fields[2].label}</th>
             </tr>
-          </thead>
-        )
+          </thead>,
+        ),
       );
     });
 
     test('at tr', () => {
       // Be careful. Don’t duplicate the application code.
       const i = 1;
-      expect(mountToDeepJson($it.find('tbody tr').at(i))).toMatchObject(
+      const received = mountToDeepJson($it.find('tbody tr').at(i));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <tr>
             <td key=""><button title="delete row">-</button></td>
             {fields.map(({key}) => <td key={key}>{records[i][key]}</td>)}
-          </tr>
-        )
+          </tr>,
+        ),
       );
     });
   });
 
   describe('matches class components to minimum depth', () => {
     const $it = mount(
-      <Table addRow={addRow} deleteRow={deleteRow} fields={fields} records={records} />
+      <Table
+        addRow={addRow}
+        deleteRow={deleteRow}
+        fields={fields}
+        records={records}
+      />,
     );
 
     test('at table', () => {
-      expect(mountToShallowJson($it.find('table'))).toMatchObject(
+      const received = mountToShallowJson($it.find('table'));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <table>
             <TableHead fields={fields} />
@@ -75,13 +91,15 @@ describe('Table', () => {
               <TableRow fields={fields} record={records[1]} />
               <TableRow fields={fields} record={records[2]} />
             </tbody>
-          </table>
-        )
+          </table>,
+        ),
       );
     });
 
     test('at thead', () => {
-      expect(mountToShallowJson($it.find('thead'))).toMatchObject(
+      const received = mountToShallowJson($it.find('thead'));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <thead>
             <tr>
@@ -90,33 +108,37 @@ describe('Table', () => {
               <th>{fields[1].label}</th>
               <th>{fields[2].label}</th>
             </tr>
-          </thead>
-        )
+          </thead>,
+        ),
       );
     });
 
     test('at tbody', () => {
-      expect(mountToShallowJson($it.find('tbody'))).toMatchObject(
+      const received = mountToShallowJson($it.find('tbody'));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <tbody>
             <TableRow fields={fields} record={records[0]} />
             <TableRow fields={fields} record={records[1]} />
             <TableRow fields={fields} record={records[2]} />
-          </tbody>
-        )
+          </tbody>,
+        ),
       );
     });
 
     test('at tr', () => {
       // Be careful. Don’t duplicate the application code.
       const i = 1;
-      expect(mountToShallowJson($it.find('tbody tr').at(i))).toMatchObject(
+      const received = mountToShallowJson($it.find('tbody tr').at(i));
+      expect(received).toMatchSnapshot();
+      expect(received).toMatchObject(
         elementToObject(
           <tr>
             <td key=""><Button text="-" title="delete row" /></td>
             {fields.map(({key}) => <td key={key}>{records[i][key]}</td>)}
-          </tr>
-        )
+          </tr>,
+        ),
       );
     });
   });
@@ -151,7 +173,7 @@ describe('TobeList', () => {
         <li style={{textDecoration: 'line-through'}}>testing is painless</li>
         <li style={{textDecoration: 'none'}}>more is less</li>
         <li style={{textDecoration: 'none'}}>less is more</li>
-      </ul>
+      </ul>,
     );
 
     expect(received).toMatchObject(expected);
@@ -161,13 +183,15 @@ describe('TobeList', () => {
   });
 
   it('matches functional components to minimum depth at a descendant', () => {
-    const received = mountToShallowJson(mount(<TobeList items={items} />).find('ul'));
+    const received = mountToShallowJson(
+      mount(<TobeList items={items} />).find('ul'),
+    );
     const expected = elementToObject(
       <ul>
         <TobeItem text="testing is painless" is={false} />
         <TobeItem text="more is less" is />
         <TobeItem text="less is more" is />
-      </ul>
+      </ul>,
     );
 
     expect(received).toMatchObject(expected);
@@ -180,7 +204,9 @@ describe('TobeList', () => {
     const element = <TobeList items={items} />;
     const receivedDeep = mountToDeepJson(mount(element).find('li').at(1));
     const receivedShallow = mountToShallowJson(mount(element).find('li').at(1));
-    const expected = elementToObject(<li style={{textDecoration: 'none'}}>more is less</li>);
+    const expected = elementToObject(
+      <li style={{textDecoration: 'none'}}>more is less</li>,
+    );
 
     // When all descendants are DOM nodes, deep and shallow are equivalent.
     expect(receivedDeep).toMatchObject(expected);
