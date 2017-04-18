@@ -17,4 +17,10 @@ export default function(wrapper) {
   }
 }
 
-export {mountToJson, mountToDeepJson, mountToShallowJson, shallowToJson, renderToJson};
+export {
+  mountToJson,
+  mountToDeepJson,
+  mountToShallowJson,
+  shallowToJson,
+  renderToJson,
+};

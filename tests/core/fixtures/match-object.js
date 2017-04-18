@@ -13,8 +13,12 @@ export function elementToObject({type, props}) {
     $$typeof: Symbol.for('react.test.json'),
     type: typeof type === 'string'
       ? type
-      : typeof type === 'function' ? type.displayName || type.name || 'Unknown' : 'Unknown',
-    props: children === undefined ? props : omitBy(props, (value, key) => key === 'children'),
+      : typeof type === 'function'
+          ? type.displayName || type.name || 'Unknown'
+          : 'Unknown',
+    props: children === undefined
+      ? props
+      : omitBy(props, (value, key) => key === 'children'),
     children: children === undefined ? null : childrenToObject(children, []),
   };
 }
@@ -22,7 +26,10 @@ export function elementToObject({type, props}) {
 function childrenToObject(arg, array) {
   if (Array.isArray(arg)) {
     // Iteration adjacent to other rendered output: { array.map(item => node) }
-    return arg.reduce((reduced, child) => childrenToObject(child, reduced), array);
+    return arg.reduce(
+      (reduced, child) => childrenToObject(child, reduced),
+      array,
+    );
   }
 
   array.push(arg && arg.$$typeof === reactSymbol ? elementToObject(arg) : arg);
@@ -37,7 +44,12 @@ export class Table extends Component {
         <TableHead addRow={addRow} fields={fields} />
         <tbody>
           {records.map(record => (
-            <TableRow key={record.id} deleteRow={deleteRow} fields={fields} record={record} />
+            <TableRow
+              key={record.id}
+              deleteRow={deleteRow}
+              fields={fields}
+              record={record}
+            />
           ))}
         </tbody>
       </table>
@@ -59,7 +71,9 @@ export class TableHead extends Component {
               title="add row"
             />
           </th>
-          {this.props.fields.map(field => <th key={field.key} scope="col">{field.label}</th>)}
+          {this.props.fields.map(field => (
+            <th key={field.key} scope="col">{field.label}</th>
+          ))}
         </tr>
       </thead>
     );
@@ -93,7 +107,9 @@ function Button({onClick, text, title}) {
 export function TobeList({items}) {
   return (
     <ul>
-      {items.map(item => <TobeItem key={item.id} is={item.is} text={item.text} />)}
+      {items.map(item => (
+        <TobeItem key={item.id} is={item.is} text={item.text} />
+      ))}
     </ul>
   );
 }

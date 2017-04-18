@@ -41,7 +41,7 @@ function instToJson(inst, options) {
   const type = typeName(currentElement);
   const props = omitBy(
     propsOfNode(currentElement),
-    options ? omitFromPropsCompatible : omitFromPropsMinimal
+    options ? omitFromPropsCompatible : omitFromPropsMinimal,
   );
   const children = [];
   if (isDOMComponent(publicInst)) {
@@ -51,7 +51,9 @@ function instToJson(inst, options) {
     } else {
       children.push(...values(renderedChildren));
     }
-  } else if (isElement(currentElement) && typeof currentElement.type === 'function') {
+  } else if (
+    isElement(currentElement) && typeof currentElement.type === 'function'
+  ) {
     if (!options) {
       children.push(inst._renderedComponent);
     } else if (options.toDeep) {
@@ -74,17 +76,19 @@ function instToJson(inst, options) {
 }
 
 const wrapperToJson = (wrapper, options) =>
-  wrapper.length > 1
+  (wrapper.length > 1
     ? wrapper.nodes.map(node => instToJson(node, options))
-    : instToJson(wrapper.node, options);
+    : instToJson(wrapper.node, options));
 
-const mountToDeepJson = wrapper => wrapperToJson(wrapper, {
-  toDeep: true,
-});
+const mountToDeepJson = wrapper =>
+  wrapperToJson(wrapper, {
+    toDeep: true,
+  });
 
-const mountToShallowJson = wrapper => wrapperToJson(wrapper, {
-  toDeep: false,
-});
+const mountToShallowJson = wrapper =>
+  wrapperToJson(wrapper, {
+    toDeep: false,
+  });
 
 export {mountToDeepJson, mountToShallowJson};
 
