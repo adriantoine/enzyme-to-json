@@ -5,6 +5,7 @@ import {shallow} from 'enzyme';
 import {shallowToJson} from '../../src';
 import {BasicPure, BasicWithUndefined, BasicWithAList} from './fixtures/pure-function';
 import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+import {Overlay} from 'react-bootstrap';
 
 function WrapperComponent(props) {
   return <BasicPure {...props} />;
@@ -80,4 +81,24 @@ it('skips undefined props', () => {
 it('renders multiple elements as a result of find', () => {
   const shallowed = shallow(<BasicWithAList />);
   expect(shallowToJson(shallowed.find('li'))).toMatchSnapshot();
+});
+
+it('renders ShallowComponentWrapper', () => {
+  class SchedulePicker extends React.Component {
+    render() {
+      return (
+        <Overlay
+          show={false}
+          onHide={this.onHide}
+          container={this}
+          animation={false}
+        >
+          <strong>Basic</strong>
+        </Overlay>
+      );
+    }
+  }
+
+  const shallowed = shallow(<SchedulePicker />);
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
 });

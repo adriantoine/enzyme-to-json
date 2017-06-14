@@ -26,6 +26,10 @@ function nodeToJson(node) {
         obj[key] = nodeToJson(val);
         return obj;
       }, {});
+    } else if (
+      node._reactInternalInstance /* && node._reactInternalInstance.constructor && node._reactInternalInstance.constructor.name === "ShallowComponentWrapper" */
+    ) {
+      return nodeToJson(node._reactInternalInstance._currentElement);
     }
 
     return node;
