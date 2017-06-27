@@ -74,6 +74,7 @@
     "pre-commit": "~1.2.2",
     "prettier": "^1.0.2",
     "react": "^15.5.4",
+    "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
     "react-test-renderer": "^15.5.4",
     "semantic-release": "^6.3.2"
