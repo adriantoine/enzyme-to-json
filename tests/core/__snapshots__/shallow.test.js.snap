@@ -111,6 +111,17 @@ exports[`handles elements in props 1`] = `
 />
 `;
 
+exports[`handles updates outside of .simulate 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+  />
+  <span>
+    Updated
+  </span>
+</div>
+`;
+
 exports[`ignores non-plain objects 1`] = `
 <BasicPure
   instance={

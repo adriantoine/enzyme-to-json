@@ -48,5 +48,11 @@ function nodeToJson(node) {
 }
 
 export default wrapper => {
-  return wrapper.length > 1 ? wrapper.nodes.map(nodeToJson) : nodeToJson(wrapper.node);
+  if (wrapper.length > 1) {
+    const nodes = wrapper.getNodes ? wrapper.getNodes() : wrapper.nodes;
+    return nodes.map(nodeToJson);
+  }
+
+  const node = wrapper.getNode ? wrapper.getNode() : wrapper.node;
+  return nodeToJson(node);
 };
