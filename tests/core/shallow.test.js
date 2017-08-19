@@ -4,7 +4,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {shallowToJson} from '../../src';
 import {BasicPure, BasicWithUndefined, BasicWithAList} from './fixtures/pure-function';
-import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+import {BasicClass, ClassWithPure, ClassWithNull, ClassWithState} from './fixtures/class';
 import {Overlay} from 'react-bootstrap';
 
 function WrapperComponent(props) {
@@ -100,5 +100,11 @@ it('renders ShallowComponentWrapper', () => {
   }
 
   const shallowed = shallow(<SchedulePicker />);
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('handles updates outside of .simulate', () => {
+  const shallowed = shallow(<ClassWithState />);
+  shallowed.find('button').props().onClick();
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
