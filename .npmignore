@@ -2,4 +2,3 @@ src
 coverage
 tests
 .babelrc
-yarn.lock

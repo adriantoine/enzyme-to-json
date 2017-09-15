@@ -191,10 +191,10 @@ exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>
     0
-</li>,
+  </li>,
   <li>
     1
-</li>,
+  </li>,
 ]
 `;
 

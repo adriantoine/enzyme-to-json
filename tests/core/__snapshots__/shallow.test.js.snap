@@ -70,9 +70,9 @@ exports[`handles elements in prop arrays 1`] = `
     Array [
       <BasicPure>
         <strong>
-            Hello!
+          Hello!
         </strong>
-    </BasicPure>,
+      </BasicPure>,
     ]
   }
 />
@@ -84,15 +84,15 @@ exports[`handles elements in prop objects 1`] = `
     Object {
       "element": <BasicPure>
         <strong>
-            Hello!
+          Hello!
         </strong>
-    </BasicPure>,
+      </BasicPure>,
       "nestedElements": Array [
         <BasicPure>
           <strong>
-                Hello again!
+            Hello again!
           </strong>
-    </BasicPure>,
+        </BasicPure>,
       ],
     }
   }
@@ -150,10 +150,10 @@ exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>
     0
-</li>,
+  </li>,
   <li>
     1
-</li>,
+  </li>,
 ]
 `;
 
