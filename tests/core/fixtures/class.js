@@ -57,3 +57,23 @@ export class ClassWithNull extends Component {
     return null;
   }
 }
+
+export class ClassWithState extends Component {
+  constructor(props) {
+    super(props);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.setState({ showSpan: true });
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.onClick}/>
+        {this.state && this.state.showSpan && <span>Updated</span>}
+      </div>
+    );
+  }
+}
