@@ -37,7 +37,10 @@ function nodeToJson(node) {
 
   const children = compact(childrenOfNode(node).map(n => nodeToJson(n)));
   const type = typeName(node);
-  const props = omitBy(propsOfNode(node), (val, key) => key === 'children' || val === undefined);
+  const props = omitBy(
+    propsOfNode(node),
+    (val, key) => key === 'children' || val === undefined,
+  );
 
   return {
     type,

@@ -231,7 +231,7 @@ which is different from ours. So, if you want to move from `enzyme-to-json` to `
 
 The output is a matter of preference, also `jest-serializer-enzyme` only supports the `shallow` wrapper for now, so if you're already using `enzyme-to-json`, it's a bit easier to use our serializer for now. Thanks to [@rogeliog](https://github.com/rogeliog) for bringing up the idea.
 
-# Focused tests
+# Focused tests with `find` method
 
 One thing I really like about this library is the ability to use `find` and Enzyme selectors to have focused tests.
 
@@ -377,6 +377,49 @@ Received value does not match the stored snapshot 1.
   at Object.<anonymous> (test/focused.test.js:19:93)
   at process._tickCallback (internal/process/next_tick.js:103:7)
 ```
+
+# Focused tests for `mount` wrapper
+
+Because an Enzyme `mount` wrapper has a hybrid render tree of React components and DOM elements, `mountToJson`, `toJson`, and the serializer return both types of nodes. However, you can focus on whichever nodes are more relevant as the expected result of a test.
+
+## `mountToDeepJson`
+
+Given an enzyme `mount` wrapper, especially from selector traversal, return a test object rendered to **maximum** depth. It contains only DOM nodes, no React components.
+
+```js
+import React from 'react';
+import { mount } from 'enzyme';
+import { mountToDeepJson } from 'enzyme-to-json';
+
+test('table head has field labels and button element to add a row', () => {
+  const addRow = () => {}; // a realistic example would interact with DOM :)
+  const fields = [ … ];
+  const records = [ … ];
+  const wrapper = mount(<Table addRow={addRow} fields={fields} records={records} />);
+
+  expect(mountToDeepJson(wrapper.find('thead'))).toMatchSnapshot();
+});
+```
+
+## `mountToShallowJson`
+
+Given an enzyme `mount` wrapper, especially from selector traversal, return a test object rendered to **minimum** depth. It might contain DOM nodes, but any children which are React components are leaves of the tree. For some tests, it might combine the benefits of the `mount` and `shallow` wrappers.
+
+```js
+import React from 'react';
+import { mount } from 'enzyme';
+import { mountToShallowJson } from 'enzyme-to-json';
+
+test('table head has field labels and Button component to add a row', () => {
+  const addRow = () => {}; // a realistic example would interact with DOM :)
+  const fields = [ … ];
+  const records = [ … ];
+  const wrapper = mount(<Table addRow={addRow} fields={fields} records={records} />);
+
+  expect(mountToShallowJson(wrapper.find('thead'))).toMatchSnapshot();
+});
+```
+
 
 ## Contributing
 

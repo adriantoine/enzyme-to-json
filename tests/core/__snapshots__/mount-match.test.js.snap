@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table matches class components to maximum depth at thead 1`] = `
+<thead>
+  <tr>
+    <th>
+      <button
+        onClick={[Function]}
+        title="add row"
+      >
+        +
+      </button>
+    </th>
+    <th
+      scope="col"
+    >
+      qui
+    </th>
+    <th
+      scope="col"
+    >
+      où
+    </th>
+    <th
+      scope="col"
+    >
+      lequel
+    </th>
+  </tr>
+</thead>
+`;
+
+exports[`Table matches class components to maximum depth at tr 1`] = `
+<tr>
+  <td>
+    <button
+      onClick={[Function]}
+      title="delete row"
+    >
+      -
+    </button>
+  </td>
+  <td>
+    Peacock
+  </td>
+  <td>
+    library
+  </td>
+  <td>
+    rope
+  </td>
+</tr>
+`;
+
+exports[`Table matches class components to minimum depth at table 1`] = `
+<table>
+  <TableHead
+    addRow={[Function]}
+    fields={
+      Array [
+        Object {
+          "key": "who",
+          "label": "qui",
+        },
+        Object {
+          "key": "where",
+          "label": "où",
+        },
+        Object {
+          "key": "which",
+          "label": "lequel",
+        },
+      ]
+    }
+  />
+  <tbody>
+    <TableRow
+      deleteRow={[Function]}
+      fields={
+        Array [
+          Object {
+            "key": "who",
+            "label": "qui",
+          },
+          Object {
+            "key": "where",
+            "label": "où",
+          },
+          Object {
+            "key": "which",
+            "label": "lequel",
+          },
+        ]
+      }
+      record={
+        Object {
+          "id": 3,
+          "where": "study",
+          "which": "spanner",
+          "who": "Plum",
+        }
+      }
+    />
+    <TableRow
+      deleteRow={[Function]}
+      fields={
+        Array [
+          Object {
+            "key": "who",
+            "label": "qui",
+          },
+          Object {
+            "key": "where",
+            "label": "où",
+          },
+          Object {
+            "key": "which",
+            "label": "lequel",
+          },
+        ]
+      }
+      record={
+        Object {
+          "id": 2,
+          "where": "library",
+          "which": "rope",
+          "who": "Peacock",
+        }
+      }
+    />
+    <TableRow
+      deleteRow={[Function]}
+      fields={
+        Array [
+          Object {
+            "key": "who",
+            "label": "qui",
+          },
+          Object {
+            "key": "where",
+            "label": "où",
+          },
+          Object {
+            "key": "which",
+            "label": "lequel",
+          },
+        ]
+      }
+      record={
+        Object {
+          "id": 1,
+          "where": "conservatory",
+          "which": "pipe",
+          "who": "Green",
+        }
+      }
+    />
+  </tbody>
+</table>
+`;
+
+exports[`Table matches class components to minimum depth at tbody 1`] = `
+<tbody>
+  <TableRow
+    deleteRow={[Function]}
+    fields={
+      Array [
+        Object {
+          "key": "who",
+          "label": "qui",
+        },
+        Object {
+          "key": "where",
+          "label": "où",
+        },
+        Object {
+          "key": "which",
+          "label": "lequel",
+        },
+      ]
+    }
+    record={
+      Object {
+        "id": 3,
+        "where": "study",
+        "which": "spanner",
+        "who": "Plum",
+      }
+    }
+  />
+  <TableRow
+    deleteRow={[Function]}
+    fields={
+      Array [
+        Object {
+          "key": "who",
+          "label": "qui",
+        },
+        Object {
+          "key": "where",
+          "label": "où",
+        },
+        Object {
+          "key": "which",
+          "label": "lequel",
+        },
+      ]
+    }
+    record={
+      Object {
+        "id": 2,
+        "where": "library",
+        "which": "rope",
+        "who": "Peacock",
+      }
+    }
+  />
+  <TableRow
+    deleteRow={[Function]}
+    fields={
+      Array [
+        Object {
+          "key": "who",
+          "label": "qui",
+        },
+        Object {
+          "key": "where",
+          "label": "où",
+        },
+        Object {
+          "key": "which",
+          "label": "lequel",
+        },
+      ]
+    }
+    record={
+      Object {
+        "id": 1,
+        "where": "conservatory",
+        "which": "pipe",
+        "who": "Green",
+      }
+    }
+  />
+</tbody>
+`;
+
+exports[`Table matches class components to minimum depth at thead 1`] = `
+<thead>
+  <tr>
+    <th>
+      <Button
+        onClick={[Function]}
+        text="+"
+        title="add row"
+      />
+    </th>
+    <th
+      scope="col"
+    >
+      qui
+    </th>
+    <th
+      scope="col"
+    >
+      où
+    </th>
+    <th
+      scope="col"
+    >
+      lequel
+    </th>
+  </tr>
+</thead>
+`;
+
+exports[`Table matches class components to minimum depth at tr 1`] = `
+<tr>
+  <td>
+    <Button
+      onClick={[Function]}
+      text="-"
+      title="delete row"
+    />
+  </td>
+  <td>
+    Peacock
+  </td>
+  <td>
+    library
+  </td>
+  <td>
+    rope
+  </td>
+</tr>
+`;
