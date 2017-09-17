@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d build && babel src/serializer.js -o serializer.js",
     "prepublish": "npm run build",
-    "lint": "eslint src tests/core && npm run format-check",
+    "lint": "eslint src tests/core tests/serializer/tests && npm run format-check",
     "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
     "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
     "test": "npm run lint && npm run test-core && npm run test-serializer",
