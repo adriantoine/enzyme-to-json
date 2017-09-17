@@ -43,7 +43,9 @@ describe('Table', () => {
         elementToObject(
           <thead>
             <tr>
-              <th><button title="add row">+</button></th>
+              <th>
+                <button title="add row">+</button>
+              </th>
               <th>{fields[0].label}</th>
               <th>{fields[1].label}</th>
               <th>{fields[2].label}</th>
@@ -61,7 +63,9 @@ describe('Table', () => {
       expect(received).toMatchObject(
         elementToObject(
           <tr>
-            <td key=""><button title="delete row">-</button></td>
+            <td key="">
+              <button title="delete row">-</button>
+            </td>
             {fields.map(({key}) => <td key={key}>{records[i][key]}</td>)}
           </tr>,
         ),
@@ -103,7 +107,9 @@ describe('Table', () => {
         elementToObject(
           <thead>
             <tr>
-              <th><Button title="add row" text="+" /></th>
+              <th>
+                <Button title="add row" text="+" />
+              </th>
               <th>{fields[0].label}</th>
               <th>{fields[1].label}</th>
               <th>{fields[2].label}</th>
@@ -135,7 +141,9 @@ describe('Table', () => {
       expect(received).toMatchObject(
         elementToObject(
           <tr>
-            <td key=""><Button text="-" title="delete row" /></td>
+            <td key="">
+              <Button text="-" title="delete row" />
+            </td>
             {fields.map(({key}) => <td key={key}>{records[i][key]}</td>)}
           </tr>,
         ),
@@ -202,8 +210,16 @@ describe('TobeList', () => {
 
   it('matches functional components to either depth at a descendant', () => {
     const element = <TobeList items={items} />;
-    const receivedDeep = mountToDeepJson(mount(element).find('li').at(1));
-    const receivedShallow = mountToShallowJson(mount(element).find('li').at(1));
+    const receivedDeep = mountToDeepJson(
+      mount(element)
+        .find('li')
+        .at(1),
+    );
+    const receivedShallow = mountToShallowJson(
+      mount(element)
+        .find('li')
+        .at(1),
+    );
     const expected = elementToObject(
       <li style={{textDecoration: 'none'}}>more is less</li>,
     );
