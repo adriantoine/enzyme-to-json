@@ -1,13 +1,9 @@
 sudo: false
 language: node_js
 
-
 cache:
   directories:
   - node_modules
-
-notifications:
-  email: false
 
 node_js:
 - '5'
@@ -17,13 +13,5 @@ node_js:
 
 after_success:
   - ./node_modules/.bin/codecov
-  - npm run semantic-release
 
 script: npm test
-
-branches:
-  only:
-  - master
-  - /^greenkeeper-.*$/
-  except:
-  - /^v\d+\.\d+\.\d+$/
