@@ -98,3 +98,13 @@ it('renders multiple elements as a result of find', () => {
   const mounted = mount(<BasicWithAList />);
   expect(mountToJson(mounted.find('li'))).toMatchSnapshot();
 });
+
+it('outputs the key prop', () => {
+  const mounted = mount(<div key={1} />);
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('doesnt output the key prop when noKey option is passed', () => {
+  const mounted = mount(<div key={1} />);
+  expect(mountToJson(mounted, {noKey: true})).toMatchSnapshot();
+});

@@ -217,7 +217,11 @@ exports[`converts pure mount with mixed children 1`] = `
 </BasicPure>
 `;
 
+exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
+
 exports[`handles a component which returns null 1`] = `<ClassWithNull />`;
+
+exports[`outputs the key prop 1`] = `<div />`;
 
 exports[`renders multiple elements as a result of find 1`] = `
 Array [

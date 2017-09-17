@@ -13,6 +13,8 @@ import {
 } from './utils';
 
 function instToJson(inst, options) {
+  const {mode} = options;
+
   if (typeof inst === 'string' || typeof inst === 'number') {
     return inst;
   }
@@ -20,7 +22,10 @@ function instToJson(inst, options) {
     return null;
   }
 
-  if (inst._stringText || (options && typeof inst._stringText === 'string')) {
+  if (
+    inst._stringText ||
+    (mode === 'shallow' && typeof inst._stringText === 'string')
+  ) {
     return inst._stringText;
   }
 
@@ -40,9 +45,14 @@ function instToJson(inst, options) {
   const currentElement = inst._currentElement;
   const type = typeName(currentElement);
   const props = omitBy(
-    propsOfNode(currentElement),
-    options ? omitFromPropsCompatible : omitFromPropsMinimal,
+    {...propsOfNode(currentElement)},
+    mode !== 'normal' ? omitFromPropsCompatible : omitFromPropsMinimal,
   );
+
+  if (options.noKey !== true && !isNil(currentElement.key)) {
+    props.key = currentElement.key;
+  }
+
   const children = [];
   if (isDOMComponent(publicInst)) {
     const renderedChildren = inst._renderedChildren;
@@ -55,9 +65,9 @@ function instToJson(inst, options) {
     isElement(currentElement) &&
     typeof currentElement.type === 'function'
   ) {
-    if (!options) {
+    if (mode === 'normal') {
       children.push(inst._renderedComponent);
-    } else if (options.toDeep === true) {
+    } else if (mode === 'deep') {
       // A component returns at most one element in React 15 and earlier.
       return instToJson(inst._renderedComponent, options);
     }
@@ -66,7 +76,11 @@ function instToJson(inst, options) {
 
   const childrenArray = children
     .map(n => instToJson(n, options))
-    .filter(options ? includeInChildrenCompatible : includeInChildrenMinimal);
+    .filter(
+      mode === 'shallow'
+        ? includeInChildrenCompatible
+        : includeInChildrenMinimal,
+    );
 
   return {
     type,
@@ -81,14 +95,23 @@ const wrapperToJson = (wrapper, options) =>
     ? wrapper.nodes.map(node => instToJson(node, options))
     : instToJson(wrapper.node, options);
 
-export const mountToDeepJson = wrapper =>
+const mountToDeepJson = (wrapper, options = {}) =>
   wrapperToJson(wrapper, {
-    toDeep: true,
+    mode: 'deep',
+    ...options,
   });
 
-export const mountToShallowJson = wrapper =>
+const mountToShallowJson = (wrapper, options = {}) =>
   wrapperToJson(wrapper, {
-    toDeep: false,
+    mode: 'shallow',
+    ...options,
   });
 
-export default wrapper => wrapperToJson(wrapper);
+const mountToJson = (wrapper, options = {}) =>
+  wrapperToJson(wrapper, {
+    mode: 'normal',
+    ...options,
+  });
+
+export {mountToDeepJson, mountToShallowJson};
+export default mountToJson;
