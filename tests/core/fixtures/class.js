@@ -4,7 +4,10 @@ import {BasicPure} from './pure-function';
 export class BasicClass extends Component {
   render() {
     return (
-      <div className={`basic-class ${this.props.className}`} onClick={function handleOnClick() {}}>
+      <div
+        className={`basic-class ${this.props.className}`}
+        onClick={function handleOnClick() {}}
+      >
         <div id="group-id" className="group">
           <span>{this.props.children}</span>
           <span className="empty" />
@@ -65,13 +68,13 @@ export class ClassWithState extends Component {
   }
 
   onClick() {
-    this.setState({ showSpan: true });
+    this.setState({showSpan: true});
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.onClick}/>
+        <button onClick={this.onClick} />
         {this.state && this.state.showSpan && <span>Updated</span>}
       </div>
     );
