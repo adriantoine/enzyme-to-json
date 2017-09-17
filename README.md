@@ -121,8 +121,20 @@ it('renders my component', () => {
 ```
 
 You can still use the `shallowToJson`, `mountToJson` and `renderToJson` wrappers from the earlier versions, importing them like this:
-```
+
+```js
 import {shallowToJson, mountToJson, renderToJson} from 'enzyme-to-json';
+```
+
+### Options
+
+#### `noKey`
+
+Since `v2.0.0`, the `key` prop is included in the snapshot, you can turn it off if you don't want your key to be in your snapshot:
+```js
+toJson(wrapper, {noKey: true});
+shallowToJson(wrapper, {noKey: true});
+mountToJson(wrapper, {noKey: true});
 ```
 
 ## Serializer
@@ -186,48 +198,11 @@ it('renders my component', () => {
 });
 ```
 
-This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-serializer-enzyme), I first [added a note](https://github.com/adriantoine/enzyme-to-json/commit/4b2ffc388aaaeb639961c29d271d02acbfe5df40) to `jest-serializer-enzyme` but I then realised that the output is different, so it is not retro compatible with `enzyme-to-json` because it's using Enzyme `debug` helper which doesn't put each prop on a separate line.
+This is inspired by [jest-serializer-enzyme](https://github.com/rogeliog/jest-serializer-enzyme), thanks to [@rogeliog](https://github.com/rogeliog) for bringing up the idea.
 
-For example the output of the first example would be:
+# Examples
 
-```js
-exports[`renders correctly 1`] = `
-<div className="my-component" onClick={[Function]}>
-<span className="count">
-1
-</span>
-<strong>
-Hello World!
-</strong>
-</div>
-`;
-```
-
-instead of:
-
-```js
-exports[`renders correctly 1`] = `
-<div
-  className="my-component"
-  onClick={[Function]}
->
-  <span
-    className="count"
-  >
-    1
-  </span>
-  <strong>
-    Hello World!
-  </strong>
-</div>
-`;
-```
-
-which is different from ours. So, if you want to move from `enzyme-to-json` to `jest-serializer-enzyme`, you would have to update all snapshots.
-
-The output is a matter of preference, also `jest-serializer-enzyme` only supports the `shallow` wrapper for now, so if you're already using `enzyme-to-json`, it's a bit easier to use our serializer for now. Thanks to [@rogeliog](https://github.com/rogeliog) for bringing up the idea.
-
-# Focused tests with `find` method
+## Focused tests with `find` method
 
 One thing I really like about this library is the ability to use `find` and Enzyme selectors to have focused tests.
 
@@ -374,11 +349,11 @@ Received value does not match the stored snapshot 1.
   at process._tickCallback (internal/process/next_tick.js:103:7)
 ```
 
-# Focused tests for `mount` wrapper
+## Focused tests for `mount` wrapper
 
 Because an Enzyme `mount` wrapper has a hybrid render tree of React components and DOM elements, `mountToJson`, `toJson`, and the serializer return both types of nodes. However, you can focus on whichever nodes are more relevant as the expected result of a test.
 
-## `mountToDeepJson`
+### `mountToDeepJson`
 
 Given an enzyme `mount` wrapper, especially from selector traversal, return a test object rendered to **maximum** depth. It contains only DOM nodes, no React components.
 
@@ -397,7 +372,7 @@ test('table head has field labels and button element to add a row', () => {
 });
 ```
 
-## `mountToShallowJson`
+### `mountToShallowJson`
 
 Given an enzyme `mount` wrapper, especially from selector traversal, return a test object rendered to **minimum** depth. It might contain DOM nodes, but any children which are React components are leaves of the tree. For some tests, it might combine the benefits of the `mount` and `shallow` wrappers.
 
@@ -417,6 +392,6 @@ test('table head has field labels and Button component to add a row', () => {
 ```
 
 
-## Contributing
+# Contributing
 
 See [CONTRIBUTING.md](/CONTRIBUTING.md).

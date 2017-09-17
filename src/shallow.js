@@ -7,7 +7,7 @@ import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
 import {isElement} from 'enzyme/build/react-compat';
 import {compact} from './utils';
 
-function nodeToJson(node) {
+function nodeToJson(node, options) {
   if (!node) {
     return node;
   }
@@ -23,39 +23,42 @@ function nodeToJson(node) {
 
     if (isPlainObject(node)) {
       return entries(node).reduce((obj, [key, val]) => {
-        obj[key] = nodeToJson(val);
+        obj[key] = nodeToJson(val, options);
         return obj;
       }, {});
-    } else if (
-      node._reactInternalInstance /* && node._reactInternalInstance.constructor && node._reactInternalInstance.constructor.name === "ShallowComponentWrapper" */
-    ) {
-      return nodeToJson(node._reactInternalInstance._currentElement);
+    } else if (node._reactInternalInstance) {
+      return nodeToJson(node._reactInternalInstance._currentElement, options);
     }
 
     return node;
   }
 
-  const children = compact(childrenOfNode(node).map(n => nodeToJson(n)));
+  const children = compact(
+    childrenOfNode(node).map(n => nodeToJson(n, options)),
+  );
   const type = typeName(node);
+
   const props = omitBy(
-    propsOfNode(node),
+    Object.assign({}, propsOfNode(node), {
+      key: options.noKey !== true && node.key ? node.key : undefined,
+    }),
     (val, key) => key === 'children' || val === undefined,
   );
 
   return {
     type,
-    props: nodeToJson(props),
+    props: nodeToJson(props, options),
     children: children.length ? children : null,
     $$typeof: Symbol.for('react.test.json'),
   };
 }
 
-export default wrapper => {
+export default (wrapper, options = {}) => {
   if (wrapper.length > 1) {
     const nodes = wrapper.getNodes ? wrapper.getNodes() : wrapper.nodes;
-    return nodes.map(nodeToJson);
+    return nodes.map(node => nodeToJson(node, options));
   }
 
   const node = wrapper.getNode ? wrapper.getNode() : wrapper.node;
-  return nodeToJson(node);
+  return nodeToJson(node, options);
 };

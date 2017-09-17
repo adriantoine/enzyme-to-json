@@ -193,6 +193,7 @@ describe('TobeList', () => {
   it('matches functional components to minimum depth at a descendant', () => {
     const received = mountToShallowJson(
       mount(<TobeList items={items} />).find('ul'),
+      {noKey: true},
     );
     const expected = elementToObject(
       <ul>

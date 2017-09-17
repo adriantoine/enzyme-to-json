@@ -1,9 +1,17 @@
 {
-  "presets": ["es2015"],
-  "plugins": ["syntax-export-extensions"],
-  "env": {
-    "test": {
-        "presets": ["es2015", "react"]
-    }
-  }
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "5"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    "syntax-export-extensions",
+    "transform-object-rest-spread",
+    "transform-react-jsx"
+  ]
 }

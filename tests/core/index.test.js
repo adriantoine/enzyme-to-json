@@ -16,24 +16,24 @@ import toJson from '../../src';
 
 it('runs shallowToJson when a shallow wrapper is passed', () => {
   const shallowed = shallow(<div>test</div>);
-  toJson(shallowed);
+  toJson(shallowed, {noKey: true});
 
   expect(shallowToJson).toHaveBeenCalledTimes(1);
-  expect(shallowToJson).toHaveBeenCalledWith(shallowed);
+  expect(shallowToJson).toHaveBeenCalledWith(shallowed, {noKey: true});
 });
 
 it('runs mountToJson when a mount wrapper is passed', () => {
   const mounted = mount(<div>test</div>);
-  toJson(mounted);
+  toJson(mounted, {noKey: true});
 
   expect(mountToJson).toHaveBeenCalledTimes(1);
-  expect(mountToJson).toHaveBeenCalledWith(mounted);
+  expect(mountToJson).toHaveBeenCalledWith(mounted, {noKey: true});
 });
 
 it('runs renderToJson when a render wrapper is passed', () => {
   const rendered = render(<div>test</div>);
-  toJson(rendered);
+  toJson(rendered, {noKey: true});
 
   expect(renderToJson).toHaveBeenCalledTimes(1);
-  expect(renderToJson).toHaveBeenCalledWith(rendered);
+  expect(renderToJson).toHaveBeenCalledWith(rendered, {noKey: true});
 });

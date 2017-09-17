@@ -3,7 +3,9 @@
 exports[`Table matches class components to maximum depth at thead 1`] = `
 <thead>
   <tr>
-    <th>
+    <th
+      key=""
+    >
       <button
         onClick={[Function]}
         title="add row"
@@ -12,16 +14,19 @@ exports[`Table matches class components to maximum depth at thead 1`] = `
       </button>
     </th>
     <th
+      key="who"
       scope="col"
     >
       qui
     </th>
     <th
+      key="where"
       scope="col"
     >
       où
     </th>
     <th
+      key="which"
       scope="col"
     >
       lequel
@@ -32,7 +37,9 @@ exports[`Table matches class components to maximum depth at thead 1`] = `
 
 exports[`Table matches class components to maximum depth at tr 1`] = `
 <tr>
-  <td>
+  <td
+    key=""
+  >
     <button
       onClick={[Function]}
       title="delete row"
@@ -40,13 +47,19 @@ exports[`Table matches class components to maximum depth at tr 1`] = `
       -
     </button>
   </td>
-  <td>
+  <td
+    key="who"
+  >
     Peacock
   </td>
-  <td>
+  <td
+    key="where"
+  >
     library
   </td>
-  <td>
+  <td
+    key="which"
+  >
     rope
   </td>
 </tr>
@@ -92,6 +105,7 @@ exports[`Table matches class components to minimum depth at table 1`] = `
           },
         ]
       }
+      key="3"
       record={
         Object {
           "id": 3,
@@ -119,6 +133,7 @@ exports[`Table matches class components to minimum depth at table 1`] = `
           },
         ]
       }
+      key="2"
       record={
         Object {
           "id": 2,
@@ -146,6 +161,7 @@ exports[`Table matches class components to minimum depth at table 1`] = `
           },
         ]
       }
+      key="1"
       record={
         Object {
           "id": 1,
@@ -179,6 +195,7 @@ exports[`Table matches class components to minimum depth at tbody 1`] = `
         },
       ]
     }
+    key="3"
     record={
       Object {
         "id": 3,
@@ -206,6 +223,7 @@ exports[`Table matches class components to minimum depth at tbody 1`] = `
         },
       ]
     }
+    key="2"
     record={
       Object {
         "id": 2,
@@ -233,6 +251,7 @@ exports[`Table matches class components to minimum depth at tbody 1`] = `
         },
       ]
     }
+    key="1"
     record={
       Object {
         "id": 1,
@@ -248,7 +267,9 @@ exports[`Table matches class components to minimum depth at tbody 1`] = `
 exports[`Table matches class components to minimum depth at thead 1`] = `
 <thead>
   <tr>
-    <th>
+    <th
+      key=""
+    >
       <Button
         onClick={[Function]}
         text="+"
@@ -256,16 +277,19 @@ exports[`Table matches class components to minimum depth at thead 1`] = `
       />
     </th>
     <th
+      key="who"
       scope="col"
     >
       qui
     </th>
     <th
+      key="where"
       scope="col"
     >
       où
     </th>
     <th
+      key="which"
       scope="col"
     >
       lequel
@@ -276,20 +300,28 @@ exports[`Table matches class components to minimum depth at thead 1`] = `
 
 exports[`Table matches class components to minimum depth at tr 1`] = `
 <tr>
-  <td>
+  <td
+    key=""
+  >
     <Button
       onClick={[Function]}
       text="-"
       title="delete row"
     />
   </td>
-  <td>
+  <td
+    key="who"
+  >
     Peacock
   </td>
-  <td>
+  <td
+    key="where"
+  >
     library
   </td>
-  <td>
+  <td
+    key="which"
+  >
     rope
   </td>
 </tr>

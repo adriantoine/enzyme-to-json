@@ -152,3 +152,13 @@ it('handles updates outside of .simulate', () => {
     .onClick();
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
+
+it('outputs the key prop', () => {
+  const shallowed = shallow(<div key={1} />);
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('doesnt output the key prop when noKey option is passed', () => {
+  const shallowed = shallow(<div key={1} />);
+  expect(shallowToJson(shallowed, {noKey: true})).toMatchSnapshot();
+});

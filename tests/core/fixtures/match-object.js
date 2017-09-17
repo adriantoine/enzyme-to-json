@@ -19,7 +19,7 @@ export function elementToObject({type, props}) {
           : 'Unknown',
     props:
       children === undefined
-        ? props
+        ? {...props}
         : omitBy(props, (value, key) => key === 'children'),
     children: children === undefined ? null : childrenToObject(children, []),
   };
