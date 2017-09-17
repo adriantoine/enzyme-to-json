@@ -3,3 +3,4 @@ coverage
 build
 /serializer.js
 npm-debug.log
+.vscode

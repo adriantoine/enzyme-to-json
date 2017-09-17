@@ -28,8 +28,8 @@ it('renders correctly', () => {
   const wrapper = shallow(
     <MyComponent className="my-component">
       <strong>Hello World!</strong>
-    </MyComponent>
-    );
+    </MyComponent>,
+  );
 
   expect(wrapper).toMatchSnapshot();
 });
@@ -38,8 +38,8 @@ it('renders span after setState', () => {
   const wrapper = shallow(
     <MyComponent className="my-component">
       <strong>Hello World!</strong>
-    </MyComponent>
-    );
+    </MyComponent>,
+  );
 
   wrapper.setState({count: 42});
   expect(wrapper.find('span')).toMatchSnapshot();
