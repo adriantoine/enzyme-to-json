@@ -62,6 +62,8 @@ exports[`converts basic pure shallow 1`] = `
 </div>
 `;
 
+exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
+
 exports[`handles a component which returns null 1`] = `null`;
 
 exports[`handles elements in prop arrays 1`] = `
@@ -129,6 +131,12 @@ exports[`ignores non-plain objects 1`] = `
       "_test": true,
     }
   }
+/>
+`;
+
+exports[`outputs the key prop 1`] = `
+<div
+  key="1"
 />
 `;
 
