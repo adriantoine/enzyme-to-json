@@ -12,9 +12,10 @@ const renderChildToJson = child => {
     return {
       type: child.name,
       props: child.attribs,
-      children: child.children && child.children.length
-        ? compact(child.children.map(renderChildToJson))
-        : null,
+      children:
+        child.children && child.children.length
+          ? compact(child.children.map(renderChildToJson))
+          : null,
       $$typeof: Symbol.for('react.test.json'),
     };
   } else if (child.type === 'text') {

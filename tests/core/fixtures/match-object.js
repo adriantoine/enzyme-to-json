@@ -11,14 +11,16 @@ export function elementToObject({type, props}) {
   const children = props.children;
   return {
     $$typeof: Symbol.for('react.test.json'),
-    type: typeof type === 'string'
-      ? type
-      : typeof type === 'function'
+    type:
+      typeof type === 'string'
+        ? type
+        : typeof type === 'function'
           ? type.displayName || type.name || 'Unknown'
           : 'Unknown',
-    props: children === undefined
-      ? props
-      : omitBy(props, (value, key) => key === 'children'),
+    props:
+      children === undefined
+        ? props
+        : omitBy(props, (value, key) => key === 'children'),
     children: children === undefined ? null : childrenToObject(children, []),
   };
 }
@@ -72,7 +74,9 @@ export class TableHead extends Component {
             />
           </th>
           {this.props.fields.map(field => (
-            <th key={field.key} scope="col">{field.label}</th>
+            <th key={field.key} scope="col">
+              {field.label}
+            </th>
           ))}
         </tr>
       </thead>
@@ -101,7 +105,11 @@ export class TableRow extends Component {
 }
 
 function Button({onClick, text, title}) {
-  return <button onClick={onClick} title={title}>{text}</button>;
+  return (
+    <button onClick={onClick} title={title}>
+      {text}
+    </button>
+  );
 }
 
 export function TobeList({items}) {
