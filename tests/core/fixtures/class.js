@@ -64,18 +64,19 @@ export class ClassWithNull extends Component {
 export class ClassWithState extends Component {
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this);
+    this.state = {showSpan: false};
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onClick() {
+  handleClick() {
     this.setState({showSpan: true});
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.onClick} />
-        {this.state && this.state.showSpan && <span>Updated</span>}
+        <button onClick={this.handleClick} />
+        {this.state.showSpan && <span>Updated</span>}
       </div>
     );
   }

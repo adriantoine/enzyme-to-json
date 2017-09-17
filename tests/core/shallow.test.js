@@ -1,20 +1,17 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {shallow} from 'enzyme';
-import {shallowToJson} from '../../src';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import shallowToJson from '../../src/shallow';
 import {
   BasicPure,
   BasicWithUndefined,
   BasicWithAList,
 } from './fixtures/pure-function';
-import {
-  BasicClass,
-  ClassWithPure,
-  ClassWithNull,
-  ClassWithState,
-} from './fixtures/class';
-import {Overlay} from 'react-bootstrap';
+import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+
+Enzyme.configure({adapter: new Adapter()});
 
 function WrapperComponent(props) {
   return <BasicPure {...props} />;
@@ -46,6 +43,7 @@ it('converts a class mount with a pure function in it', () => {
       <strong>Hello!</strong>
     </ClassWithPure>,
   );
+
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
 
@@ -77,6 +75,7 @@ it('handles elements in prop arrays', () => {
       ]}
     />,
   );
+
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
 
@@ -122,35 +121,6 @@ it('skips undefined props', () => {
 it('renders multiple elements as a result of find', () => {
   const shallowed = shallow(<BasicWithAList />);
   expect(shallowToJson(shallowed.find('li'))).toMatchSnapshot();
-});
-
-it('renders ShallowComponentWrapper', () => {
-  class SchedulePicker extends React.Component {
-    render() {
-      return (
-        <Overlay
-          show={false}
-          onHide={this.onHide}
-          container={this}
-          animation={false}
-        >
-          <strong>Basic</strong>
-        </Overlay>
-      );
-    }
-  }
-
-  const shallowed = shallow(<SchedulePicker />);
-  expect(shallowToJson(shallowed)).toMatchSnapshot();
-});
-
-it('handles updates outside of .simulate', () => {
-  const shallowed = shallow(<ClassWithState />);
-  shallowed
-    .find('button')
-    .props()
-    .onClick();
-  expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
 
 it('outputs the key prop', () => {

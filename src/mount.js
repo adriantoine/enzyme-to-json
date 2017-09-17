@@ -1,99 +1,55 @@
 import omitBy from 'lodash.omitby';
 import isNil from 'lodash.isnil';
-import values from 'object-values';
-import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
-import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
+
 import {typeName} from 'enzyme/build/Debug';
-import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
-import {
-  includeInChildrenCompatible,
-  includeInChildrenMinimal,
-  omitFromPropsCompatible,
-  omitFromPropsMinimal,
-} from './utils';
+import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
-function instToJson(inst, options) {
-  const {mode} = options;
+import {compact} from './utils';
 
-  if (typeof inst === 'string' || typeof inst === 'number') {
-    return inst;
-  }
-  if (!inst) {
-    return null;
+function nodeToJson(node, options) {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return node;
   }
 
-  if (
-    inst._stringText ||
-    (mode === 'shallow' && typeof inst._stringText === 'string')
-  ) {
-    return inst._stringText;
+  if (!node) {
+    return '';
   }
 
-  if (!inst.getPublicInstance) {
-    const internal = internalInstance(inst);
-    return instToJson(internal, options);
-  }
-  const publicInst = inst.getPublicInstance();
-
-  if (typeof publicInst === 'string' || typeof publicInst === 'number') {
-    return publicInst;
-  }
-  if (!publicInst && !inst._renderedComponent) {
-    return null;
+  if (Array.isArray(node)) {
+    return node.map(n => nodeToJson(n, options));
   }
 
-  const currentElement = inst._currentElement;
-  const type = typeName(currentElement);
-  const props = omitBy(
-    {...propsOfNode(currentElement)},
-    mode !== 'normal' ? omitFromPropsCompatible : omitFromPropsMinimal,
+  const children = compact(
+    childrenOfNode(node).map(n => nodeToJson(n, options)),
   );
 
-  if (options.noKey !== true && !isNil(currentElement.key)) {
-    props.key = currentElement.key;
-  }
+  const type = typeName(node);
+  const props = omitBy(
+    Object.assign({}, propsOfNode(node)),
+    (val, key) => key === 'children',
+  );
 
-  const children = [];
-  if (isDOMComponent(publicInst)) {
-    const renderedChildren = inst._renderedChildren;
-    if (isNil(renderedChildren)) {
-      children.push(...childrenOfNode(currentElement));
-    } else {
-      children.push(...values(renderedChildren));
-    }
-  } else if (
-    isElement(currentElement) &&
-    typeof currentElement.type === 'function'
-  ) {
-    if (mode === 'normal') {
-      children.push(inst._renderedComponent);
-    } else if (mode === 'deep') {
-      // A component returns at most one element in React 15 and earlier.
-      return instToJson(inst._renderedComponent, options);
-    }
-    // else if shallow, children are still an empty array
+  if (!isNil(node.key) && options.noKey !== true) {
+    props.key = node.key;
   }
-
-  const childrenArray = children
-    .map(n => instToJson(n, options))
-    .filter(
-      mode === 'shallow'
-        ? includeInChildrenCompatible
-        : includeInChildrenMinimal,
-    );
 
   return {
     type,
     props,
-    children: childrenArray.length ? childrenArray : null,
+    children: children.length > 0 ? children : null,
     $$typeof: Symbol.for('react.test.json'),
   };
 }
 
-const wrapperToJson = (wrapper, options) =>
-  wrapper.length > 1
-    ? wrapper.nodes.map(node => instToJson(node, options))
-    : instToJson(wrapper.node, options);
+const wrapperToJson = (wrapper, options = {}) => {
+  if (wrapper.length > 1) {
+    const nodes = wrapper.getNodesInternal();
+    return nodes.map(node => nodeToJson(node, options));
+  }
+
+  const node = wrapper.getNodeInternal();
+  return nodeToJson(node, options);
+};
 
 const mountToDeepJson = (wrapper, options = {}) =>
   wrapperToJson(wrapper, {

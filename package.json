@@ -43,13 +43,14 @@
     "lodash.filter": "^4.6.0",
     "lodash.isnil": "^4.0.0",
     "lodash.isplainobject": "^4.0.6",
+    "lodash.mapvalues": "^4.6.0",
     "lodash.omitby": "^4.6.0",
     "lodash.range": "^3.2.0",
     "object-values": "^1.0.0",
     "object.entries": "^1.0.4"
   },
   "peerDependencies": {
-    "enzyme": "^2.7.1"
+    "enzyme": "^3.0.0-beta.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -60,7 +61,8 @@
     "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
     "cz-conventional-changelog": "~2.0.0",
-    "enzyme": "^2.9.1",
+    "enzyme": "^3.0.0-beta.3",
+    "enzyme-adapter-react-16": "^1.0.0-beta.2",
     "eslint": "^4.6.1",
     "eslint-config-prettier": "^2.4.0",
     "eslint-config-standard": "^10.2.1",
@@ -73,10 +75,9 @@
     "jest": "~21.1.0",
     "prettier": "^1.7.0",
     "prettier-check": "^1.0.0",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.3",
-    "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1"
+    "react": "^16.0.0-rc.3",
+    "react-dom": "^16.0.0-rc.3",
+    "react-test-renderer": "^16.0.0-rc.3"
   },
   "jest": {
     "testPathIgnorePatterns": [

@@ -6,13 +6,16 @@ jest.mock('../../src/mount');
 jest.mock('../../src/render');
 
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
+import Enzyme, {shallow, mount, render} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
 import shallowToJson from '../../src/shallow';
 import mountToJson from '../../src/mount';
 import renderToJson from '../../src/render';
 
 import toJson from '../../src';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it('runs shallowToJson when a shallow wrapper is passed', () => {
   const shallowed = shallow(<div>test</div>);

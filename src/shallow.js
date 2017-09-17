@@ -1,64 +1,54 @@
-import isPlainObject from 'lodash.isplainobject';
 import omitBy from 'lodash.omitby';
-import entries from 'object.entries';
-import {propsOfNode} from 'enzyme/build/Utils';
+import isNil from 'lodash.isnil';
+
 import {typeName} from 'enzyme/build/Debug';
-import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
-import {isElement} from 'enzyme/build/react-compat';
+import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
+
 import {compact} from './utils';
 
 function nodeToJson(node, options) {
-  if (!node) {
-    return node;
-  }
-
   if (typeof node === 'string' || typeof node === 'number') {
     return node;
   }
 
-  if (!isElement(node)) {
-    if (Array.isArray(node)) {
-      return node.map(nodeToJson);
-    }
+  if (!node) {
+    return '';
+  }
 
-    if (isPlainObject(node)) {
-      return entries(node).reduce((obj, [key, val]) => {
-        obj[key] = nodeToJson(val, options);
-        return obj;
-      }, {});
-    } else if (node._reactInternalInstance) {
-      return nodeToJson(node._reactInternalInstance._currentElement, options);
-    }
-
-    return node;
+  if (Array.isArray(node)) {
+    return node.map(n => nodeToJson(n, options));
   }
 
   const children = compact(
     childrenOfNode(node).map(n => nodeToJson(n, options)),
   );
-  const type = typeName(node);
 
+  const type = typeName(node);
   const props = omitBy(
-    Object.assign({}, propsOfNode(node), {
-      key: options.noKey !== true && node.key ? node.key : undefined,
-    }),
+    Object.assign({}, propsOfNode(node)),
     (val, key) => key === 'children' || val === undefined,
   );
 
+  if (!isNil(node.key) && options.noKey !== true) {
+    props.key = node.key;
+  }
+
   return {
     type,
-    props: nodeToJson(props, options),
-    children: children.length ? children : null,
+    props,
+    children: children.length > 0 ? children : null,
     $$typeof: Symbol.for('react.test.json'),
   };
 }
 
-export default (wrapper, options = {}) => {
+const shallowToJson = (wrapper, options = {}) => {
   if (wrapper.length > 1) {
-    const nodes = wrapper.getNodes ? wrapper.getNodes() : wrapper.nodes;
+    const nodes = wrapper.getNodesInternal();
     return nodes.map(node => nodeToJson(node, options));
   }
 
-  const node = wrapper.getNode ? wrapper.getNode() : wrapper.node;
+  const node = wrapper.getNodeInternal();
   return nodeToJson(node, options);
 };
+
+export default shallowToJson;

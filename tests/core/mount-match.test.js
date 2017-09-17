@@ -1,9 +1,12 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {mount} from 'enzyme';
-import {mountToDeepJson, mountToShallowJson} from '../../src';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {mountToDeepJson, mountToShallowJson} from '../../src/mount';
 import {elementToObject, Table, TobeList} from './fixtures/match-object';
+
+Enzyme.configure({adapter: new Adapter()});
 
 describe('Table', () => {
   // Mock child components to omit irrelevant props for shallow match,

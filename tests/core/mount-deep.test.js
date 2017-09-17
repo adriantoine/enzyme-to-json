@@ -1,8 +1,9 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {mount} from 'enzyme';
-import {mountToDeepJson} from '../../src';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import {mountToDeepJson} from '../../src/mount';
 import {
   BasicPure,
   BasicWithUndefined,
@@ -16,6 +17,8 @@ import {
   ClassWithDirectComponent,
   ClassWithNull,
 } from './fixtures/class';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it('converts basic pure mount', () => {
   const mounted = mount(

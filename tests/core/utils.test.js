@@ -1,8 +1,11 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {shallow, mount, render} from 'enzyme';
+import Enzyme, {shallow, mount, render} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import {isEnzymeWrapper} from '../../src/utils';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it('returns true whenever it is an enzyme wrapper', () => {
   expect(isEnzymeWrapper(shallow(<div />))).toBe(true);

@@ -64,7 +64,7 @@ exports[`converts basic pure shallow 1`] = `
 
 exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
 
-exports[`handles a component which returns null 1`] = `null`;
+exports[`handles a component which returns null 1`] = `""`;
 
 exports[`handles elements in prop arrays 1`] = `
 <BasicPure
@@ -113,17 +113,6 @@ exports[`handles elements in props 1`] = `
 />
 `;
 
-exports[`handles updates outside of .simulate 1`] = `
-<div>
-  <button
-    onClick={[Function]}
-  />
-  <span>
-    Updated
-  </span>
-</div>
-`;
-
 exports[`ignores non-plain objects 1`] = `
 <BasicPure
   instance={
@@ -138,20 +127,6 @@ exports[`outputs the key prop 1`] = `
 <div
   key="1"
 />
-`;
-
-exports[`renders ShallowComponentWrapper 1`] = `
-<Overlay
-  animation={false}
-  container={<SchedulePicker />}
-  placement="right"
-  rootClose={false}
-  show={false}
->
-  <strong>
-    Basic
-  </strong>
-</Overlay>
 `;
 
 exports[`renders multiple elements as a result of find 1`] = `
