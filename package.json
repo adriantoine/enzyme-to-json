@@ -1,16 +1,21 @@
 {
   "version": "1.6.0",
   "name": "enzyme-to-json",
-  "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
+  "description":
+    "convert enzyme wrapper to a format compatible with Jest snapshot",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src -d build && babel src/serializer.js -o serializer.js",
     "prepublish": "npm run build",
-    "lint": "eslint src tests/core",
-    "format": "prettier src/**/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "lint": "eslint src tests/core && npm run format-check",
+    "format":
+      "prettier src/**/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "format-check":
+      "prettier-check src/**/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
     "test": "npm run lint && npm run test-core && npm run test-serializer",
     "test-core": "NODE_ENV=test jest --coverage",
-    "test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test"
+    "test-serializer":
+      "cd tests/serializer && rm -rf node_modules && npm install && npm test"
   },
   "keywords": [
     "enzyme",
@@ -70,6 +75,7 @@
     "eslint-plugin-standard": "^3.0.1",
     "jest": "~21.1.0",
     "prettier": "^1.7.0",
+    "prettier-check": "^1.0.0",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.3",
     "react-dom": "^15.6.1",
@@ -80,8 +86,6 @@
       "<rootDir>/tests/serializer",
       "<rootDir>/node_modules/"
     ],
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/tests"
-    ]
+    "coveragePathIgnorePatterns": ["<rootDir>/tests"]
   }
 }
