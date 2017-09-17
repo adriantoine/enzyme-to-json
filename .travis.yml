@@ -15,3 +15,7 @@ after_success:
   - ./node_modules/.bin/codecov
 
 script: npm test
+
+branches:
+  only:
+  - master
