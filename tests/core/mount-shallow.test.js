@@ -18,7 +18,11 @@ import {
 } from './fixtures/class';
 
 it('converts basic pure mount', () => {
-  const mounted = mount(<BasicPure className="pure"><strong>Hello!</strong></BasicPure>);
+  const mounted = mount(
+    <BasicPure className="pure">
+      <strong>Hello!</strong>
+    </BasicPure>,
+  );
 
   expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
   expect(mountToShallowJson(mounted)).toMatchSnapshot();
@@ -31,7 +35,11 @@ it('converts pure mount with mixed children', () => {
 });
 
 it('converts basic class mount', () => {
-  const mounted = mount(<BasicClass className="class"><strong>Hello!</strong></BasicClass>);
+  const mounted = mount(
+    <BasicClass className="class">
+      <strong>Hello!</strong>
+    </BasicClass>,
+  );
 
   expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
   expect(mountToShallowJson(mounted)).toMatchSnapshot();
@@ -44,14 +52,20 @@ it('converts class mount with mixed children', () => {
 });
 
 it('converts a class mount with a pure function in it', () => {
-  const mounted = mount(<ClassWithPure className="class"><strong>Hello!</strong></ClassWithPure>);
+  const mounted = mount(
+    <ClassWithPure className="class">
+      <strong>Hello!</strong>
+    </ClassWithPure>,
+  );
 
   expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it as a direct child', () => {
   const mounted = mount(
-    <ClassWithDirectPure className="class"><strong>Hello!</strong></ClassWithDirectPure>
+    <ClassWithDirectPure className="class">
+      <strong>Hello!</strong>
+    </ClassWithDirectPure>,
   );
 
   expect(mountToShallowJson(mounted.find('BasicPure').at(0))).toMatchSnapshot();
@@ -59,10 +73,14 @@ it('converts a class mount with a pure function in it as a direct child', () => 
 
 it('converts a class mount with a class component in it as a direct child', () => {
   const mounted = mount(
-    <ClassWithDirectComponent className="class"><strong>Hello!</strong></ClassWithDirectComponent>
+    <ClassWithDirectComponent className="class">
+      <strong>Hello!</strong>
+    </ClassWithDirectComponent>,
   );
 
-  expect(mountToShallowJson(mounted.find('ClassWithPure').at(0))).toMatchSnapshot();
+  expect(
+    mountToShallowJson(mounted.find('ClassWithPure').at(0)),
+  ).toMatchSnapshot();
 });
 
 it('handles a component which returns null', () => {

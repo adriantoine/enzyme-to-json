@@ -3,7 +3,12 @@
 import React from 'react';
 import {mount} from 'enzyme';
 import {mountToJson} from '../../src';
-import {BasicPure, BasicWithUndefined, BasicWithAList, ComponentWithAZeroChildren} from './fixtures/pure-function';
+import {
+  BasicPure,
+  BasicWithUndefined,
+  BasicWithAList,
+  ComponentWithAZeroChildren,
+} from './fixtures/pure-function';
 import {
   BasicClass,
   ClassWithPure,
@@ -13,7 +18,11 @@ import {
 } from './fixtures/class';
 
 it('converts basic pure mount', () => {
-  const mounted = mount(<BasicPure className="pure"><strong>Hello!</strong></BasicPure>);
+  const mounted = mount(
+    <BasicPure className="pure">
+      <strong>Hello!</strong>
+    </BasicPure>,
+  );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
@@ -24,7 +33,11 @@ it('converts pure mount with mixed children', () => {
 });
 
 it('converts basic class mount', () => {
-  const mounted = mount(<BasicClass className="class"><strong>Hello!</strong></BasicClass>);
+  const mounted = mount(
+    <BasicClass className="class">
+      <strong>Hello!</strong>
+    </BasicClass>,
+  );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
@@ -35,14 +48,20 @@ it('converts class mount with mixed children', () => {
 });
 
 it('converts a class mount with a pure function in it', () => {
-  const mounted = mount(<ClassWithPure className="class"><strong>Hello!</strong></ClassWithPure>);
+  const mounted = mount(
+    <ClassWithPure className="class">
+      <strong>Hello!</strong>
+    </ClassWithPure>,
+  );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it as a direct child', () => {
   const mounted = mount(
-    <ClassWithDirectPure className="class"><strong>Hello!</strong></ClassWithDirectPure>,
+    <ClassWithDirectPure className="class">
+      <strong>Hello!</strong>
+    </ClassWithDirectPure>,
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -50,7 +69,9 @@ it('converts a class mount with a pure function in it as a direct child', () => 
 
 it('converts a class mount with a class component in it as a direct child', () => {
   const mounted = mount(
-    <ClassWithDirectComponent className="class"><strong>Hello!</strong></ClassWithDirectComponent>,
+    <ClassWithDirectComponent className="class">
+      <strong>Hello!</strong>
+    </ClassWithDirectComponent>,
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
