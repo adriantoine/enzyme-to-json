@@ -23,6 +23,10 @@ import {
 
 Enzyme.configure({adapter: new Adapter()});
 
+it('doesnt break when called without arguments', () => {
+  expect(mountToJson()).toBe(null);
+});
+
 it('converts basic pure mount', () => {
   const mounted = mount(
     <BasicPure className="pure">

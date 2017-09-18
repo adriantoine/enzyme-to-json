@@ -55,7 +55,7 @@ function nodeToJson(node, options) {
 }
 
 const mountToJson = (wrapper, options = {}) => {
-  if (wrapper.length === 0) {
+  if (isNil(wrapper) || wrapper.length === 0) {
     return null;
   }
 
