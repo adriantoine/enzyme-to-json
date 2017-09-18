@@ -19,19 +19,19 @@ $ npm install --save-dev enzyme-to-json
 ## Helper
 
 ```js
-import React, { Component } from 'react';
-import { shallow } from 'enzyme';
+import React, {Component} from 'react';
+import {shallow} from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 class MyComponent extends Component {
   constructor() {
     super();
     this.handleClick = this.handleClick.bind(this);
-    this.state = { count: 1 };
+    this.state = {count: 1};
   }
 
   handleClick() {
-    this.setState(({ count }) => ({ count: count + 1 }));
+    this.setState(({count}) => ({count: count + 1}));
   }
 
   render() {
@@ -83,7 +83,7 @@ it('renders span after setState', () => {
     </MyComponent>
   );
 
-  wrapper.setState({ count: 42 });
+  wrapper.setState({count: 42});
   expect(toJson(wrapper.find('span'))).toMatchSnapshot();
 });
 
@@ -125,21 +125,17 @@ it('renders my component', () => {
 
 ### Options
 
-You can pass an option object as a second argument for all helpers:
+You can pass an option object as a second argument, for example:
 
 ```js
 toJson(wrapper, {
-  noKey: true
-});
-
-mountToJson(wrapper, {
   noKey: false,
   mode: 'deep'
 });
 ```
 
-| Option | Value | Description |
-| ------ | ----- | ----------- |
+| Key | Value | Description |
+| --- | ----- | ----------- |
 | `noKey` | `bool` | Since `v2.0.0`, the `key` prop is included in the snapshot, you can turn it off if you don't want your key to be in your snapshot by settting this option to `true`. Only works for the `mount` and `shallow` wrappers. |
 | `mode` | `'deep'`, `'shallow'` | The `deep` option will return a test object rendered to **maximum** depth (contains only DOM nodes, no React components) while the `shallow` option will return a test object rendered to **minimum** depth (might contain DOM nodes, but any children which are React components are leaves of the tree). Only works for the `mount` wrappers. |
 
