@@ -62,7 +62,7 @@ exports[`converts basic pure shallow 1`] = `
 </div>
 `;
 
-exports[`handles a component which returns null 1`] = `null`;
+exports[`handles a component which returns null 1`] = `""`;
 
 exports[`handles elements in prop arrays 1`] = `
 <BasicPure

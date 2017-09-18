@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "enzyme": "file:../../node_modules/enzyme",
+    "enzyme-adapter-react-16": "file:../../node_modules/enzyme-adapter-react-16",
     "jest": "file:../../node_modules/jest",
     "react": "file:../../node_modules/react"
   }

@@ -1,9 +1,12 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {shallow} from 'enzyme';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import {BasicPure, BasicWithUndefined} from './fixtures/pure-function';
 import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+
+Enzyme.configure({adapter: new Adapter()});
 
 function WrapperComponent(props) {
   return <BasicPure {...props} />;

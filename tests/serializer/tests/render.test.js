@@ -1,9 +1,12 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {render} from 'enzyme';
+import Enzyme, {render} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import {BasicPure} from './fixtures/pure-function';
 import {BasicClass} from './fixtures/class';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it('converts basic pure render', () => {
   const rendered = render(

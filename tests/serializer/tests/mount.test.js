@@ -1,7 +1,9 @@
 /* eslint-env jest */
 
 import React from 'react';
-import {mount} from 'enzyme';
+import Enzyme, {mount} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
 import {BasicPure, BasicWithUndefined} from './fixtures/pure-function';
 import {
   BasicClass,
@@ -9,6 +11,8 @@ import {
   ClassWithDirectPure,
   ClassWithDirectComponent,
 } from './fixtures/class';
+
+Enzyme.configure({adapter: new Adapter()});
 
 it('converts basic pure mount', () => {
   const mounted = mount(
