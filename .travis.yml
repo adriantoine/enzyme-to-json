@@ -14,8 +14,6 @@ node_js:
 after_success:
   - ./node_modules/.bin/codecov
 
-before_install: if [[ `npm -v` != 5* ]]; then npm i -g npm@5; fi
-
 script: npm test
 
 branches:
