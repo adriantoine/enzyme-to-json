@@ -2,9 +2,10 @@
   "version": "3.0.0-beta2",
   "name": "enzyme-to-json",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
-  "main": "build/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "babel src -d build && babel src/serializer.js -o serializer.js",
+    "build": "babel src -d ./",
+    "clean": "rm *.js",
     "prepublish": "npm run build",
     "lint": "eslint src tests/core tests/serializer/tests && npm run format-check",
     "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
@@ -56,7 +57,6 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
-    "cz-conventional-changelog": "~2.0.0",
     "enzyme": "^3.0.0-beta.3",
     "enzyme-adapter-react-16": "^1.0.0-beta.2",
     "eslint": "^4.6.1",
@@ -77,7 +77,6 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/tests/serializer",
       "<rootDir>/node_modules/"
     ],
     "coveragePathIgnorePatterns": [
