@@ -6,24 +6,19 @@ import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
 import {compact} from './utils';
 
-function nodeToJson(node, options) {
-  if (typeof node === 'string' || typeof node === 'number') {
-    return node;
-  }
-
-  if (isNil(node)) {
-    return '';
-  }
-
-  if (Array.isArray(node)) {
-    return node.map(n => nodeToJson(n, options));
-  }
-
+function getChildren(node, options) {
   const children = compact(
-    childrenOfNode(node).map(n => nodeToJson(n, options)),
+    childrenOfNode(node).map(n => internalNodeToJson(n, options)),
   );
 
-  const type = typeName(node);
+  if (children.length > 0) {
+    return children;
+  }
+
+  return null;
+}
+
+function getProps(node, options) {
   const props = omitBy(
     Object.assign({}, propsOfNode(node)),
     (val, key) => key === 'children' || val === undefined,
@@ -33,10 +28,26 @@ function nodeToJson(node, options) {
     props.key = node.key;
   }
 
+  return props;
+}
+
+function internalNodeToJson(node, options) {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return node;
+  }
+
+  if (isNil(node)) {
+    return '';
+  }
+
+  if (Array.isArray(node)) {
+    return node.map(n => internalNodeToJson(n, options));
+  }
+
   return {
-    type,
-    props,
-    children: children.length > 0 ? children : null,
+    type: typeName(node),
+    props: getProps(node, options),
+    children: getChildren(node, options),
     $$typeof: Symbol.for('react.test.json'),
   };
 }
@@ -48,11 +59,11 @@ const shallowToJson = (wrapper, options = {}) => {
 
   if (wrapper.length > 1) {
     const nodes = wrapper.getNodesInternal();
-    return nodes.map(node => nodeToJson(node, options));
+    return nodes.map(node => internalNodeToJson(node, options));
   }
 
   const node = wrapper.getNodeInternal();
-  return nodeToJson(node, options);
+  return internalNodeToJson(node, options);
 };
 
 export default shallowToJson;

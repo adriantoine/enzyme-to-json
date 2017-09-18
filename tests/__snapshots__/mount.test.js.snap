@@ -271,6 +271,102 @@ exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
 
 exports[`handles a component which returns null 1`] = `<ClassWithNull />`;
 
+exports[`handles elements in prop arrays 1`] = `
+<WrapperComponent
+  elements={
+    Array [
+      <BasicPure>
+        <strong>
+          Hello!
+        </strong>
+      </BasicPure>,
+    ]
+  }
+>
+  <BasicPure
+    elements={
+      Array [
+        <BasicPure>
+          <strong>
+            Hello!
+          </strong>
+        </BasicPure>,
+      ]
+    }
+  >
+    <div
+      className="basic-pure undefined"
+      onClick={[Function]}
+    >
+      <div
+        className="group"
+        id="group-id"
+      >
+        <span />
+        <span
+          className="empty"
+        />
+      </div>
+    </div>
+  </BasicPure>
+</WrapperComponent>
+`;
+
+exports[`handles elements in prop objects 1`] = `
+<WrapperComponent
+  element={
+    Object {
+      "element": <BasicPure>
+        <strong>
+          Hello!
+        </strong>
+      </BasicPure>,
+      "nestedElements": Array [
+        <BasicPure>
+          <strong>
+            Hello again!
+          </strong>
+        </BasicPure>,
+      ],
+    }
+  }
+>
+  <BasicPure
+    element={
+      Object {
+        "element": <BasicPure>
+          <strong>
+            Hello!
+          </strong>
+        </BasicPure>,
+        "nestedElements": Array [
+          <BasicPure>
+            <strong>
+              Hello again!
+            </strong>
+          </BasicPure>,
+        ],
+      }
+    }
+  >
+    <div
+      className="basic-pure undefined"
+      onClick={[Function]}
+    >
+      <div
+        className="group"
+        id="group-id"
+      >
+        <span />
+        <span
+          className="empty"
+        />
+      </div>
+    </div>
+  </BasicPure>
+</WrapperComponent>
+`;
+
 exports[`outputs the key prop 1`] = `<div />`;
 
 exports[`renders multiple elements as a result of find 1`] = `

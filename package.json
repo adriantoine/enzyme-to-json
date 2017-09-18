@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d ./",
     "clean": "rm *.js",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint src tests/core && npm run format-check",
     "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
     "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
@@ -50,7 +50,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-jest": "~21.0.2",
     "babel-plugin-syntax-export-extensions": "^6.13.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",

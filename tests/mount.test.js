@@ -23,6 +23,10 @@ import {
 
 Enzyme.configure({adapter: new Adapter()});
 
+function WrapperComponent(props) {
+  return <BasicPure {...props} />;
+}
+
 it('doesnt break when called without arguments', () => {
   expect(mountToJson()).toBe(null);
 });
@@ -134,6 +138,41 @@ it('converts class components with render returning top level arrays', () => {
     <ClassArrayRender>
       <strong>Hello!</strong>
     </ClassArrayRender>,
+  );
+
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('handles elements in prop arrays', () => {
+  const mounted = mount(
+    <WrapperComponent
+      elements={[
+        <BasicPure>
+          <strong>Hello!</strong>
+        </BasicPure>,
+      ]}
+    />,
+  );
+
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('handles elements in prop objects', () => {
+  const mounted = mount(
+    <WrapperComponent
+      element={{
+        element: (
+          <BasicPure>
+            <strong>Hello!</strong>
+          </BasicPure>
+        ),
+        nestedElements: [
+          <BasicPure>
+            <strong>Hello again!</strong>
+          </BasicPure>,
+        ],
+      }}
+    />,
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();

@@ -12,7 +12,7 @@ function getChildren(node, options) {
   }
 
   const children = compact(
-    childrenOfNode(node).map(n => nodeToJson(n, options)),
+    childrenOfNode(node).map(n => internalNodeToJson(n, options)),
   );
 
   return children.length > 0 ? children : null;
@@ -33,7 +33,7 @@ function getProps(node, options) {
   return props;
 }
 
-function nodeToJson(node, options) {
+function internalNodeToJson(node, options) {
   if (typeof node === 'string' || typeof node === 'number') {
     return node;
   }
@@ -43,7 +43,7 @@ function nodeToJson(node, options) {
   }
 
   if (options.mode === 'deep' && typeof node.type === 'function') {
-    return nodeToJson(node.rendered, options);
+    return internalNodeToJson(node.rendered, options);
   }
 
   return {
@@ -61,11 +61,11 @@ const mountToJson = (wrapper, options = {}) => {
 
   if (wrapper.length > 1) {
     const nodes = wrapper.getNodesInternal();
-    return nodes.map(node => nodeToJson(node, options));
+    return nodes.map(node => internalNodeToJson(node, options));
   }
 
   const node = wrapper.getNodeInternal();
-  return nodeToJson(node, options);
+  return internalNodeToJson(node, options);
 };
 
 export default mountToJson;
