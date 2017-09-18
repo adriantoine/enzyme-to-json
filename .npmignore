@@ -2,3 +2,6 @@ src
 coverage
 tests
 .babelrc
+.editorconfig
+.eslintrc
+.DS_Store
