@@ -4,7 +4,7 @@ import React from 'react';
 import Enzyme, {render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import renderToJson from '../../src/render';
+import renderToJson from '../src/render';
 import {BasicPure, BasicWithAList, ArrayRender} from './fixtures/pure-function';
 import {BasicClass, ClassWithNull, ClassArrayRender} from './fixtures/class';
 

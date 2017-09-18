@@ -7,12 +7,11 @@
     "build": "babel src -d ./",
     "clean": "rm *.js",
     "prepublish": "npm run build",
-    "lint": "eslint src tests/core tests/serializer/tests && npm run format-check",
-    "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
-    "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
-    "test": "npm run lint && npm run test-core && npm run test-serializer",
-    "test-core": "NODE_ENV=test jest --coverage",
-    "test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test"
+    "lint": "eslint src tests/core && npm run format-check",
+    "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "test": "npm run lint && npm run test-core",
+    "test-core": "NODE_ENV=test jest --coverage"
   },
   "keywords": [
     "enzyme",

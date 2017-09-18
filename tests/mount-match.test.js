@@ -3,7 +3,7 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import mountToJson from '../../src/mount';
+import mountToJson from '../src/mount';
 import {elementToObject, Table, TobeList} from './fixtures/match-object';
 
 Enzyme.configure({adapter: new Adapter()});

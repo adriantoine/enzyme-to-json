@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {shallowToJson} from '../../src';
+import {shallowToJson} from '../src';
 
 Enzyme.configure({adapter: new Adapter()});
 

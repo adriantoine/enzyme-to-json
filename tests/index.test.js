@@ -1,19 +1,19 @@
 /* eslint-env jest */
 /* eslint import/first:0 */
 
-jest.mock('../../src/shallow');
-jest.mock('../../src/mount');
-jest.mock('../../src/render');
+jest.mock('../src/shallow');
+jest.mock('../src/mount');
+jest.mock('../src/render');
 
 import React from 'react';
 import Enzyme, {shallow, mount, render} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import shallowToJson from '../../src/shallow';
-import mountToJson from '../../src/mount';
-import renderToJson from '../../src/render';
+import shallowToJson from '../src/shallow';
+import mountToJson from '../src/mount';
+import renderToJson from '../src/render';
 
-import toJson from '../../src';
+import toJson from '../src';
 
 Enzyme.configure({adapter: new Adapter()});
 
