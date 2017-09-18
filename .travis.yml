@@ -19,3 +19,4 @@ script: npm test
 branches:
   only:
   - master
+  - enzyme3
