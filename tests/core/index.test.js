@@ -40,3 +40,7 @@ it('runs renderToJson when a render wrapper is passed', () => {
   expect(renderToJson).toHaveBeenCalledTimes(1);
   expect(renderToJson).toHaveBeenCalledWith(rendered, {noKey: true});
 });
+
+it('returns undefined if you pass a wrapper that is not Enzyme', () => {
+  expect(toJson({IAmNotAnEnzymeWrapper: true})).toBe(undefined);
+});
