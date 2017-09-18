@@ -10,6 +10,7 @@ import {
   BasicWithUndefined,
   BasicWithAList,
   ComponentWithAZeroChildren,
+  ArrayRender,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -17,6 +18,7 @@ import {
   ClassWithDirectPure,
   ClassWithDirectComponent,
   ClassWithNull,
+  ClassArrayRender,
 } from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -111,4 +113,24 @@ it('outputs the key prop', () => {
 it('doesnt output the key prop when noKey option is passed', () => {
   const mounted = mount(<div key={1} />);
   expect(mountToJson(mounted, {noKey: true})).toMatchSnapshot();
+});
+
+it('converts function components with render returning top level arrays', () => {
+  const mounted = mount(
+    <ArrayRender>
+      <strong>Hello!</strong>
+    </ArrayRender>,
+  );
+
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('converts class components with render returning top level arrays', () => {
+  const mounted = mount(
+    <ClassArrayRender>
+      <strong>Hello!</strong>
+    </ClassArrayRender>,
+  );
+
+  expect(mountToJson(mounted)).toMatchSnapshot();
 });

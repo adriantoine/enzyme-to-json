@@ -11,7 +11,7 @@ function nodeToJson(node, options) {
     return node;
   }
 
-  if (!node) {
+  if (isNil(node)) {
     return '';
   }
 
@@ -42,6 +42,10 @@ function nodeToJson(node, options) {
 }
 
 const shallowToJson = (wrapper, options = {}) => {
+  if (isNil(wrapper) || wrapper.length === 0) {
+    return null;
+  }
+
   if (wrapper.length > 1) {
     const nodes = wrapper.getNodesInternal();
     return nodes.map(node => nodeToJson(node, options));

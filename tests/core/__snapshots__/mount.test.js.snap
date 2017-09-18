@@ -171,6 +171,31 @@ exports[`converts basic pure mount 1`] = `
 </BasicPure>
 `;
 
+exports[`converts class components with render returning top level arrays 1`] = `
+<ClassArrayRender>
+  <div
+    className="test"
+    key="test"
+  >
+    Test
+  </div>
+  <div
+    className="test2"
+    key="test2"
+  >
+    Test 2
+  </div>
+  <div
+    className="child"
+    key="child"
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>
+</ClassArrayRender>
+`;
+
 exports[`converts class mount with mixed children 1`] = `
 <BasicClass>
   <div
@@ -192,6 +217,31 @@ exports[`converts class mount with mixed children 1`] = `
     </div>
   </div>
 </BasicClass>
+`;
+
+exports[`converts function components with render returning top level arrays 1`] = `
+<ArrayRender>
+  <div
+    className="test"
+    key="test"
+  >
+    Test
+  </div>
+  <div
+    className="test2"
+    key="test2"
+  >
+    Test 2
+  </div>
+  <div
+    className="child"
+    key="child"
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>
+</ArrayRender>
 `;
 
 exports[`converts pure mount with mixed children 1`] = `

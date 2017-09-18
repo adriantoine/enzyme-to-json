@@ -81,3 +81,19 @@ export class ClassWithState extends Component {
     );
   }
 }
+
+export class ClassArrayRender extends Component {
+  render() {
+    return [
+      <div className="test" key="test">
+        Test
+      </div>,
+      <div className="test2" key="test2">
+        Test 2
+      </div>,
+      <div className="child" key="child">
+        {this.props.children}
+      </div>,
+    ];
+  }
+}

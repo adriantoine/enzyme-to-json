@@ -42,10 +42,6 @@ function nodeToJson(node, options) {
     return '';
   }
 
-  if (Array.isArray(node)) {
-    return node.map(n => nodeToJson(n, options));
-  }
-
   if (options.mode === 'deep' && typeof node.type === 'function') {
     return nodeToJson(node.rendered, options);
   }
@@ -58,7 +54,7 @@ function nodeToJson(node, options) {
   };
 }
 
-const wrapperToJson = (wrapper, options = {}) => {
+const wrapperToJson = (wrapper, options) => {
   if (wrapper.length === 0) {
     return null;
   }

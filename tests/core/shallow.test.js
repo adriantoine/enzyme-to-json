@@ -8,14 +8,24 @@ import {
   BasicPure,
   BasicWithUndefined,
   BasicWithAList,
+  ArrayRender,
 } from './fixtures/pure-function';
-import {BasicClass, ClassWithPure, ClassWithNull} from './fixtures/class';
+import {
+  BasicClass,
+  ClassWithPure,
+  ClassWithNull,
+  ClassArrayRender,
+} from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
 
 function WrapperComponent(props) {
   return <BasicPure {...props} />;
 }
+
+it('doesnt break when called without arguments', () => {
+  expect(shallowToJson()).toBe(null);
+});
 
 it('converts basic pure shallow', () => {
   const shallowed = shallow(
@@ -131,4 +141,24 @@ it('outputs the key prop', () => {
 it('doesnt output the key prop when noKey option is passed', () => {
   const shallowed = shallow(<div key={1} />);
   expect(shallowToJson(shallowed, {noKey: true})).toMatchSnapshot();
+});
+
+it('converts function components with render returning top level arrays', () => {
+  const shallowed = shallow(
+    <ArrayRender>
+      <strong>Hello!</strong>
+    </ArrayRender>,
+  );
+
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('converts class components with render returning top level arrays', () => {
+  const shallowed = shallow(
+    <ClassArrayRender>
+      <strong>Hello!</strong>
+    </ClassArrayRender>,
+  );
+
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
