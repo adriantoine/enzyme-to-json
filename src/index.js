@@ -1,6 +1,6 @@
 import {isShallowWrapper, isReactWrapper, isCheerioWrapper} from './utils';
 import shallowToJson from './shallow';
-import mountToJson, {mountToDeepJson, mountToShallowJson} from './mount';
+import mountToJson from './mount';
 import renderToJson from './render';
 
 export default function(wrapper, options) {
@@ -17,10 +17,4 @@ export default function(wrapper, options) {
   }
 }
 
-export {
-  mountToJson,
-  mountToDeepJson,
-  mountToShallowJson,
-  shallowToJson,
-  renderToJson,
-};
+export {mountToJson, shallowToJson, renderToJson};

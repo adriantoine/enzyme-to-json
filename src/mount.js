@@ -54,7 +54,7 @@ function nodeToJson(node, options) {
   };
 }
 
-const wrapperToJson = (wrapper, options) => {
+const mountToJson = (wrapper, options = {}) => {
   if (wrapper.length === 0) {
     return null;
   }
@@ -68,23 +68,4 @@ const wrapperToJson = (wrapper, options) => {
   return nodeToJson(node, options);
 };
 
-const mountToDeepJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'deep',
-    ...options,
-  });
-
-const mountToShallowJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'shallow',
-    ...options,
-  });
-
-const mountToJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'normal',
-    ...options,
-  });
-
-export {mountToDeepJson, mountToShallowJson};
 export default mountToJson;

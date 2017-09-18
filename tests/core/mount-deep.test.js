@@ -3,7 +3,7 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {mountToDeepJson} from '../../src/mount';
+import mountToJson from '../../src/mount';
 import {
   BasicPure,
   BasicWithUndefined,
@@ -19,6 +19,7 @@ import {
 } from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
+const deepOptions = {mode: 'deep'};
 
 it('converts basic pure mount', () => {
   const mounted = mount(
@@ -27,13 +28,13 @@ it('converts basic pure mount', () => {
     </BasicPure>,
   );
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts pure mount with mixed children', () => {
   const mounted = mount(<BasicPure>Hello {'world'}!</BasicPure>);
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts basic class mount', () => {
@@ -43,13 +44,13 @@ it('converts basic class mount', () => {
     </BasicClass>,
   );
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts class mount with mixed children', () => {
   const mounted = mount(<BasicClass>Hello {'world'}!</BasicClass>);
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it', () => {
@@ -59,7 +60,7 @@ it('converts a class mount with a pure function in it', () => {
     </ClassWithPure>,
   );
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it as a direct child', () => {
@@ -69,7 +70,7 @@ it('converts a class mount with a pure function in it as a direct child', () => 
     </ClassWithDirectPure>,
   );
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('converts a class mount with a class component in it as a direct child', () => {
@@ -79,29 +80,29 @@ it('converts a class mount with a class component in it as a direct child', () =
     </ClassWithDirectComponent>,
   );
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('handles a component which returns null', () => {
   const mounted = mount(<ClassWithNull />);
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('includes undefined props', () => {
   const mounted = mount(<BasicWithUndefined>Hello!</BasicWithUndefined>);
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('renders zero-children', () => {
   const mounted = mount(<ComponentWithAZeroChildren />);
 
-  expect(mountToDeepJson(mounted)).toMatchSnapshot();
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
 it('renders multiple elements as a result of find', () => {
   const mounted = mount(<BasicWithAList />);
 
-  expect(mountToDeepJson(mounted.find('li'))).toMatchSnapshot();
+  expect(mountToJson(mounted.find('li'), deepOptions)).toMatchSnapshot();
 });

@@ -4,7 +4,7 @@ import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import {mountToShallowJson} from '../../src/mount';
+import mountToJson from '../../src/mount';
 import {
   BasicPure,
   BasicWithUndefined,
@@ -20,6 +20,7 @@ import {
 } from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
+const shallowOptions = {mode: 'shallow'};
 
 it('converts basic pure mount', () => {
   const mounted = mount(
@@ -28,14 +29,18 @@ it('converts basic pure mount', () => {
     </BasicPure>,
   );
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
-  expect(mountToShallowJson(mounted)).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
+  expect(mountToJson(mounted, shallowOptions)).toMatchSnapshot();
 });
 
 it('converts pure mount with mixed children', () => {
   const mounted = mount(<BasicPure>Hello {'world'}!</BasicPure>);
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('converts basic class mount', () => {
@@ -45,14 +50,18 @@ it('converts basic class mount', () => {
     </BasicClass>,
   );
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
-  expect(mountToShallowJson(mounted)).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
+  expect(mountToJson(mounted, shallowOptions)).toMatchSnapshot();
 });
 
 it('converts class mount with mixed children', () => {
   const mounted = mount(<BasicClass>Hello {'world'}!</BasicClass>);
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it', () => {
@@ -62,7 +71,9 @@ it('converts a class mount with a pure function in it', () => {
     </ClassWithPure>,
   );
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('converts a class mount with a pure function in it as a direct child', () => {
@@ -72,7 +83,9 @@ it('converts a class mount with a pure function in it as a direct child', () => 
     </ClassWithDirectPure>,
   );
 
-  expect(mountToShallowJson(mounted.find('BasicPure').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('BasicPure').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('converts a class mount with a class component in it as a direct child', () => {
@@ -83,30 +96,34 @@ it('converts a class mount with a class component in it as a direct child', () =
   );
 
   expect(
-    mountToShallowJson(mounted.find('ClassWithPure').at(0)),
+    mountToJson(mounted.find('ClassWithPure').at(0), shallowOptions),
   ).toMatchSnapshot();
 });
 
 it('handles a component which returns null', () => {
   const mounted = mount(<ClassWithNull />);
 
-  expect(mountToShallowJson(mounted.childAt(0))).toMatchSnapshot();
+  expect(mountToJson(mounted.childAt(0), shallowOptions)).toMatchSnapshot();
 });
 
 it('includes undefined props', () => {
   const mounted = mount(<BasicWithUndefined>Hello!</BasicWithUndefined>);
 
-  expect(mountToShallowJson(mounted.find('button').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('button').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('renders zero-children', () => {
   const mounted = mount(<ComponentWithAZeroChildren />);
 
-  expect(mountToShallowJson(mounted.find('div').at(0))).toMatchSnapshot();
+  expect(
+    mountToJson(mounted.find('div').at(0), shallowOptions),
+  ).toMatchSnapshot();
 });
 
 it('renders multiple elements as a result of find', () => {
   const mounted = mount(<BasicWithAList />);
 
-  expect(mountToShallowJson(mounted.find('li'))).toMatchSnapshot();
+  expect(mountToJson(mounted.find('li'), shallowOptions)).toMatchSnapshot();
 });

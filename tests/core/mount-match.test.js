@@ -3,10 +3,13 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {mountToDeepJson, mountToShallowJson} from '../../src/mount';
+import mountToJson from '../../src/mount';
 import {elementToObject, Table, TobeList} from './fixtures/match-object';
 
 Enzyme.configure({adapter: new Adapter()});
+
+const deepOptions = {mode: 'deep'};
+const shallowOptions = {mode: 'shallow'};
 
 describe('Table', () => {
   // Mock child components to omit irrelevant props for shallow match,
@@ -40,7 +43,7 @@ describe('Table', () => {
     );
 
     test('at thead', () => {
-      const received = mountToDeepJson($it.find('thead'));
+      const received = mountToJson($it.find('thead'), deepOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -61,7 +64,7 @@ describe('Table', () => {
     test('at tr', () => {
       // Be careful. Don’t duplicate the application code.
       const i = 1;
-      const received = mountToDeepJson($it.find('tbody tr').at(i));
+      const received = mountToJson($it.find('tbody tr').at(i), deepOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -87,7 +90,7 @@ describe('Table', () => {
     );
 
     test('at table', () => {
-      const received = mountToShallowJson($it.find('table'));
+      const received = mountToJson($it.find('table'), shallowOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -104,7 +107,7 @@ describe('Table', () => {
     });
 
     test('at thead', () => {
-      const received = mountToShallowJson($it.find('thead'));
+      const received = mountToJson($it.find('thead'), shallowOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -123,7 +126,7 @@ describe('Table', () => {
     });
 
     test('at tbody', () => {
-      const received = mountToShallowJson($it.find('tbody'));
+      const received = mountToJson($it.find('tbody'), shallowOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -139,7 +142,7 @@ describe('Table', () => {
     test('at tr', () => {
       // Be careful. Don’t duplicate the application code.
       const i = 1;
-      const received = mountToShallowJson($it.find('tbody tr').at(i));
+      const received = mountToJson($it.find('tbody tr').at(i), shallowOptions);
       expect(received).toMatchSnapshot();
       expect(received).toMatchObject(
         elementToObject(
@@ -178,7 +181,10 @@ describe('TobeList', () => {
   ];
 
   it('matches functional components to maximum depth', () => {
-    const received = mountToDeepJson(mount(<TobeList items={items} />));
+    const received = mountToJson(
+      mount(<TobeList items={items} />),
+      deepOptions,
+    );
     const expected = elementToObject(
       <ul>
         <li style={{textDecoration: 'line-through'}}>testing is painless</li>
@@ -194,10 +200,10 @@ describe('TobeList', () => {
   });
 
   it('matches functional components to minimum depth at a descendant', () => {
-    const received = mountToShallowJson(
-      mount(<TobeList items={items} />).find('ul'),
-      {noKey: true},
-    );
+    const received = mountToJson(mount(<TobeList items={items} />).find('ul'), {
+      mode: 'shallow',
+      noKey: true,
+    });
     const expected = elementToObject(
       <ul>
         <TobeItem text="testing is painless" is={false} />
@@ -214,15 +220,17 @@ describe('TobeList', () => {
 
   it('matches functional components to either depth at a descendant', () => {
     const element = <TobeList items={items} />;
-    const receivedDeep = mountToDeepJson(
+    const receivedDeep = mountToJson(
       mount(element)
         .find('li')
         .at(1),
+      deepOptions,
     );
-    const receivedShallow = mountToShallowJson(
+    const receivedShallow = mountToJson(
       mount(element)
         .find('li')
         .at(1),
+      shallowOptions,
     );
     const expected = elementToObject(
       <li style={{textDecoration: 'none'}}>more is less</li>,
