@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
+import omitBy from 'lodash.omitby';
 import Adapter from 'enzyme-adapter-react-16';
 
 import mountToJson from '../src/mount';
@@ -29,6 +30,8 @@ function WrapperComponent(props) {
 
 it('doesnt break when called without arguments', () => {
   expect(mountToJson()).toBe(null);
+  expect(mountToJson([null])).toBe(null);
+  expect(mountToJson(['a'])).toBe(null);
 });
 
 it('converts basic pure mount', () => {
@@ -176,4 +179,55 @@ it('handles elements in prop objects', () => {
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('accepts a map option allowing to customize content', () => {
+  const mounted = mount(<strong>Hello!</strong>);
+
+  expect(
+    mountToJson(mounted, {
+      map: json => ({...json, children: ['Goodbye!']}),
+    }),
+  ).toMatchSnapshot();
+});
+
+it('accepts a map option allowing to customize content of all nested components', () => {
+  const mounted = mount(
+    <div randomlygeneratedkey={Date.now()} className="wrapper">
+      <strong randomlygeneratedkey={Date.now()}>Hello!</strong>
+      <strong className="strong2">Hello 2</strong>
+    </div>,
+  );
+
+  expect(
+    mountToJson(mounted, {
+      map: json => ({
+        ...json,
+        props: omitBy(json.props, (val, key) => key === 'randomlygeneratedkey'),
+      }),
+    }),
+  ).toMatchSnapshot();
+});
+
+it('can skip a component I dont want to see with the map option', () => {
+  const mounted = mount(
+    <div>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+      <strong>Hello 2</strong>
+    </div>,
+  );
+
+  expect(
+    mountToJson(mounted, {
+      map: json => {
+        if (json.type === 'ul') {
+          return null;
+        }
+        return json;
+      },
+    }),
+  ).toMatchSnapshot();
 });

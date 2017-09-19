@@ -61,6 +61,12 @@ export class ClassWithNull extends Component {
   }
 }
 
+export class ClassWithNullChildren extends Component {
+  render() {
+    return <div>{null}</div>;
+  }
+}
+
 export class ClassWithState extends Component {
   constructor(props) {
     super(props);

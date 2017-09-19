@@ -4,7 +4,7 @@ import isNil from 'lodash.isnil';
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
-import {compact} from './utils';
+import {compact, applyMap} from './utils';
 
 function getChildren(node, options) {
   const children = compact(
@@ -44,12 +44,15 @@ function internalNodeToJson(node, options) {
     return node.map(n => internalNodeToJson(n, options));
   }
 
-  return {
-    type: typeName(node),
-    props: getProps(node, options),
-    children: getChildren(node, options),
-    $$typeof: Symbol.for('react.test.json'),
-  };
+  return applyMap(
+    {
+      type: typeName(node),
+      props: getProps(node, options),
+      children: getChildren(node, options),
+      $$typeof: Symbol.for('react.test.json'),
+    },
+    options,
+  );
 }
 
 const shallowToJson = (wrapper, options = {}) => {
@@ -57,13 +60,17 @@ const shallowToJson = (wrapper, options = {}) => {
     return null;
   }
 
-  if (wrapper.length > 1) {
+  if (wrapper.length > 1 && typeof wrapper.getNodesInternal === 'function') {
     const nodes = wrapper.getNodesInternal();
     return nodes.map(node => internalNodeToJson(node, options));
   }
 
-  const node = wrapper.getNodeInternal();
-  return internalNodeToJson(node, options);
+  if (typeof wrapper.getNodeInternal === 'function') {
+    const node = wrapper.getNodeInternal();
+    return internalNodeToJson(node, options);
+  }
+
+  return null;
 };
 
 export default shallowToJson;

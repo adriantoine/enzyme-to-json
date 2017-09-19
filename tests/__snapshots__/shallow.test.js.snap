@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`accepts a map option allowing to customize content 1`] = `
+<strong>
+  Goodbye!
+</strong>
+`;
+
+exports[`accepts a map option allowing to customize content of all nested components 1`] = `
+<div
+  className="wrapper"
+>
+  <strong>
+    Hello!
+  </strong>
+  <strong
+    className="strong2"
+  >
+    Hello 2
+  </strong>
+</div>
+`;
+
+exports[`can skip a component I dont want to see with the map option 1`] = `
+<div>
+  <strong>
+    Hello 2
+  </strong>
+</div>
+`;
+
 exports[`converts a class mount with a pure function in it 1`] = `
 <div
   className="class-with-pure class"

@@ -2,11 +2,17 @@
 
 import React from 'react';
 import Enzyme, {render} from 'enzyme';
+import omitBy from 'lodash.omitby';
 import Adapter from 'enzyme-adapter-react-16';
 
 import renderToJson from '../src/render';
 import {BasicPure, BasicWithAList, ArrayRender} from './fixtures/pure-function';
-import {BasicClass, ClassWithNull, ClassArrayRender} from './fixtures/class';
+import {
+  BasicClass,
+  ClassWithNull,
+  ClassWithNullChildren,
+  ClassArrayRender,
+} from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -43,7 +49,11 @@ it('renders the whole list', () => {
 
 it('handles a component which returns null', () => {
   const rendered = render(<ClassWithNull />);
+  expect(renderToJson(rendered)).toMatchSnapshot();
+});
 
+it('handles a component having null children', () => {
+  const rendered = render(<ClassWithNullChildren />);
   expect(renderToJson(rendered)).toMatchSnapshot();
 });
 
@@ -70,4 +80,55 @@ it('converts class components with render returning top level arrays', () => {
   );
 
   expect(renderToJson(rendered)).toMatchSnapshot();
+});
+
+it('accepts a map option allowing to customize content', () => {
+  const rendered = render(<strong>Hello!</strong>);
+
+  expect(
+    renderToJson(rendered, {
+      map: json => ({...json, children: ['Goodbye!']}),
+    }),
+  ).toMatchSnapshot();
+});
+
+it('accepts a map option allowing to customize content of all nested components', () => {
+  const rendered = render(
+    <div randomlygeneratedkey={Date.now()} className="wrapper">
+      <strong randomlygeneratedkey={Date.now()}>Hello!</strong>
+      <strong className="strong2">Hello 2</strong>
+    </div>,
+  );
+
+  expect(
+    renderToJson(rendered, {
+      map: json => ({
+        ...json,
+        props: omitBy(json.props, (val, key) => key === 'randomlygeneratedkey'),
+      }),
+    }),
+  ).toMatchSnapshot();
+});
+
+it('can skip a component I dont want to see with the map option', () => {
+  const rendered = render(
+    <div>
+      <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+      </ul>
+      <strong>Hello 2</strong>
+    </div>,
+  );
+
+  expect(
+    renderToJson(rendered, {
+      map: json => {
+        if (json.type === 'ul') {
+          return null;
+        }
+        return json;
+      },
+    }),
+  ).toMatchSnapshot();
 });

@@ -26,3 +26,10 @@ export const isEnzymeWrapper = wrapper =>
 
 export const compact = array =>
   filter(array, item => !isNil(item) && item !== '');
+
+export const applyMap = (json, options) => {
+  if (typeof options.map === 'function') {
+    return options.map(json);
+  }
+  return json;
+};
