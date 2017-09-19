@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
-import omitBy from 'lodash.omitby';
+import omitBy from 'lodash/omitBy';
 import Adapter from 'enzyme-adapter-react-16';
 
 import mountToJson from '../src/mount';

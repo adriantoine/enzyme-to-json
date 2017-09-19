@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Enzyme, {render} from 'enzyme';
-import omitBy from 'lodash.omitby';
+import omitBy from 'lodash/omitBy';
 import Adapter from 'enzyme-adapter-react-16';
 
 import renderToJson from '../src/render';

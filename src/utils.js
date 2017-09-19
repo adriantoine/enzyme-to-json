@@ -1,5 +1,5 @@
-import filter from 'lodash.filter';
-import isNil from 'lodash.isnil';
+import filter from 'lodash/filter';
+import isNil from 'lodash/isNil';
 import ShallowWrapper from 'enzyme/build/ShallowWrapper';
 import ReactWrapper from 'enzyme/build/ReactWrapper';
 
