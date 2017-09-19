@@ -1,5 +1,5 @@
-import omitBy from 'lodash.omitby';
-import isNil from 'lodash.isnil';
+import omitBy from 'lodash/omitBy';
+import isNil from 'lodash/isNil';
 
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';

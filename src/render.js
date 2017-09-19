@@ -1,5 +1,5 @@
-import range from 'lodash.range';
-import isNil from 'lodash.isnil';
+import range from 'lodash/range';
+import isNil from 'lodash/isNil';
 import {compact, applyMap} from './utils';
 
 const renderChildToJson = (child, options) => {

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import React from 'react';
-import omitBy from 'lodash.omitby';
+import omitBy from 'lodash/omitBy';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import shallowToJson from '../src/shallow';

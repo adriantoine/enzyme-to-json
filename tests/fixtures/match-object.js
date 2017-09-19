@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import omitBy from 'lodash.omitby';
+import omitBy from 'lodash/omitBy';
 
 const reactSymbol = Symbol.for('react.element');
 
