@@ -117,6 +117,14 @@ exports[`handles a component having null children 1`] = `<div />`;
 
 exports[`handles a component which returns null 1`] = `null`;
 
+exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `
+<div>
+  <span>
+    I am there
+  </span>
+</div>
+`;
+
 exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>

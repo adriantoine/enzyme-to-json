@@ -192,6 +192,14 @@ exports[`outputs the key prop 1`] = `
 />
 `;
 
+exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `
+<div>
+  <span>
+    I am there
+  </span>
+</div>
+`;
+
 exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>

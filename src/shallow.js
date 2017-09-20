@@ -44,7 +44,7 @@ function internalNodeToJson(node, options) {
     return node.map(n => internalNodeToJson(n, options));
   }
 
-  return applyMap(
+  const json = applyMap(
     {
       type: typeName(node),
       props: getProps(node, options),
@@ -53,6 +53,10 @@ function internalNodeToJson(node, options) {
     },
     options,
   );
+
+  if (!isNil(json) && !isNil(json.type)) {
+    return json;
+  }
 }
 
 const shallowToJson = (wrapper, options = {}) => {

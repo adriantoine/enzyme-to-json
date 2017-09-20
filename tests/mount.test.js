@@ -231,3 +231,14 @@ it('can skip a component I dont want to see with the map option', () => {
     }),
   ).toMatchSnapshot();
 });
+
+it('outputs the snapshot even with inline JSX conditions being falsy', () => {
+  const mounted = mount(
+    <div>
+      <span>I am there</span>
+      {false && <span>Issue</span>}
+    </div>,
+  );
+
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
