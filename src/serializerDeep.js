@@ -6,5 +6,5 @@ export function test(wrapper) {
 }
 
 export function print(wrapper, serializer) {
-  return serializer(toJson(wrapper));
+  return serializer(toJson(wrapper, {mode: 'deep'}));
 }
