@@ -15,9 +15,8 @@
     ]
   },
   "devDependencies": {
-    "enzyme": "file:../../node_modules/enzyme",
-    "jest": "file:../../node_modules/jest",
-    "rimraf": "file:../../node_modules/rimraf",
-    "react": "file:../../node_modules/react"
+    "enzyme": "^2.9.1",
+    "jest": "^21.1.0",
+    "react": "^15.6.1"
   }
 }
