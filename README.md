@@ -140,7 +140,9 @@ toJson(wrapper, {
 | `mode` | `'deep'`, `'shallow'` | The `deep` option will return a test object rendered to **maximum** depth while the `shallow` option will return a test object rendered to **minimum** depth. Only works for the `mount` wrappers. See `mode` documentation for examples. |
 | `map` | `function` | You can change each nested node of your component output by providing the map option. See `map` documentation for examples. |
 
-## Serializer
+## Serializers
+
+The library provides 2 serializers: `serializer` and `serializerDeep`.
 
 ### In Jest configuration:
 
