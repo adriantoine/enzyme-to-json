@@ -43,33 +43,33 @@
     "lodash": "^4.17.4"
   },
   "peerDependencies": {
-    "enzyme": "^3.0.0-beta.3"
+    "enzyme": "^3.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^7.0.0-beta.0",
-    "babel-core": "^7.0.0-beta.0",
-    "babel-plugin-syntax-export-extensions": "^7.0.0-beta.0",
-    "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.0",
-    "babel-plugin-transform-react-jsx": "^7.0.0-beta.0",
-    "babel-preset-env": "^2.0.0-beta.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-export-extensions": "^6.13.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
-    "enzyme": "^3.0.0-beta.3",
-    "enzyme-adapter-react-16": "^1.0.0-beta.2",
-    "eslint": "^4.6.1",
-    "eslint-config-prettier": "^2.4.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "eslint": "^4.7.2",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "~21.1.0",
     "prettier": "^1.7.0",
-    "prettier-check": "^1.0.0",
-    "react": "^16.0.0-rc.3",
-    "react-dom": "^16.0.0-rc.3",
-    "react-test-renderer": "^16.0.0-rc.3"
+    "prettier-check": "^2.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
