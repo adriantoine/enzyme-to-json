@@ -1,30 +1,41 @@
-import range from 'lodash.range';
-import {compact} from './utils';
+import range from 'lodash/range';
+import isNil from 'lodash/isNil';
+import {compact, applyMap} from './utils';
 
-const renderChildToJson = child => {
-  if (!child) {
+const renderChildToJson = (child, options) => {
+  if (isNil(child)) {
     return null;
   }
 
-  if (child.type === 'root') {
-    return renderChildToJson(child.children[0]);
-  } else if (child.type === 'tag') {
-    return {
-      type: child.name,
-      props: child.attribs,
-      children:
-        child.children && child.children.length
-          ? compact(child.children.map(renderChildToJson))
-          : null,
-      $$typeof: Symbol.for('react.test.json'),
-    };
+  if (child.type === 'tag') {
+    return applyMap(
+      {
+        type: child.name,
+        props: child.attribs,
+        children: compact(
+          child.children.map(c => renderChildToJson(c, options)),
+        ),
+        $$typeof: Symbol.for('react.test.json'),
+      },
+      options,
+    );
   } else if (child.type === 'text') {
     return child.data;
   }
+
+  return null;
 };
 
-export default wrapper => {
+const renderToJson = (wrapper, options = {}) => {
+  if (isNil(wrapper) || wrapper.length === 0) {
+    return null;
+  }
+
   return wrapper.length > 1
-    ? range(0, wrapper.length).map(node => renderChildToJson(wrapper[node]))
-    : renderChildToJson(wrapper[0]);
+    ? range(0, wrapper.length).map(node =>
+        renderChildToJson(wrapper[node], options),
+      )
+    : renderChildToJson(wrapper[0], options);
 };
+
+export default renderToJson;

@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accepts a map option allowing to customize content 1`] = `
+<strong>
+  Goodbye!
+</strong>
+`;
+
+exports[`accepts a map option allowing to customize content of all nested components 1`] = `
+<div
+  className="wrapper"
+>
+  <strong>
+    Hello!
+  </strong>
+  <strong
+    className="strong2"
+  >
+    Hello 2
+  </strong>
+</div>
+`;
+
+exports[`can skip a component I dont want to see with the map option 1`] = `
+<div>
+  <strong>
+    Hello 2
+  </strong>
+</div>
+`;
+
+exports[`converts a class mount with a pure function in it 1`] = `
+<div
+  className="class-with-pure class"
+  onClick={[Function]}
+>
+  <BasicPure
+    className="nested-pure"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty"
+    />
+  </BasicPure>
+</div>
+`;
+
+exports[`converts basic class shallow 1`] = `
+<div
+  className="basic-class class"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts basic pure shallow 1`] = `
+<div
+  className="basic-pure pure"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts class components with render returning top level arrays 1`] = `
+Array [
+  <div
+    className="test"
+    key="test"
+  />,
+  <div
+    className="test2"
+    key="test2"
+  />,
+  <div
+    className="child"
+    key="child"
+  />,
+]
+`;
+
+exports[`converts function components with render returning top level arrays 1`] = `
+Array [
+  <div
+    className="test"
+    key="test"
+  />,
+  <div
+    className="test2"
+    key="test2"
+  />,
+  <div
+    className="child"
+    key="child"
+  />,
+]
+`;
+
+exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
+
+exports[`handles a component which returns null 1`] = `""`;
+
+exports[`handles elements in prop arrays 1`] = `
+<BasicPure
+  elements={
+    Array [
+      <BasicPure>
+        <strong>
+          Hello!
+        </strong>
+      </BasicPure>,
+    ]
+  }
+/>
+`;
+
+exports[`handles elements in prop objects 1`] = `
+<BasicPure
+  element={
+    Object {
+      "element": <BasicPure>
+        <strong>
+          Hello!
+        </strong>
+      </BasicPure>,
+      "nestedElements": Array [
+        <BasicPure>
+          <strong>
+            Hello again!
+          </strong>
+        </BasicPure>,
+      ],
+    }
+  }
+/>
+`;
+
+exports[`handles elements in props 1`] = `
+<BasicPure
+  element={
+    <BasicPure>
+      <strong>
+        Hello!
+      </strong>
+    </BasicPure>
+  }
+/>
+`;
+
+exports[`ignores non-plain objects 1`] = `
+<BasicPure
+  instance={
+    TestConstructor {
+      "_test": true,
+    }
+  }
+/>
+`;
+
+exports[`outputs the key prop 1`] = `
+<div
+  key="1"
+/>
+`;
+
+exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `
+<div>
+  <span>
+    I am there
+  </span>
+</div>
+`;
+
+exports[`renders multiple elements as a result of find 1`] = `
+Array [
+  <li>
+    0
+  </li>,
+  <li>
+    1
+  </li>,
+]
+`;
+
+exports[`skips undefined props 1`] = `
+<button>
+  Hello
+</button>
+`;

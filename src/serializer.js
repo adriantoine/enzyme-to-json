@@ -1,4 +1,4 @@
-import {isEnzymeWrapper} from './build/utils'; // eslint-disable-line import/no-unresolved
+import {isEnzymeWrapper} from './utils';
 import toJson from './';
 
 module.exports = {

@@ -1,17 +1,17 @@
 {
-  "version": "2.0.1",
+  "version": "3.0.0-beta6",
   "name": "enzyme-to-json",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
-  "main": "build/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "babel src -d build && babel src/serializer.js -o serializer.js",
-    "prepublish": "npm run build",
-    "lint": "eslint src tests/core tests/serializer/tests && npm run format-check",
-    "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
-    "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js tests/serializer/tests/*.js tests/serializer/tests/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
-    "test": "npm run lint && npm run test-core && npm run test-serializer",
-    "test-core": "NODE_ENV=test jest --coverage",
-    "test-serializer": "cd tests/serializer && rm -rf node_modules && npm install && npm test"
+    "build": "babel src -d ./",
+    "clean": "rm *.js",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint src tests/core && npm run format-check",
+    "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
+    "test": "npm run lint && npm run test-core",
+    "test-core": "NODE_ENV=test jest --coverage"
   },
   "keywords": [
     "enzyme",
@@ -40,47 +40,41 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash.filter": "^4.6.0",
-    "lodash.isnil": "^4.0.0",
-    "lodash.isplainobject": "^4.0.6",
-    "lodash.omitby": "^4.6.0",
-    "lodash.range": "^3.2.0",
-    "object-values": "^1.0.0",
-    "object.entries": "^1.0.4"
+    "lodash": "^4.17.4"
   },
   "peerDependencies": {
-    "enzyme": "^2.7.1"
+    "enzyme": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-jest": "~21.0.2",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.0.2",
     "babel-plugin-syntax-export-extensions": "^6.13.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
-    "cz-conventional-changelog": "~2.0.0",
-    "enzyme": "^2.9.1",
-    "eslint": "^4.6.1",
-    "eslint-config-prettier": "^2.4.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.0",
+    "eslint": "^4.7.2",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.3.0",
+    "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "~21.1.0",
     "prettier": "^1.7.0",
-    "prettier-check": "^1.0.0",
-    "react": "^15.6.1",
-    "react-bootstrap": "^0.31.3",
-    "react-dom": "^15.6.1",
-    "react-test-renderer": "^15.6.1"
+    "prettier-check": "^2.0.0",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
-      "<rootDir>/tests/serializer",
       "<rootDir>/node_modules/"
     ],
     "coveragePathIgnorePatterns": [

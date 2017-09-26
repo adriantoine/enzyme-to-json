@@ -1,5 +1,5 @@
-import filter from 'lodash.filter';
-import isNil from 'lodash.isnil';
+import filter from 'lodash/filter';
+import isNil from 'lodash/isNil';
 import ShallowWrapper from 'enzyme/build/ShallowWrapper';
 import ReactWrapper from 'enzyme/build/ReactWrapper';
 
@@ -24,13 +24,12 @@ export const isEnzymeWrapper = wrapper =>
   isReactWrapper(wrapper) ||
   isCheerioWrapper(wrapper);
 
-export const omitFromPropsMinimal = (val, key) =>
-  key === 'children' || val === undefined;
-export const includeInChildrenMinimal = item => !isNil(item) && item !== '';
+export const compact = array =>
+  filter(array, item => !isNil(item) && item !== '');
 
-// For mountToDeepJson and mountToShallowJson
-// to return test objects which are compatible with react-test-renderer
-export const omitFromPropsCompatible = (val, key) => key === 'children';
-export const includeInChildrenCompatible = item => !isNil(item);
-
-export const compact = array => filter(array, includeInChildrenMinimal);
+export const applyMap = (json, options) => {
+  if (typeof options.map === 'function') {
+    return options.map(json);
+  }
+  return json;
+};

@@ -2,3 +2,10 @@ src
 coverage
 tests
 .babelrc
+.editorconfig
+.eslintrc
+.DS_Store
+.travis.yml
+.vscode
+CONTRIBUTING.md
+CHANGELOG.md

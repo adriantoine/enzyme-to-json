@@ -1,117 +1,78 @@
-import omitBy from 'lodash.omitby';
-import isNil from 'lodash.isnil';
-import values from 'object-values';
-import {isDOMComponent, isElement} from 'enzyme/build/react-compat';
-import {internalInstance, propsOfNode} from 'enzyme/build/Utils';
+import omitBy from 'lodash/omitBy';
+import isNil from 'lodash/isNil';
+
 import {typeName} from 'enzyme/build/Debug';
-import {childrenOfNode} from 'enzyme/build/ShallowTraversal';
-import {
-  includeInChildrenCompatible,
-  includeInChildrenMinimal,
-  omitFromPropsCompatible,
-  omitFromPropsMinimal,
-} from './utils';
+import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
-function instToJson(inst, options) {
-  const {mode} = options;
+import {compact, applyMap} from './utils';
 
-  if (typeof inst === 'string' || typeof inst === 'number') {
-    return inst;
-  }
-  if (!inst) {
+function getChildren(node, options) {
+  if (options.mode === 'shallow' && typeof node.type === 'function') {
     return null;
   }
 
-  if (
-    inst._stringText ||
-    (mode === 'shallow' && typeof inst._stringText === 'string')
-  ) {
-    return inst._stringText;
-  }
-
-  if (!inst.getPublicInstance) {
-    const internal = internalInstance(inst);
-    return instToJson(internal, options);
-  }
-  const publicInst = inst.getPublicInstance();
-
-  if (typeof publicInst === 'string' || typeof publicInst === 'number') {
-    return publicInst;
-  }
-  if (!publicInst && !inst._renderedComponent) {
-    return null;
-  }
-
-  const currentElement = inst._currentElement;
-  const type = typeName(currentElement);
-  const props = omitBy(
-    {...propsOfNode(currentElement)},
-    mode !== 'normal' ? omitFromPropsCompatible : omitFromPropsMinimal,
+  const children = compact(
+    childrenOfNode(node).map(n => internalNodeToJson(n, options)),
   );
 
-  if (options.noKey !== true && !isNil(currentElement.key)) {
-    props.key = currentElement.key;
-  }
-
-  const children = [];
-  if (isDOMComponent(publicInst)) {
-    const renderedChildren = inst._renderedChildren;
-    if (isNil(renderedChildren)) {
-      children.push(...childrenOfNode(currentElement));
-    } else {
-      children.push(...values(renderedChildren));
-    }
-  } else if (
-    isElement(currentElement) &&
-    typeof currentElement.type === 'function'
-  ) {
-    if (mode === 'normal') {
-      children.push(inst._renderedComponent);
-    } else if (mode === 'deep') {
-      // A component returns at most one element in React 15 and earlier.
-      return instToJson(inst._renderedComponent, options);
-    }
-    // else if shallow, children are still an empty array
-  }
-
-  const childrenArray = children
-    .map(n => instToJson(n, options))
-    .filter(
-      mode === 'shallow'
-        ? includeInChildrenCompatible
-        : includeInChildrenMinimal,
-    );
-
-  return {
-    type,
-    props,
-    children: childrenArray.length ? childrenArray : null,
-    $$typeof: Symbol.for('react.test.json'),
-  };
+  return children.length > 0 ? children : null;
 }
 
-const wrapperToJson = (wrapper, options) =>
-  wrapper.length > 1
-    ? wrapper.nodes.map(node => instToJson(node, options))
-    : instToJson(wrapper.node, options);
+function getProps(node, options) {
+  const props = omitBy(
+    {
+      ...propsOfNode(node),
+    },
+    (val, key) => key === 'children',
+  );
 
-const mountToDeepJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'deep',
-    ...options,
-  });
+  if (!isNil(node.key) && options.noKey !== true) {
+    props.key = node.key;
+  }
 
-const mountToShallowJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'shallow',
-    ...options,
-  });
+  return props;
+}
 
-const mountToJson = (wrapper, options = {}) =>
-  wrapperToJson(wrapper, {
-    mode: 'normal',
-    ...options,
-  });
+function internalNodeToJson(node, options) {
+  if (typeof node === 'string' || typeof node === 'number') {
+    return node;
+  }
 
-export {mountToDeepJson, mountToShallowJson};
+  if (isNil(node)) {
+    return '';
+  }
+
+  if (options.mode === 'deep' && typeof node.type === 'function') {
+    return internalNodeToJson(node.rendered, options);
+  }
+
+  return applyMap(
+    {
+      type: typeName(node),
+      props: getProps(node, options),
+      children: getChildren(node, options),
+      $$typeof: Symbol.for('react.test.json'),
+    },
+    options,
+  );
+}
+
+const mountToJson = (wrapper, options = {}) => {
+  if (isNil(wrapper) || wrapper.length === 0) {
+    return null;
+  }
+
+  if (wrapper.length > 1 && typeof wrapper.getNodesInternal === 'function') {
+    const nodes = wrapper.getNodesInternal();
+    return nodes.map(node => internalNodeToJson(node, options));
+  }
+
+  if (typeof wrapper.getNodeInternal === 'function') {
+    const node = wrapper.getNodeInternal();
+    return internalNodeToJson(node, options);
+  }
+
+  return null;
+};
+
 export default mountToJson;

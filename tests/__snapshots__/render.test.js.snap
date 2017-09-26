@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`accepts a map option allowing to customize content 1`] = `
+<strong>
+  Goodbye!
+</strong>
+`;
+
+exports[`accepts a map option allowing to customize content of all nested components 1`] = `
+<div
+  class="wrapper"
+>
+  <strong>
+    Hello!
+  </strong>
+  <strong
+    class="strong2"
+  >
+    Hello 2
+  </strong>
+</div>
+`;
+
+exports[`can skip a component I dont want to see with the map option 1`] = `
+<div>
+  <strong>
+    Hello 2
+  </strong>
+</div>
+`;
+
+exports[`converts basic class render 1`] = `
+<div
+  class="basic-class class"
+>
+  <div
+    class="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      class="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts basic pure render 1`] = `
+<div
+  class="basic-pure pure"
+>
+  <div
+    class="group"
+    id="group-id"
+  >
+    <span>
+      <strong>
+        Hello!
+      </strong>
+    </span>
+    <span
+      class="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`converts class components with render returning top level arrays 1`] = `
+Array [
+  <div
+    class="test"
+  >
+    Test
+  </div>,
+  <div
+    class="test2"
+  >
+    Test 2
+  </div>,
+  <div
+    class="child"
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>,
+]
+`;
+
+exports[`converts function components with render returning top level arrays 1`] = `
+Array [
+  <div
+    class="test"
+  >
+    Test
+  </div>,
+  <div
+    class="test2"
+  >
+    Test 2
+  </div>,
+  <div
+    class="child"
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>,
+]
+`;
+
+exports[`handles a component having null children 1`] = `<div />`;
+
+exports[`handles a component which returns null 1`] = `null`;
+
+exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `
+<div>
+  <span>
+    I am there
+  </span>
+</div>
+`;
+
+exports[`renders multiple elements as a result of find 1`] = `
+Array [
+  <li>
+    0
+  </li>,
+  <li>
+    1
+  </li>,
+]
+`;
+
+exports[`renders the whole list 1`] = `
+<ul>
+  <li>
+    0
+  </li>
+  <li>
+    1
+  </li>
+</ul>
+`;
