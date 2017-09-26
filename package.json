@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0-beta6",
+  "version": "3.0.0",
   "name": "enzyme-to-json",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
   "main": "index.js",
