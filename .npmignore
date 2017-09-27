@@ -1,4 +1,6 @@
 src
+build
+docs
 coverage
 tests
 .babelrc

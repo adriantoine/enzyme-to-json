@@ -1,7 +1,5 @@
 node_modules
 coverage
-build
-/serializer.js
 npm-debug.log
 .vscode
 .DS_Store
