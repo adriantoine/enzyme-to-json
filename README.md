@@ -28,7 +28,7 @@ Add this line to your [Jest configuration](https://facebook.github.io/jest/docs/
 
 For most projects, that is all you need to start using snapshot tests on Enzyme wrappers. The rest of this readme is only showing advanced usages of this library.
 
-In case you are still confused, [here is a minimal example project] demonstrating this configuration.
+In case you are still confused, [here is a minimal example project](https://github.com/adriantoine/enzyme-to-json-v3-testing) demonstrating this configuration.
 
 # Advanced usage
 
