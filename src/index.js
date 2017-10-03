@@ -2,6 +2,7 @@ import {isShallowWrapper, isReactWrapper, isCheerioWrapper} from './utils';
 import shallowToJson from './shallow';
 import mountToJson from './mount';
 import renderToJson from './render';
+import createSerializer from './createSerializer';
 
 export default function(wrapper, options) {
   if (isShallowWrapper(wrapper)) {
@@ -17,4 +18,4 @@ export default function(wrapper, options) {
   }
 }
 
-export {mountToJson, shallowToJson, renderToJson};
+export {mountToJson, shallowToJson, renderToJson, createSerializer};

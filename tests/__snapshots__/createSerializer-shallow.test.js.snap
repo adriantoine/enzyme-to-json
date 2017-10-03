@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`outputs the key prop 1`] = `
+<ul>
+  <li
+    key="1"
+  />
+  <li
+    key="2"
+  />
+</ul>
+`;
+
+exports[`renders basic pure component 1`] = `
+<BasicPure
+  className="pure"
+>
+  <div
+    className="basic-pure pure"
+    onClick={[Function]}
+  >
+    <div
+      className="group"
+      id="group-id"
+    >
+      <span>
+        <strong>
+          Hello!
+        </strong>
+      </span>
+      <span
+        className="empty"
+      />
+    </div>
+  </div>
+</BasicPure>
+`;
