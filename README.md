@@ -37,10 +37,12 @@ In case you are still confused, [here is a minimal example project](https://gith
 You can add the serializer for only one Jest test file by adding these lines at the beginning of your Jest unit test file:
 
 ```js
-import serializer from 'enzyme-to-json/serializer';
+import {createSerializer} from 'enzyme-to-json';
 
-expect.addSnapshotSerializer(serializer);
+expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 ```
+
+You can also add the serializer for all tests using the [`setupTestFrameworkScriptFile`](https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string) configuration option from Jest.
 
 ## Helper
 

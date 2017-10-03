@@ -1,11 +1,3 @@
-import {isEnzymeWrapper} from './utils';
-import toJson from './';
+import createSerializer from './createSerializer';
 
-module.exports = {
-  test(wrapper) {
-    return isEnzymeWrapper(wrapper);
-  },
-  print(wrapper, serializer) {
-    return serializer(toJson(wrapper));
-  },
-};
+module.exports = createSerializer();
