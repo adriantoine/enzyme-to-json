@@ -19,8 +19,8 @@ export interface Options {
 }
 
 export interface JestSerializer {
-  test: (CommonWrapper) => boolean;
-  print: (CommonWrapper, serializer) => Json;
+  test: (CommonWrapper: CommonWrapper) => boolean;
+  print: (CommonWrapper: CommonWrapper, serializer: JestSerializer) => Json;
 }
 
 /**
