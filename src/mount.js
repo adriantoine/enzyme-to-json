@@ -42,6 +42,10 @@ function internalNodeToJson(node, options) {
     return '';
   }
 
+  if (Array.isArray(node)) {
+    return node.map(child => internalNodeToJson(child, options));
+  }
+
   if (options.mode === 'deep' && typeof node.type === 'function') {
     return internalNodeToJson(node.rendered, options);
   }
