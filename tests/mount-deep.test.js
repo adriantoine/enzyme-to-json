@@ -9,6 +9,7 @@ import {
   BasicWithUndefined,
   BasicWithAList,
   ComponentWithAZeroChildren,
+  ArrayRender,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -16,6 +17,7 @@ import {
   ClassWithDirectPure,
   ClassWithDirectComponent,
   ClassWithNull,
+  ClassArrayRender,
 } from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -78,6 +80,26 @@ it('converts a class mount with a class component in it as a direct child', () =
     <ClassWithDirectComponent className="class">
       <strong>Hello!</strong>
     </ClassWithDirectComponent>,
+  );
+
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
+});
+
+it('converts function components with render returning top level arrays', () => {
+  const mounted = mount(
+    <ArrayRender>
+      <strong>Hello!</strong>
+    </ArrayRender>,
+  );
+
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
+});
+
+it('converts class components with render returning top level arrays', () => {
+  const mounted = mount(
+    <ClassArrayRender>
+      <strong>Hello!</strong>
+    </ClassArrayRender>,
   );
 
   expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
