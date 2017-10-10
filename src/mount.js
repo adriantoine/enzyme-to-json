@@ -12,7 +12,7 @@ function getChildren(node, options) {
   }
 
   const children = compact(
-    childrenOfNode(node).map(n => internalNodeToJson(n, options))
+    childrenOfNode(node).map(n => internalNodeToJson(n, options)),
   );
 
   return children.length > 0 ? children : null;
@@ -23,7 +23,7 @@ function getProps(node, options) {
     {
       ...propsOfNode(node),
     },
-    (val, key) => key === 'children'
+    (val, key) => key === 'children',
   );
 
   if (!isNil(node.key) && options.noKey !== true) {
@@ -57,7 +57,7 @@ function internalNodeToJson(node, options) {
       children: getChildren(node, options),
       $$typeof: Symbol.for('react.test.json'),
     },
-    options
+    options,
   );
 }
 

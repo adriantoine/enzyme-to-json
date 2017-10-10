@@ -15,7 +15,7 @@ it('renders basic pure component', () => {
   const mounted = mount(
     <BasicPure className="pure">
       <strong>Hello!</strong>
-    </BasicPure>
+    </BasicPure>,
   );
 
   expect(mounted).toMatchSnapshot();
@@ -26,7 +26,7 @@ it('outputs the key prop', () => {
     <ul>
       <li key={1} />
       <li key={2} />
-    </ul>
+    </ul>,
   );
   expect(mounted).toMatchSnapshot();
 });
