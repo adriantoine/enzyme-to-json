@@ -191,6 +191,10 @@ exports[`ignores non-plain objects 1`] = `
 />
 `;
 
+exports[`outputs an empty string when a component returns false 1`] = `""`;
+
+exports[`outputs an empty string when a component returns undefined 1`] = `""`;
+
 exports[`outputs the key prop 1`] = `
 <ul>
   <li

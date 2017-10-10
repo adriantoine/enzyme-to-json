@@ -36,7 +36,7 @@ function internalNodeToJson(node, options) {
     return node;
   }
 
-  if (isNil(node)) {
+  if (isNil(node) || node === false) {
     return '';
   }
 

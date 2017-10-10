@@ -10,6 +10,7 @@ import {
   BasicWithUndefined,
   BasicWithAList,
   ArrayRender,
+  FalsyTruthyComponent,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -235,5 +236,15 @@ it('outputs the snapshot even with inline JSX conditions being falsy', () => {
     </div>,
   );
 
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('outputs an empty string when a component returns false', () => {
+  const shallowed = shallow(<FalsyTruthyComponent foo={false} />);
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('outputs an empty string when a component returns undefined', () => {
+  const shallowed = shallow(<FalsyTruthyComponent />);
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });

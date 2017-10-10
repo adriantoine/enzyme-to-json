@@ -46,3 +46,7 @@ export function ArrayRender(props) {
     </div>,
   ];
 }
+
+export const FalsyTruthyComponent = ({foo}) => {
+  return foo && <div>Yep</div>;
+};
