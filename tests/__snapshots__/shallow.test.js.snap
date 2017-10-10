@@ -125,7 +125,12 @@ Array [
 ]
 `;
 
-exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
+exports[`doesnt output the key prop when noKey option is passed 1`] = `
+<ul>
+  <li />
+  <li />
+</ul>
+`;
 
 exports[`handles a component which returns null 1`] = `""`;
 
@@ -187,9 +192,14 @@ exports[`ignores non-plain objects 1`] = `
 `;
 
 exports[`outputs the key prop 1`] = `
-<div
-  key="1"
-/>
+<ul>
+  <li
+    key="1"
+  />
+  <li
+    key="2"
+  />
+</ul>
 `;
 
 exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `

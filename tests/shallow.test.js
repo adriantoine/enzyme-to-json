@@ -34,7 +34,7 @@ it('converts basic pure shallow', () => {
   const shallowed = shallow(
     <BasicPure className="pure">
       <strong>Hello!</strong>
-    </BasicPure>,
+    </BasicPure>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -44,7 +44,7 @@ it('converts basic class shallow', () => {
   const shallowed = shallow(
     <BasicClass className="class">
       <strong>Hello!</strong>
-    </BasicClass>,
+    </BasicClass>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -54,7 +54,7 @@ it('converts a class mount with a pure function in it', () => {
   const shallowed = shallow(
     <ClassWithPure className="class">
       <strong>Hello!</strong>
-    </ClassWithPure>,
+    </ClassWithPure>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -73,7 +73,7 @@ it('handles elements in props', () => {
           <strong>Hello!</strong>
         </BasicPure>
       }
-    />,
+    />
   );
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
@@ -86,7 +86,7 @@ it('handles elements in prop arrays', () => {
           <strong>Hello!</strong>
         </BasicPure>,
       ]}
-    />,
+    />
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -107,7 +107,7 @@ it('handles elements in prop objects', () => {
           </BasicPure>,
         ],
       }}
-    />,
+    />
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -119,7 +119,7 @@ it('ignores non-plain objects', () => {
   }
 
   const shallowed = shallow(
-    <WrapperComponent instance={new TestConstructor()} />,
+    <WrapperComponent instance={new TestConstructor()} />
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -137,12 +137,22 @@ it('renders multiple elements as a result of find', () => {
 });
 
 it('outputs the key prop', () => {
-  const shallowed = shallow(<div key={1} />);
+  const shallowed = shallow(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>
+  );
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
 
 it('doesnt output the key prop when noKey option is passed', () => {
-  const shallowed = shallow(<div key={1} />);
+  const shallowed = shallow(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>
+  );
   expect(shallowToJson(shallowed, {noKey: true})).toMatchSnapshot();
 });
 
@@ -150,7 +160,7 @@ it('converts function components with render returning top level arrays', () => 
   const shallowed = shallow(
     <ArrayRender>
       <strong>Hello!</strong>
-    </ArrayRender>,
+    </ArrayRender>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -160,7 +170,7 @@ it('converts class components with render returning top level arrays', () => {
   const shallowed = shallow(
     <ClassArrayRender>
       <strong>Hello!</strong>
-    </ClassArrayRender>,
+    </ClassArrayRender>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
@@ -172,7 +182,7 @@ it('accepts a map option allowing to customize content', () => {
   expect(
     shallowToJson(shallowed, {
       map: json => ({...json, children: ['Goodbye!']}),
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -181,7 +191,7 @@ it('accepts a map option allowing to customize content of all nested components'
     <div randomlyGeneratedKey={Date.now()} className="wrapper">
       <strong randomlyGeneratedKey={Date.now()}>Hello!</strong>
       <strong className="strong2">Hello 2</strong>
-    </div>,
+    </div>
   );
 
   expect(
@@ -190,7 +200,7 @@ it('accepts a map option allowing to customize content of all nested components'
         ...json,
         props: omitBy(json.props, (val, key) => key === 'randomlyGeneratedKey'),
       }),
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -202,7 +212,7 @@ it('can skip a component I dont want to see with the map option', () => {
         <li>Item 2</li>
       </ul>
       <strong>Hello 2</strong>
-    </div>,
+    </div>
   );
 
   expect(
@@ -213,7 +223,7 @@ it('can skip a component I dont want to see with the map option', () => {
         }
         return json;
       },
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -222,7 +232,7 @@ it('outputs the snapshot even with inline JSX conditions being falsy', () => {
     <div>
       <span>I am there</span>
       {false && <span>Issue</span>}
-    </div>,
+    </div>
   );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();

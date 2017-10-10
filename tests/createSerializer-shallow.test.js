@@ -5,7 +5,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import createSerializer from '../src/createSerializer';
-import { BasicPure, } from './fixtures/pure-function';
+import {BasicPure} from './fixtures/pure-function';
 
 expect.addSnapshotSerializer(createSerializer());
 
@@ -15,13 +15,18 @@ it('renders basic pure component', () => {
   const mounted = mount(
     <BasicPure className="pure">
       <strong>Hello!</strong>
-    </BasicPure>,
+    </BasicPure>
   );
 
   expect(mounted).toMatchSnapshot();
 });
 
 it('outputs the key prop', () => {
-  const mounted = mount(<ul><li key={1} /><li key={2} /></ul>);
+  const mounted = mount(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>
+  );
   expect(mounted).toMatchSnapshot();
 });

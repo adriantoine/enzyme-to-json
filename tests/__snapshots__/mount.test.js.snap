@@ -296,7 +296,12 @@ exports[`converts pure mount with mixed children 1`] = `
 </BasicPure>
 `;
 
-exports[`doesnt output the key prop when noKey option is passed 1`] = `<div />`;
+exports[`doesnt output the key prop when noKey option is passed 1`] = `
+<ul>
+  <li />
+  <li />
+</ul>
+`;
 
 exports[`handles a component which returns null 1`] = `<ClassWithNull />`;
 
@@ -396,7 +401,16 @@ exports[`handles elements in prop objects 1`] = `
 </WrapperComponent>
 `;
 
-exports[`outputs the key prop 1`] = `<div />`;
+exports[`outputs the key prop 1`] = `
+<ul>
+  <li
+    key="1"
+  />
+  <li
+    key="2"
+  />
+</ul>
+`;
 
 exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = `
 <div>

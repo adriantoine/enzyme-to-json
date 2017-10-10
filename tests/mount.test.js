@@ -38,7 +38,7 @@ it('converts basic pure mount', () => {
   const mounted = mount(
     <BasicPure className="pure">
       <strong>Hello!</strong>
-    </BasicPure>,
+    </BasicPure>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -53,7 +53,7 @@ it('converts basic class mount', () => {
   const mounted = mount(
     <BasicClass className="class">
       <strong>Hello!</strong>
-    </BasicClass>,
+    </BasicClass>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -68,7 +68,7 @@ it('converts a class mount with a pure function in it', () => {
   const mounted = mount(
     <ClassWithPure className="class">
       <strong>Hello!</strong>
-    </ClassWithPure>,
+    </ClassWithPure>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -78,7 +78,7 @@ it('converts a class mount with a pure function in it as a direct child', () => 
   const mounted = mount(
     <ClassWithDirectPure className="class">
       <strong>Hello!</strong>
-    </ClassWithDirectPure>,
+    </ClassWithDirectPure>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -88,7 +88,7 @@ it('converts a class mount with a class component in it as a direct child', () =
   const mounted = mount(
     <ClassWithDirectComponent className="class">
       <strong>Hello!</strong>
-    </ClassWithDirectComponent>,
+    </ClassWithDirectComponent>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -117,12 +117,22 @@ it('renders multiple elements as a result of find', () => {
 });
 
 it('outputs the key prop', () => {
-  const mounted = mount(<div key={1} />);
+  const mounted = mount(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>
+  );
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
 
 it('doesnt output the key prop when noKey option is passed', () => {
-  const mounted = mount(<div key={1} />);
+  const mounted = mount(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>
+  );
   expect(mountToJson(mounted, {noKey: true})).toMatchSnapshot();
 });
 
@@ -130,7 +140,7 @@ it('converts function components with render returning top level arrays', () => 
   const mounted = mount(
     <ArrayRender>
       <strong>Hello!</strong>
-    </ArrayRender>,
+    </ArrayRender>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -140,7 +150,7 @@ it('converts class components with render returning top level arrays', () => {
   const mounted = mount(
     <ClassArrayRender>
       <strong>Hello!</strong>
-    </ClassArrayRender>,
+    </ClassArrayRender>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -154,7 +164,7 @@ it('handles elements in prop arrays', () => {
           <strong>Hello!</strong>
         </BasicPure>,
       ]}
-    />,
+    />
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -175,7 +185,7 @@ it('handles elements in prop objects', () => {
           </BasicPure>,
         ],
       }}
-    />,
+    />
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
@@ -187,7 +197,7 @@ it('accepts a map option allowing to customize content', () => {
   expect(
     mountToJson(mounted, {
       map: json => ({...json, children: ['Goodbye!']}),
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -196,7 +206,7 @@ it('accepts a map option allowing to customize content of all nested components'
     <div randomlygeneratedkey={Date.now()} className="wrapper">
       <strong randomlygeneratedkey={Date.now()}>Hello!</strong>
       <strong className="strong2">Hello 2</strong>
-    </div>,
+    </div>
   );
 
   expect(
@@ -205,7 +215,7 @@ it('accepts a map option allowing to customize content of all nested components'
         ...json,
         props: omitBy(json.props, (val, key) => key === 'randomlygeneratedkey'),
       }),
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -217,7 +227,7 @@ it('can skip a component I dont want to see with the map option', () => {
         <li>Item 2</li>
       </ul>
       <strong>Hello 2</strong>
-    </div>,
+    </div>
   );
 
   expect(
@@ -228,7 +238,7 @@ it('can skip a component I dont want to see with the map option', () => {
         }
         return json;
       },
-    }),
+    })
   ).toMatchSnapshot();
 });
 
@@ -237,7 +247,7 @@ it('outputs the snapshot even with inline JSX conditions being falsy', () => {
     <div>
       <span>I am there</span>
       {false && <span>Issue</span>}
-    </div>,
+    </div>
   );
 
   expect(mountToJson(mounted)).toMatchSnapshot();
