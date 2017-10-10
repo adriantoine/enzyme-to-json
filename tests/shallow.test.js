@@ -137,12 +137,22 @@ it('renders multiple elements as a result of find', () => {
 });
 
 it('outputs the key prop', () => {
-  const shallowed = shallow(<div key={1} />);
+  const shallowed = shallow(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>,
+  );
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
 
 it('doesnt output the key prop when noKey option is passed', () => {
-  const shallowed = shallow(<div key={1} />);
+  const shallowed = shallow(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>,
+  );
   expect(shallowToJson(shallowed, {noKey: true})).toMatchSnapshot();
 });
 

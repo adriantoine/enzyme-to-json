@@ -117,12 +117,22 @@ it('renders multiple elements as a result of find', () => {
 });
 
 it('outputs the key prop', () => {
-  const mounted = mount(<div key={1} />);
+  const mounted = mount(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>,
+  );
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
 
 it('doesnt output the key prop when noKey option is passed', () => {
-  const mounted = mount(<div key={1} />);
+  const mounted = mount(
+    <ul>
+      <li key={1} />
+      <li key={2} />
+    </ul>,
+  );
   expect(mountToJson(mounted, {noKey: true})).toMatchSnapshot();
 });
 
