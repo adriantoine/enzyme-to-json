@@ -12,6 +12,7 @@ import {
   BasicWithAList,
   ComponentWithAZeroChildren,
   ArrayRender,
+  FalsyTruthyComponent,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -250,5 +251,10 @@ it('outputs the snapshot even with inline JSX conditions being falsy', () => {
     </div>,
   );
 
+  expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('outputs an empty string when a component returns false', () => {
+  const mounted = mount(<FalsyTruthyComponent foo={false} />);
   expect(mountToJson(mounted)).toMatchSnapshot();
 });
