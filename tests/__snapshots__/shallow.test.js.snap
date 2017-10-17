@@ -191,6 +191,8 @@ exports[`ignores non-plain objects 1`] = `
 />
 `;
 
+exports[`outputs an empty string when a component has false chidren 1`] = `<div />`;
+
 exports[`outputs an empty string when a component returns false 1`] = `""`;
 
 exports[`outputs an empty string when a component returns undefined 1`] = `""`;

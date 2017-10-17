@@ -401,6 +401,14 @@ exports[`handles elements in prop objects 1`] = `
 </WrapperComponent>
 `;
 
+exports[`outputs an empty string when a component has false chidren 1`] = `
+<FalsyChildren
+  falsy={false}
+>
+  <div />
+</FalsyChildren>
+`;
+
 exports[`outputs an empty string when a component returns false 1`] = `
 <FalsyTruthyComponent
   foo={false}

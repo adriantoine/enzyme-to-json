@@ -2,6 +2,7 @@ sudo: false
 language: node_js
 
 cache:
+  yarn: true
   directories:
   - node_modules
 
@@ -12,10 +13,13 @@ node_js:
 - '7'
 - '8'
 
+install:
+  - yarn --ignore-engines
+
 after_success:
   - ./node_modules/.bin/codecov
 
-script: npm test
+script: yarn test
 
 branches:
   only:
