@@ -11,6 +11,7 @@ import {
   BasicWithAList,
   ArrayRender,
   FalsyTruthyComponent,
+  FalsyChildren,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -246,5 +247,10 @@ it('outputs an empty string when a component returns false', () => {
 
 it('outputs an empty string when a component returns undefined', () => {
   const shallowed = shallow(<FalsyTruthyComponent />);
+  expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('outputs an empty string when a component has false chidren', () => {
+  const shallowed = shallow(<FalsyChildren falsy={false} />);
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
