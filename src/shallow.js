@@ -46,6 +46,7 @@ function internalNodeToJson(node, options) {
 
   const json = applyMap(
     {
+      node,
       type: typeName(node),
       props: getProps(node, options),
       children: getChildren(node, options),
