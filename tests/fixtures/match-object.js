@@ -1,42 +1,4 @@
 import React, {Component} from 'react';
-import omitBy from 'lodash/omitBy';
-
-const reactSymbol = Symbol.for('react.element');
-
-// Given React element, return test object.
-// Analogous to proposed relevantTestObject function,
-// except this version neither omits empty props object
-// nor irrelevant children.
-export function elementToObject({type, props}) {
-  const children = props.children;
-  return {
-    $$typeof: Symbol.for('react.test.json'),
-    type:
-      typeof type === 'string'
-        ? type
-        : typeof type === 'function'
-          ? type.displayName || type.name || 'Unknown'
-          : 'Unknown',
-    props:
-      children === undefined
-        ? {...props}
-        : omitBy(props, (value, key) => key === 'children'),
-    children: children === undefined ? null : childrenToObject(children, []),
-  };
-}
-
-function childrenToObject(arg, array) {
-  if (Array.isArray(arg)) {
-    // Iteration adjacent to other rendered output: { array.map(item => node) }
-    return arg.reduce(
-      (reduced, child) => childrenToObject(child, reduced),
-      array,
-    );
-  }
-
-  array.push(arg && arg.$$typeof === reactSymbol ? elementToObject(arg) : arg);
-  return array;
-}
 
 export class Table extends Component {
   render() {

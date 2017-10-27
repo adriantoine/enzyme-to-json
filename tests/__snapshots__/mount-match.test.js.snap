@@ -326,3 +326,76 @@ exports[`Table matches class components to minimum depth at tr 1`] = `
   </td>
 </tr>
 `;
+
+exports[`TobeList matches functional components to either depth at a descendant 1`] = `
+<li
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  more is less
+</li>
+`;
+
+exports[`TobeList matches functional components to either depth at a descendant 2`] = `
+<li
+  style={
+    Object {
+      "textDecoration": "none",
+    }
+  }
+>
+  more is less
+</li>
+`;
+
+exports[`TobeList matches functional components to maximum depth 1`] = `
+<ul>
+  <li
+    style={
+      Object {
+        "textDecoration": "line-through",
+      }
+    }
+  >
+    testing is painless
+  </li>
+  <li
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+  >
+    more is less
+  </li>
+  <li
+    style={
+      Object {
+        "textDecoration": "none",
+      }
+    }
+  >
+    less is more
+  </li>
+</ul>
+`;
+
+exports[`TobeList matches functional components to minimum depth at a descendant 1`] = `
+<ul>
+  <TobeItem
+    is={false}
+    text="testing is painless"
+  />
+  <TobeItem
+    is={true}
+    text="more is less"
+  />
+  <TobeItem
+    is={true}
+    text="less is more"
+  />
+</ul>
+`;
