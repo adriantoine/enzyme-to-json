@@ -10,6 +10,7 @@ const renderChildToJson = (child, options) => {
   if (child.type === 'tag') {
     return applyMap(
       {
+        node: child,
         type: child.name,
         props: child.attribs,
         children: compact(
