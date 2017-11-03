@@ -122,9 +122,7 @@ exports[`converts pure mount with mixed children 1`] = `
 exports[`handles a component which returns null 1`] = `null`;
 
 exports[`includes undefined props 1`] = `
-<button
-  disabled={undefined}
->
+<button>
   Hello
 </button>
 `;
