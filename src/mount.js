@@ -23,7 +23,9 @@ function getProps(node, options) {
     {
       ...propsOfNode(node),
     },
-    (val, key) => key === 'children',
+    (val, key) => {
+      return key === 'children' || val === undefined;
+    },
   );
 
   if (!isNil(node.key) && options.noKey !== true) {

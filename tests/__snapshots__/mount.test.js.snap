@@ -455,9 +455,7 @@ exports[`renders zero-children 1`] = `
 
 exports[`skips undefined props 1`] = `
 <BasicWithUndefined>
-  <button
-    disabled={undefined}
-  >
+  <button>
     Hello
   </button>
 </BasicWithUndefined>
