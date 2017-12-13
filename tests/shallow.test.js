@@ -12,6 +12,8 @@ import {
   ArrayRender,
   FalsyTruthyComponent,
   FalsyChildren,
+  FragmentAsChild,
+  FragmentAsRoot,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -120,9 +122,7 @@ it('ignores non-plain objects', () => {
     this._test = true;
   }
 
-  const shallowed = shallow(
-    <WrapperComponent instance={new TestConstructor()} />,
-  );
+  const shallowed = shallow(<WrapperComponent instance={new TestConstructor()} />);
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
@@ -253,4 +253,16 @@ it('outputs an empty string when a component returns undefined', () => {
 it('outputs an empty string when a component has false chidren', () => {
   const shallowed = shallow(<FalsyChildren falsy={false} />);
   expect(shallowToJson(shallowed)).toMatchSnapshot();
+});
+
+it('renders a component that has a child fragment', () => {
+  const wrapper = shallow(<FragmentAsChild />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a fragment root', () => {
+  const wrapper = shallow(<FragmentAsRoot />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
 });

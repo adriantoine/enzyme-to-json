@@ -14,6 +14,8 @@ import {
   ArrayRender,
   FalsyTruthyComponent,
   FalsyChildren,
+  FragmentAsChild,
+  FragmentAsRoot,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -263,4 +265,16 @@ it('outputs an empty string when a component returns false', () => {
 it('outputs an empty string when a component has false chidren', () => {
   const mounted = mount(<FalsyChildren falsy={false} />);
   expect(mountToJson(mounted)).toMatchSnapshot();
+});
+
+it('renders a component that has a child fragment', () => {
+  const wrapper = mount(<FragmentAsChild />);
+
+  expect(mountToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a fragment root', () => {
+  const wrapper = mount(<FragmentAsRoot />);
+
+  expect(mountToJson(wrapper)).toMatchSnapshot();
 });

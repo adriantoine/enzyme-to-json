@@ -6,7 +6,13 @@ import omitBy from 'lodash/omitBy';
 import Adapter from 'enzyme-adapter-react-16';
 
 import renderToJson from '../src/render';
-import {BasicPure, BasicWithAList, ArrayRender} from './fixtures/pure-function';
+import {
+  BasicPure,
+  BasicWithAList,
+  ArrayRender,
+  FragmentAsChild,
+  FragmentAsRoot,
+} from './fixtures/pure-function';
 import {
   BasicClass,
   ClassWithNull,
@@ -142,4 +148,16 @@ it('outputs the snapshot even with inline JSX conditions being falsy', () => {
   );
 
   expect(renderToJson(rendered)).toMatchSnapshot();
+});
+
+it('renders a component that has a child fragment', () => {
+  const wrapper = render(<FragmentAsChild />);
+
+  expect(renderToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a fragment root', () => {
+  const wrapper = render(<FragmentAsRoot />);
+
+  expect(renderToJson(wrapper)).toMatchSnapshot();
 });

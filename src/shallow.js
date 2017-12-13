@@ -1,10 +1,9 @@
 import omitBy from 'lodash/omitBy';
 import isNil from 'lodash/isNil';
 
-import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
-import {compact, applyMap} from './utils';
+import {compact, applyMap, extractTypeName} from './utils';
 
 function getChildren(node, options) {
   const children = compact(
@@ -47,7 +46,7 @@ function internalNodeToJson(node, options) {
   const json = applyMap(
     {
       node,
-      type: typeName(node),
+      type: extractTypeName(node),
       props: getProps(node, options),
       children: getChildren(node, options),
       $$typeof: Symbol.for('react.test.json'),
