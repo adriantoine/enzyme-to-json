@@ -2,6 +2,7 @@ import filter from 'lodash/filter';
 import isNil from 'lodash/isNil';
 import ShallowWrapper from 'enzyme/build/ShallowWrapper';
 import ReactWrapper from 'enzyme/build/ReactWrapper';
+import {typeName} from 'enzyme/build/Debug';
 
 const SHALLOW_WRAPPER_NAME = ShallowWrapper.name;
 const REACT_WRAPPER_NAME = ReactWrapper.name;
@@ -32,4 +33,13 @@ export const applyMap = (json, options) => {
     return options.map(json);
   }
   return json;
+};
+
+export const extractTypeName = node => {
+  const name = typeName(node);
+  if (name === Symbol.for('react.fragment')) {
+    return 'React.Fragment';
+  }
+
+  return name;
 };

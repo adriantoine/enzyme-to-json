@@ -125,6 +125,22 @@ exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = 
 </div>
 `;
 
+exports[`renders a component that has a child fragment 1`] = `
+<div>
+  <span />
+  <div />
+  <button />
+</div>
+`;
+
+exports[`renders a component that has a fragment root 1`] = `
+Array [
+  <span />,
+  <div />,
+  <button />,
+]
+`;
+
 exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>

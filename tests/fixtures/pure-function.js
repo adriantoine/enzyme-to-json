@@ -54,3 +54,21 @@ export const FalsyTruthyComponent = ({foo}) => {
 export const FalsyChildren = ({falsy}) => {
   return <div>{!!falsy && <div>Yep</div>}</div>;
 };
+
+export const FragmentAsChild = () => (
+  <div>
+    <React.Fragment>
+      <span />
+      <div />
+      <button />
+    </React.Fragment>
+  </div>
+);
+
+export const FragmentAsRoot = () => (
+  <React.Fragment>
+    <span />
+    <div />
+    <button />
+  </React.Fragment>
+);
