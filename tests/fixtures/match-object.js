@@ -26,7 +26,7 @@ export class TableHead extends Component {
     return (
       <thead>
         <tr>
-          <th key="">
+          <th>
             <Button
               onClick={() => {
                 this.props.addRow();
@@ -51,7 +51,7 @@ export class TableRow extends Component {
     const {deleteRow, fields, record} = this.props;
     return (
       <tr>
-        <td key="">
+        <td>
           <Button
             onClick={() => {
               deleteRow(record.id);

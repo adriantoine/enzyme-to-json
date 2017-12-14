@@ -3,9 +3,7 @@
 exports[`Table matches class components to maximum depth at thead 1`] = `
 <thead>
   <tr>
-    <th
-      key=""
-    >
+    <th>
       <button
         onClick={[Function]}
         title="add row"
@@ -37,9 +35,7 @@ exports[`Table matches class components to maximum depth at thead 1`] = `
 
 exports[`Table matches class components to maximum depth at tr 1`] = `
 <tr>
-  <td
-    key=""
-  >
+  <td>
     <button
       onClick={[Function]}
       title="delete row"
@@ -267,9 +263,7 @@ exports[`Table matches class components to minimum depth at tbody 1`] = `
 exports[`Table matches class components to minimum depth at thead 1`] = `
 <thead>
   <tr>
-    <th
-      key=""
-    >
+    <th>
       <Button
         onClick={[Function]}
         text="+"
@@ -300,9 +294,7 @@ exports[`Table matches class components to minimum depth at thead 1`] = `
 
 exports[`Table matches class components to minimum depth at tr 1`] = `
 <tr>
-  <td
-    key=""
-  >
+  <td>
     <Button
       onClick={[Function]}
       text="-"
