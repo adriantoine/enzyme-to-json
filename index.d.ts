@@ -28,36 +28,36 @@ export interface JestSerializer {
  * @param wrapper any Enzyme wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-declare function toJson(wrapper: CommonWrapper, options?: Options): Json;
-declare function toJson<P, S>(wrapper: CommonWrapper<P, S>, options?: Options): Json;
+export declare function toJson(wrapper: CommonWrapper, options?: Options): Json;
+export declare function toJson<P, S>(wrapper: CommonWrapper<P, S>, options?: Options): Json;
 
 /**
  * shallowToJson helper is used to convert Enzyme shallow wrappers to a format compatible with Jest snapshot
  * @param wrapper an Enzyme shallow wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-declare function shallowToJson(wrapper: ShallowWrapper, options?: Options,): Json;
-declare function shallowToJson<P, S>(wrapper: ShallowWrapper<P, S>, options?: Options,): Json;
+export declare function shallowToJson(wrapper: ShallowWrapper, options?: Options,): Json;
+export declare function shallowToJson<P, S>(wrapper: ShallowWrapper<P, S>, options?: Options,): Json;
 
 /**
  * mountToJson helper is used to convert Enzyme mount wrappers to a format compatible with Jest snapshot
  * @param wrapper an Enzyme mount wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-declare function mountToJson(wrapper: ReactWrapper, options?: Options): Json;
-declare function mountToJson<P, S>(wrapper: ReactWrapper<P, S>, options?: Options): Json;
+export declare function mountToJson(wrapper: ReactWrapper, options?: Options): Json;
+export declare function mountToJson<P, S>(wrapper: ReactWrapper<P, S>, options?: Options): Json;
 
 /**
  * renderToJson helper is used to convert Enzyme render wrappers to a format compatible with Jest snapshot
  * @param wrapper an Enzyme render wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-declare function renderToJson(wrapper: Cheerio, options?: Options): Json;
+export declare function renderToJson(wrapper: Cheerio, options?: Options): Json;
 
 /**
  * createSerializer helper is used to create snapshot serializers for Jest
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-declare function createSerializer(options?: Options): JestSerializer;
+export declare function createSerializer(options?: Options): JestSerializer;
 
 export default toJson;
