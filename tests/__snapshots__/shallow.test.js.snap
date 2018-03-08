@@ -284,6 +284,34 @@ Array [
 ]
 `;
 
+exports[`should not bleed default props from class child component into snapshot 1`] = `
+<span>
+  <ClassWithDefaultProps />
+</span>
+`;
+
+exports[`should not bleed default props from funtional child component into snapshot 1`] = `
+<span>
+  <WithDefaultProps />
+</span>
+`;
+
+exports[`should set prop that has a different value from default prop values of class component 1`] = `
+<span>
+  <ClassWithDefaultProps
+    value="ah, man"
+  />
+</span>
+`;
+
+exports[`should set prop that has a different value from default prop values of functional component 1`] = `
+<span>
+  <WithDefaultProps
+    value="yeah, man"
+  />
+</span>
+`;
+
 exports[`skips undefined props 1`] = `
 <button>
   Hello

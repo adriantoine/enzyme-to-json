@@ -17,12 +17,15 @@ import {
   SuspenseAsChild,
   SuspenseAsRoot,
   ComponentWithMemo,
+  WithDefaultProps,
+  ComponentWithChildren,
 } from './fixtures/pure-function';
 import {
   BasicClass,
   ClassWithPure,
   ClassWithNull,
   ClassArrayRender,
+  ClassWithDefaultProps,
 } from './fixtures/class';
 
 Enzyme.configure({adapter: new Adapter()});
@@ -125,7 +128,9 @@ it('ignores non-plain objects', () => {
     this._test = true;
   }
 
-  const shallowed = shallow(<WrapperComponent instance={new TestConstructor()} />);
+  const shallowed = shallow(
+    <WrapperComponent instance={new TestConstructor()} />,
+  );
 
   expect(shallowToJson(shallowed)).toMatchSnapshot();
 });
@@ -284,6 +289,46 @@ it('renders a component that has a Suspense as root with Lazy child', () => {
 
 it('renders a component that has a Memo component', () => {
   const wrapper = shallow(<ComponentWithMemo />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('should not bleed default props from funtional child component into snapshot', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <WithDefaultProps />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('should set prop that has a different value from default prop values of functional component', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <WithDefaultProps value="yeah, man" />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('should not bleed default props from class child component into snapshot', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ClassWithDefaultProps />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('should set prop that has a different value from default prop values of class component', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ClassWithDefaultProps value="ah, man" />
+    </ComponentWithChildren>,
+  );
 
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });

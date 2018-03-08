@@ -103,3 +103,13 @@ export class ClassArrayRender extends Component {
     ];
   }
 }
+
+export class ClassWithDefaultProps extends Component {
+  render() {
+    return <div>{this.props.value}</div>;
+  }
+}
+
+ClassWithDefaultProps.defaultProps = {
+  value: 'hi mum',
+};

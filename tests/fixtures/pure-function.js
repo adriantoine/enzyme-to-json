@@ -100,3 +100,11 @@ export const ComponentWithMemo = () => (
     <Memo />
   </div>
 );
+
+export const ComponentWithChildren = ({children}) => <span>{children}</span>;
+
+export const WithDefaultProps = ({value}) => <div>{value}</div>;
+
+WithDefaultProps.defaultProps = {
+  value: 'hi there',
+};
