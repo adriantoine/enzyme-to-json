@@ -24,11 +24,10 @@ In order to use the serializer, just add this line to your [Jest configuration](
 "snapshotSerializers": ["enzyme-to-json/serializer"]
 ```
 
-[Example](https://github.com/adriantoine/enzyme-to-json-v3-testing/blob/master/package.json#L25-L29)
+[See an example jest configuration in package.json here](https://github.com/adriantoine/enzyme-to-json-v3-testing/blob/master/package.json#L25-L29).  
+[See a minimal example project here](https://github.com/adriantoine/enzyme-to-json-v3-testing).
 
 For most projects, that is all you need to start using snapshot tests on Enzyme wrappers. The rest of this readme is only showing advanced usages of this library.
-
-In case you are still confused, [here is a minimal example project](https://github.com/adriantoine/enzyme-to-json-v3-testing) demonstrating this configuration.
 
 # Advanced usage
 
