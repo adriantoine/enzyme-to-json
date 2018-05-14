@@ -28,8 +28,8 @@ export interface JestSerializer {
  * @param wrapper any Enzyme wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-export declare function toJson(wrapper: CommonWrapper, options?: Options): Json;
-export declare function toJson<P, S>(wrapper: CommonWrapper<P, S>, options?: Options): Json;
+export declare function toJson(wrapper: CommonWrapper | Cheerio, options?: Options): Json;
+export declare function toJson<P, S>(wrapper: CommonWrapper<P, S> | Cheerio, options?: Options): Json;
 
 /**
  * shallowToJson helper is used to convert Enzyme shallow wrappers to a format compatible with Jest snapshot
