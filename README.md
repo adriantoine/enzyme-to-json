@@ -16,7 +16,7 @@ $ npm install --save-dev enzyme-to-json
 
 # Usage
 
-The serializer is the recommended way to use `enzyme-to-json`, the installation and usage of it is very easy and allows you to write clean an simple snapshot tests.
+The serializer is the recommended way to use `enzyme-to-json`, the installation and usage of it is very easy and allows you to write clean and simple snapshot tests.
 
 In order to use the serializer, just add this line to your [Jest configuration](https://facebook.github.io/jest/docs/en/configuration.html):
 
