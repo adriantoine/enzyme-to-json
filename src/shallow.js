@@ -26,7 +26,7 @@ function getProps(node, options) {
     if (
       typeof node.type === 'function' &&
       node.type.defaultProps &&
-      node.type.defaultProps[key] &&
+      key in node.type.defaultProps &&
       node.type.defaultProps[key] === val
     ) {
       return true;
