@@ -2,9 +2,35 @@
 # yarn lockfile v1
 
 
+"@types/cheerio@*", "@types/cheerio@^0.22.9":
+  version "0.22.9"
+  resolved "http://bnpm.corp.yiran.com/@types%2fcheerio/-/cheerio-0.22.9.tgz#b5990152604c2ada749b7f88cab3476f21f39d7b"
+  integrity sha1-tZkBUmBMKtp0m3+IyrNHbyHznXs=
+
+"@types/enzyme@^3.1.15":
+  version "3.1.15"
+  resolved "http://bnpm.corp.yiran.com/@types%2fenzyme/-/enzyme-3.1.15.tgz#fc9a9695ba9f90cd50c4967e64a8c66ec96913d1"
+  integrity sha1-/JqWlbqfkM1QxJZ+ZKjGbslpE9E=
+  dependencies:
+    "@types/cheerio" "*"
+    "@types/react" "*"
+
 "@types/node@*":
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.5.0.tgz#c5be22ffc84b221466fc8dfc0d6b1f88060808ef"
+
+"@types/prop-types@*":
+  version "15.5.6"
+  resolved "http://bnpm.corp.yiran.com/@types%2fprop-types/-/prop-types-15.5.6.tgz#9c03d3fed70a8d517c191b7734da2879b50ca26c"
+  integrity sha1-nAPT/tcKjVF8GRt3NNooebUMomw=
+
+"@types/react@*":
+  version "16.7.6"
+  resolved "http://bnpm.corp.yiran.com/@types%2freact/-/react-16.7.6.tgz#80e4bab0d0731ad3ae51f320c4b08bdca5f03040"
+  integrity sha1-gOS6sNBzGtOuUfMgxLCL3KXwMEA=
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
 
 abab@^1.0.3:
   version "1.0.4"
@@ -1105,6 +1131,11 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   resolved "https://registry.yarnpkg.com/cssstyle/-/cssstyle-0.2.37.tgz#541097234cb2513c83ceed3acddc27ff27987d54"
   dependencies:
     cssom "0.3.x"
+
+csstype@^2.2.0:
+  version "2.5.7"
+  resolved "http://bnpm.corp.yiran.com/csstype/-/csstype-2.5.7.tgz#bf9235d5872141eccfb2d16d82993c6b149179ff"
+  integrity sha1-v5I11YchQezPstFtgpk8axSRef8=
 
 dashdash@^1.12.0:
   version "1.14.1"
