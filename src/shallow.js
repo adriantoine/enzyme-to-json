@@ -39,10 +39,6 @@ function internalNodeToJson(node, options) {
     return '';
   }
 
-  if (Array.isArray(node)) {
-    return node.map(n => internalNodeToJson(n, options));
-  }
-
   const json = applyMap(
     {
       node,

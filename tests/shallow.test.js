@@ -14,6 +14,9 @@ import {
   FalsyChildren,
   FragmentAsChild,
   FragmentAsRoot,
+  SuspenseAsChild,
+  SuspenseAsRoot,
+  ComponentWithMemo,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -263,6 +266,24 @@ it('renders a component that has a child fragment', () => {
 
 it('renders a component that has a fragment root', () => {
   const wrapper = shallow(<FragmentAsRoot />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a Suspense with Lazy as child', () => {
+  const wrapper = shallow(<SuspenseAsChild />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a Suspense as root with Lazy child', () => {
+  const wrapper = shallow(<SuspenseAsRoot />);
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders a component that has a Memo component', () => {
+  const wrapper = shallow(<ComponentWithMemo />);
 
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
