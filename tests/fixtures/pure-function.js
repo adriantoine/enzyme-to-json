@@ -1,5 +1,8 @@
 import React from 'react';
 
+const Lazy = React.lazy(() => Promise.resolve(<div>lazy div</div>));
+const Memo = React.memo(() => <div>memoized div</div>);
+
 export function BasicPure(props) {
   return (
     <div
@@ -71,4 +74,29 @@ export const FragmentAsRoot = () => (
     <div />
     <button />
   </React.Fragment>
+);
+
+export const SuspenseAsChild = () => (
+  <div>
+    <React.Suspense>
+      <Lazy />
+      <div />
+      <button />
+    </React.Suspense>
+  </div>
+);
+
+export const SuspenseAsRoot = () => (
+  <React.Suspense>
+    <span />
+    <div />
+    <Lazy />
+  </React.Suspense>
+);
+
+export const ComponentWithMemo = () => (
+  <div>
+    <span />
+    <Memo />
+  </div>
 );

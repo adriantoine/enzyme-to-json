@@ -96,15 +96,23 @@ Array [
   <div
     className="test"
     key="test"
-  />,
+  >
+    Test
+  </div>,
   <div
     className="test2"
     key="test2"
-  />,
+  >
+    Test 2
+  </div>,
   <div
     className="child"
     key="child"
-  />,
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>,
 ]
 `;
 
@@ -113,15 +121,23 @@ Array [
   <div
     className="test"
     key="test"
-  />,
+  >
+    Test
+  </div>,
   <div
     className="test2"
     key="test2"
-  />,
+  >
+    Test 2
+  </div>,
   <div
     className="child"
     key="child"
-  />,
+  >
+    <strong>
+      Hello!
+    </strong>
+  </div>,
 ]
 `;
 
@@ -216,22 +232,45 @@ exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = 
 </div>
 `;
 
-exports[`renders a component that has a child fragment 1`] = `
+exports[`renders a component that has a Memo component 1`] = `
 <div>
-  <React.Fragment>
-    <span />
+  <span />
+  <React.Memo />
+</div>
+`;
+
+exports[`renders a component that has a Suspense as root with Lazy child 1`] = `
+<React.Suspense>
+  <span />
+  <div />
+  <React.Lazy />
+</React.Suspense>
+`;
+
+exports[`renders a component that has a Suspense with Lazy as child 1`] = `
+<div>
+  <React.Suspense>
+    <React.Lazy />
     <div />
     <button />
-  </React.Fragment>
+  </React.Suspense>
+</div>
+`;
+
+exports[`renders a component that has a child fragment 1`] = `
+<div>
+  <span />
+  <div />
+  <button />
 </div>
 `;
 
 exports[`renders a component that has a fragment root 1`] = `
-<React.Fragment>
+<Fragment>
   <span />
   <div />
   <button />
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`renders multiple elements as a result of find 1`] = `
