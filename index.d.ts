@@ -14,7 +14,7 @@ export interface OutputMapper {
 
 export interface Options {
   map?: OutputMapper;
-  noKey: boolean;
+  noKey?: boolean;
   mode?: 'shallow' | 'deep';
 }
 
