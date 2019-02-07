@@ -40,7 +40,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.11"
   },
   "peerDependencies": {
     "enzyme": "^3.0.0"
