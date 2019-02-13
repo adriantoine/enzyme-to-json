@@ -24,6 +24,7 @@ function getProps(node, options) {
     }
 
     if (
+      options.ignoreDefaultProps === true &&
       typeof node.type === 'function' &&
       node.type.defaultProps &&
       key in node.type.defaultProps &&

@@ -293,7 +293,7 @@ it('renders a component that has a Memo component', () => {
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
-it('should not bleed default props from funtional child component into snapshot', () => {
+it('should bleed default props from functional child component into snapshot without the option', () => {
   const wrapper = shallow(
     <ComponentWithChildren>
       <WithDefaultProps />
@@ -303,10 +303,30 @@ it('should not bleed default props from funtional child component into snapshot'
   expect(shallowToJson(wrapper)).toMatchSnapshot();
 });
 
+it('should not bleed default props from functional child component into snapshot', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <WithDefaultProps />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
+});
+
 it('should set prop that has a different value from default prop values of functional component', () => {
   const wrapper = shallow(
     <ComponentWithChildren>
       <WithDefaultProps value="yeah, man" />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
+});
+
+it('should bleed default props from class child component into snapshot without the option', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ClassWithDefaultProps />
     </ComponentWithChildren>,
   );
 
@@ -320,7 +340,7 @@ it('should not bleed default props from class child component into snapshot', ()
     </ComponentWithChildren>,
   );
 
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
 });
 
 it('should set prop that has a different value from default prop values of class component', () => {
@@ -330,5 +350,5 @@ it('should set prop that has a different value from default prop values of class
     </ComponentWithChildren>,
   );
 
-  expect(shallowToJson(wrapper)).toMatchSnapshot();
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
 });
