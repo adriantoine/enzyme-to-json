@@ -103,8 +103,9 @@ export const ComponentWithMemo = () => (
 
 export const ComponentWithChildren = ({children}) => <span>{children}</span>;
 
-export const WithDefaultProps = ({value}) => <div>{value}</div>;
+export const WithDefaultProps = ({value, falsyValue}) => <div>{value},{falsyValue}</div>;
 
 WithDefaultProps.defaultProps = {
   value: 'hi there',
+  falsyValue: false,
 };
