@@ -13,6 +13,7 @@ export interface OutputMapper {
 }
 
 export interface Options {
+  ignoreDefaultProps?: boolean;
   map?: OutputMapper;
   noKey?: boolean;
   mode?: 'shallow' | 'deep';
