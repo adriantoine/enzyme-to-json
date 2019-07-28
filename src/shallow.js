@@ -18,10 +18,21 @@ function getChildren(node, options) {
 }
 
 function getProps(node, options) {
-  const props = omitBy(
-    Object.assign({}, propsOfNode(node)),
-    (val, key) => key === 'children' || val === undefined,
-  );
+  const props = omitBy(Object.assign({}, propsOfNode(node)), (val, key) => {
+    if (key === 'children' || val === undefined) {
+      return true;
+    }
+
+    if (
+      options.ignoreDefaultProps === true &&
+      typeof node.type === 'function' &&
+      node.type.defaultProps &&
+      key in node.type.defaultProps &&
+      node.type.defaultProps[key] === val
+    ) {
+      return true;
+    }
+  });
 
   if (!isNil(node.key) && options.noKey !== true) {
     props.key = node.key;

@@ -42,7 +42,7 @@ import {createSerializer} from 'enzyme-to-json';
 expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 ```
 
-You can also add the serializer for all tests using the [`setupTestFrameworkScriptFile`](https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string) configuration option from Jest.
+You can also add the serializer for all tests using the [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array) configuration option from Jest.
 
 ## Helper
 
@@ -82,6 +82,7 @@ And here are all the possible options:
 | `noKey` | `bool` | Since `v2.0.0`, the `key` prop is included in the snapshot, you can turn it off if you don't want your key to be in your snapshot by settting this option to `true`. Only works for the `mount` and `shallow` wrappers. |
 | `mode` | `'deep'`, `'shallow'` | The `deep` option will return a test object rendered to **maximum** depth while the `shallow` option will return a test object rendered to **minimum** depth. Only works for the `mount` wrappers. See `mode` documentation for examples. |
 | `map` | `function` | You can change each nested node of your component output by providing the map option. See `map` documentation for examples. |
+| `ignoreDefaultProps` | `bool` | You can exclude the default props from snapshots in shallow mode |
 
 # Docs
 
