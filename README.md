@@ -42,7 +42,7 @@ import {createSerializer} from 'enzyme-to-json';
 expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
 ```
 
-You can also add the serializer for all tests using the [`setupTestFrameworkScriptFile`](https://facebook.github.io/jest/docs/en/configuration.html#setuptestframeworkscriptfile-string) configuration option from Jest.
+You can also add the serializer for all tests using the [`setupFilesAfterEnv`](https://jestjs.io/docs/en/configuration.html#setupfilesafterenv-array) configuration option from Jest.
 
 ## Helper
 
