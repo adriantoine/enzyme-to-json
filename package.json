@@ -43,7 +43,7 @@
     "lodash": "^4.17.12"
   },
   "peerDependencies": {
-    "enzyme": "^3.0.0"
+    "enzyme": "^3.4.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
