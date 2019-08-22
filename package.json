@@ -43,7 +43,7 @@
     "lodash": "^4.17.12"
   },
   "peerDependencies": {
-    "enzyme": "^3.4.0"
+    "enzyme": "^3.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -54,8 +54,8 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "codecov": "^2.3.0",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "eslint": "^4.8.0",
     "eslint-config-prettier": "^2.6.0",
     "eslint-config-standard": "^10.2.1",
