@@ -1,5 +1,5 @@
 {
-  "version": "3.4.0",
+  "version": "3.4.1",
   "name": "enzyme-to-json",
   "description": "convert enzyme wrapper to a format compatible with Jest snapshot",
   "main": "index.js",
@@ -40,7 +40,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.12"
+    "lodash": "^4.17.13"
   },
   "peerDependencies": {
     "enzyme": "^3.10.0"
