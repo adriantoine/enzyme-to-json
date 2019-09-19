@@ -141,6 +141,18 @@ Array [
 ]
 `;
 
+exports[`renders an external script 1`] = `
+<script
+  src="http://www.example.com/foo.js"
+/>
+`;
+
+exports[`renders an inline script 1`] = `
+<script>
+  console.log('hi there');
+</script>
+`;
+
 exports[`renders multiple elements as a result of find 1`] = `
 Array [
   <li>
