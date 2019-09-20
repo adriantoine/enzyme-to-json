@@ -12,6 +12,8 @@ import {
   ArrayRender,
   FragmentAsChild,
   FragmentAsRoot,
+  InlineScript,
+  ExternalScript,
 } from './fixtures/pure-function';
 import {
   BasicClass,
@@ -158,6 +160,18 @@ it('renders a component that has a child fragment', () => {
 
 it('renders a component that has a fragment root', () => {
   const wrapper = render(<FragmentAsRoot />);
+
+  expect(renderToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders an inline script', () => {
+  const wrapper = render(<InlineScript />);
+
+  expect(renderToJson(wrapper)).toMatchSnapshot();
+});
+
+it('renders an external script', () => {
+  const wrapper = render(<ExternalScript />);
 
   expect(renderToJson(wrapper)).toMatchSnapshot();
 });

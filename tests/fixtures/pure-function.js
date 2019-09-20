@@ -103,9 +103,21 @@ export const ComponentWithMemo = () => (
 
 export const ComponentWithChildren = ({children}) => <span>{children}</span>;
 
-export const WithDefaultProps = ({value, falsyValue}) => <div>{value},{falsyValue}</div>;
+export const WithDefaultProps = ({value, falsyValue}) => (
+  <div>
+    {value},{falsyValue}
+  </div>
+);
 
 WithDefaultProps.defaultProps = {
   value: 'hi there',
   falsyValue: false,
 };
+
+export const InlineScript = () => (
+  <script dangerouslySetInnerHTML={{__html: `console.log('hi there');`}} />
+);
+
+export const ExternalScript = () => (
+  <script src={'http://www.example.com/foo.js'} />
+);

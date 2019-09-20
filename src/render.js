@@ -7,7 +7,7 @@ const renderChildToJson = (child, options) => {
     return null;
   }
 
-  if (child.type === 'tag') {
+  if (['tag', 'script'].includes(child.type)) {
     return applyMap(
       {
         node: child,
