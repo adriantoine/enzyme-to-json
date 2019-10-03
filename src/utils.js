@@ -36,19 +36,19 @@ export const applyMap = (json, options) => {
 };
 
 export const extractTypeName = node => {
-  const type = node.type.$$typeof;
+  const name = typeName(node);
 
-  if (type === Symbol.for('react.lazy')) {
+  if (name.$$typeof === Symbol.for('react.lazy')) {
     return 'React.Lazy';
   }
 
-  if (type === Symbol.for('react.memo')) {
+  if (name.$$typeof === Symbol.for('react.memo')) {
     return 'React.Memo';
   }
 
-  if (node.type === Symbol.for('react.suspense')) {
+  if (name === Symbol.for('react.suspense')) {
     return 'React.Suspense';
   }
 
-  return typeName(node);
+  return name;
 };
