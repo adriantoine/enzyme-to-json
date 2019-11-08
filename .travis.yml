@@ -1,4 +1,3 @@
-sudo: false
 language: node_js
 
 cache:
@@ -7,10 +6,11 @@ cache:
     - node_modules
 
 node_js:
-  - '4'
-  - '6'
-  - '8'
-  - 'lts'
+  - 4
+  - 6
+  - 8
+  - lts/*
+  - node
 
 install:
   - yarn --ignore-engines
