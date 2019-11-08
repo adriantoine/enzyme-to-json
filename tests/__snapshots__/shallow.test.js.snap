@@ -235,25 +235,25 @@ exports[`outputs the snapshot even with inline JSX conditions being falsy 1`] = 
 exports[`renders a component that has a Memo component 1`] = `
 <div>
   <span />
-  <React.Memo />
+  <Memo() />
 </div>
 `;
 
 exports[`renders a component that has a Suspense as root with Lazy child 1`] = `
-<React.Suspense>
+<Suspense>
   <span />
   <div />
-  <React.Lazy />
-</React.Suspense>
+  <lazy />
+</Suspense>
 `;
 
 exports[`renders a component that has a Suspense with Lazy as child 1`] = `
 <div>
-  <React.Suspense>
-    <React.Lazy />
+  <Suspense>
+    <lazy />
     <div />
     <button />
-  </React.Suspense>
+  </Suspense>
 </div>
 `;
 
