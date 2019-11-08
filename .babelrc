@@ -1,17 +1,13 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/env",
       {
         "targets": {
           "node": "4"
         }
       }
-    ]
-  ],
-  "plugins": [
-    "syntax-export-extensions",
-    "transform-object-rest-spread",
-    "transform-react-jsx"
+    ],
+    "@babel/react"
   ]
 }
