@@ -6,11 +6,11 @@
   "scripts": {
     "build": "babel src -d ./",
     "clean": "rm *.js",
-    "prepublishOnly": "npm run build",
-    "lint": "eslint src tests/core && npm run format-check",
+    "prepublishOnly": "yarn build",
+    "lint": "eslint src tests/core && yarn format-check",
     "format": "prettier src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
     "format-check": "prettier-check src/**/*.js tests/core/*.js tests/core/**/*.js --write --single-quote --trailing-comma all --no-bracket-spacing",
-    "test": "npm run lint && npm run test-core",
+    "test": "yarn lint && yarn test-core",
     "test-core": "NODE_ENV=test jest --coverage"
   },
   "keywords": [
@@ -47,6 +47,7 @@
     "enzyme": "^3.4.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
