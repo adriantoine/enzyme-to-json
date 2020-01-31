@@ -293,6 +293,15 @@ exports[`should bleed default props from class child component into snapshot wit
 </span>
 `;
 
+exports[`should bleed default props from forwardRef child component into snapshot without the option 1`] = `
+<span>
+  <ForwardRef
+    falsyValue={false}
+    value="hi mum"
+  />
+</span>
+`;
+
 exports[`should bleed default props from functional child component into snapshot without the option 1`] = `
 <span>
   <WithDefaultProps
@@ -308,6 +317,12 @@ exports[`should not bleed default props from class child component into snapshot
 </span>
 `;
 
+exports[`should not bleed default props from forwardRef child component into snapshot 1`] = `
+<span>
+  <ForwardRef />
+</span>
+`;
+
 exports[`should not bleed default props from functional child component into snapshot 1`] = `
 <span>
   <WithDefaultProps />
@@ -318,6 +333,14 @@ exports[`should set prop that has a different value from default prop values of 
 <span>
   <ClassWithDefaultProps
     value="ah, man"
+  />
+</span>
+`;
+
+exports[`should set prop that has a different value from default prop values of forwardRef component 1`] = `
+<span>
+  <ForwardRef
+    value="yeah, man"
   />
 </span>
 `;

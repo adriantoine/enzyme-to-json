@@ -28,6 +28,10 @@ import {
   ClassWithDefaultProps,
 } from './fixtures/class';
 
+import {
+  ForwardRefWithDefaultProps,
+} from './fixtures/forwardRef';
+
 Enzyme.configure({adapter: new Adapter()});
 
 function WrapperComponent(props) {
@@ -347,6 +351,36 @@ it('should set prop that has a different value from default prop values of class
   const wrapper = shallow(
     <ComponentWithChildren>
       <ClassWithDefaultProps value="ah, man" />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
+});
+
+it('should bleed default props from forwardRef child component into snapshot without the option', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ForwardRefWithDefaultProps />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper)).toMatchSnapshot();
+});
+
+it('should not bleed default props from forwardRef child component into snapshot', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ForwardRefWithDefaultProps />
+    </ComponentWithChildren>,
+  );
+
+  expect(shallowToJson(wrapper, { ignoreDefaultProps: true })).toMatchSnapshot();
+});
+
+it('should set prop that has a different value from default prop values of forwardRef component', () => {
+  const wrapper = shallow(
+    <ComponentWithChildren>
+      <ForwardRefWithDefaultProps value="yeah, man" />
     </ComponentWithChildren>,
   );
 

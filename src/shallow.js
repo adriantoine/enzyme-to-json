@@ -1,5 +1,6 @@
 import omitBy from 'lodash/omitBy';
 import isNil from 'lodash/isNil';
+import {isValidElementType} from 'react-is';
 
 import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
 
@@ -25,7 +26,7 @@ function getProps(node, options) {
 
     if (
       options.ignoreDefaultProps === true &&
-      typeof node.type === 'function' &&
+      isValidElementType(node.type) &&
       node.type.defaultProps &&
       key in node.type.defaultProps &&
       node.type.defaultProps[key] === val
