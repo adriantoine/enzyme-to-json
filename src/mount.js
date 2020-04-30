@@ -1,5 +1,6 @@
 import omitBy from 'lodash/omitBy';
 import isNil from 'lodash/isNil';
+import {ForwardRef} from 'react-is';
 
 import {typeName} from 'enzyme/build/Debug';
 import {childrenOfNode, propsOfNode} from 'enzyme/build/RSTTraversal';
@@ -48,7 +49,10 @@ function internalNodeToJson(node, options) {
     return node.map(child => internalNodeToJson(child, options));
   }
 
-  if (options.mode === 'deep' && typeof node.type === 'function') {
+  if (
+    options.mode === 'deep' &&
+    (typeof node.type === 'function' || node.type.$$typeof === ForwardRef)
+  ) {
     return internalNodeToJson(node.rendered, options);
   }
 

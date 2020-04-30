@@ -227,6 +227,23 @@ exports[`converts pure mount with mixed children 1`] = `
 </div>
 `;
 
+exports[`excludes forwardRef node but renders wrapped component 1`] = `
+<div
+  className="basic-class undefined"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span />
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
 exports[`handles a component which returns null 1`] = `""`;
 
 exports[`includes undefined props 1`] = `
