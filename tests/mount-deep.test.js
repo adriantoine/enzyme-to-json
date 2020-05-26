@@ -19,6 +19,7 @@ import {
   ClassWithNull,
   ClassArrayRender,
 } from './fixtures/class';
+import {ForwardRefWithDefaultProps} from './fixtures/forwardRef';
 
 Enzyme.configure({adapter: new Adapter()});
 const deepOptions = {mode: 'deep'};
@@ -127,4 +128,10 @@ it('renders multiple elements as a result of find', () => {
   const mounted = mount(<BasicWithAList />);
 
   expect(mountToJson(mounted.find('li'), deepOptions)).toMatchSnapshot();
+});
+
+it('excludes forwardRef node but renders wrapped component', () => {
+  const mounted = mount(<ForwardRefWithDefaultProps />);
+
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
