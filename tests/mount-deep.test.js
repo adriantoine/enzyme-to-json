@@ -137,13 +137,13 @@ it('excludes forwardRef node but renders wrapped component', () => {
   expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
-it.only('excludes memo node but renders wrapped component', () => {
+it('excludes memo node but renders wrapped component', () => {
   const mounted = mount(<BasicMemo className="foo" />);
 
   expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
 
-it.only('excludes memo node but renders wrapped top level array properly', () => {
+it('excludes memo node but renders wrapped top level array properly', () => {
   const mounted = mount(<ArrayMemo className="foo" />);
 
   expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
