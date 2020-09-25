@@ -244,6 +244,45 @@ exports[`excludes forwardRef node but renders wrapped component 1`] = `
 </div>
 `;
 
+exports[`excludes memo node but renders wrapped component 1`] = `
+<div
+  className="basic-memo foo"
+  onClick={[Function]}
+>
+  <div
+    className="group"
+    id="group-id"
+  >
+    <span
+      className="empty"
+    />
+  </div>
+</div>
+`;
+
+exports[`excludes memo node but renders wrapped top level array properly 1`] = `
+Array [
+  <div
+    className="test"
+    key="test"
+  >
+    Test
+  </div>,
+  <div
+    className="test2"
+    key="test2"
+  >
+    Test 2
+  </div>,
+  <div
+    className="foo"
+    key="test3"
+  >
+    Test 3
+  </div>,
+]
+`;
+
 exports[`handles a component which returns null 1`] = `""`;
 
 exports[`includes undefined props 1`] = `
