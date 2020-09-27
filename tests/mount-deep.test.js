@@ -20,6 +20,7 @@ import {
   ClassArrayRender,
 } from './fixtures/class';
 import {ForwardRefWithDefaultProps} from './fixtures/forwardRef';
+import {BasicMemo, ArrayMemo} from './fixtures/memo';
 
 Enzyme.configure({adapter: new Adapter()});
 const deepOptions = {mode: 'deep'};
@@ -132,6 +133,18 @@ it('renders multiple elements as a result of find', () => {
 
 it('excludes forwardRef node but renders wrapped component', () => {
   const mounted = mount(<ForwardRefWithDefaultProps />);
+
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
+});
+
+it('excludes memo node but renders wrapped component', () => {
+  const mounted = mount(<BasicMemo className="foo" />);
+
+  expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
+});
+
+it('excludes memo node but renders wrapped top level array properly', () => {
+  const mounted = mount(<ArrayMemo className="foo" />);
 
   expect(mountToJson(mounted, deepOptions)).toMatchSnapshot();
 });
