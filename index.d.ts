@@ -29,8 +29,8 @@ export interface JestSerializer {
  * @param wrapper any Enzyme wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-export declare function toJson(wrapper: CommonWrapper | Cheerio, options?: Options): Json;
-export declare function toJson<P, S>(wrapper: CommonWrapper<P, S> | Cheerio, options?: Options): Json;
+export declare function toJson(wrapper: CommonWrapper | cheerio.Cheerio, options?: Options): Json;
+export declare function toJson<P, S>(wrapper: CommonWrapper<P, S> | cheerio.Cheerio, options?: Options): Json;
 
 /**
  * shallowToJson helper is used to convert Enzyme shallow wrappers to a format compatible with Jest snapshot
@@ -53,7 +53,7 @@ export declare function mountToJson<P, S>(wrapper: ReactWrapper<P, S>, options?:
  * @param wrapper an Enzyme render wrapper
  * @param [options] an option object which accepts `map`, `noKey` and `mode` as keys
  */
-export declare function renderToJson(wrapper: Cheerio, options?: Options): Json;
+export declare function renderToJson(wrapper: cheerio.Cheerio, options?: Options): Json;
 
 /**
  * createSerializer helper is used to create snapshot serializers for Jest
