@@ -41,7 +41,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/cheerio": "^0.22.22",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react-is": "^16.12.0"
   },
   "peerDependencies": {
