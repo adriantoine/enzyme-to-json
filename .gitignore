@@ -13,3 +13,5 @@ serializer.js
 shallow.js
 utils.js
 yarn-error.log
+.yarn/cache
+.yarn/unplugged
